@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { PromoBar } from "@/components/layout/PromoBar";
 import { siteConfig } from "@/data/site";
 
 export const metadata: Metadata = {
@@ -37,8 +38,9 @@ export default function RootLayout({
   return (
     <html lang="zh-CN">
       <body className="min-h-screen flex flex-col bg-paper">
+        <PromoBar />
         <Header />
-        <main className="flex-1 pt-11">{children}</main>
+        <main className="flex-1 pt-[80px]">{children}</main>
         <Footer />
       </body>
     </html>

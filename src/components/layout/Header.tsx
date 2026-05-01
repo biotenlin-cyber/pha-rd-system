@@ -27,7 +27,7 @@ export function Header() {
   }, [mobileOpen]);
 
   return (
-    <header className="fixed top-0 inset-x-0 z-50 h-11 bg-paper/72 apple-blur border-b border-hairline/60">
+    <header className="fixed top-9 inset-x-0 z-50 h-11 bg-paper/72 apple-blur border-b border-hairline/60">
       <div className="mx-auto max-w-[1024px] h-full px-4 sm:px-6 flex items-center justify-between text-[13px] text-ink/85">
         <Link
           href="/"
@@ -74,7 +74,7 @@ export function Header() {
       </div>
 
       {mobileOpen && (
-        <div className="md:hidden fixed inset-x-0 top-11 bottom-0 bg-paper border-t border-hairline overflow-y-auto">
+        <div className="md:hidden fixed inset-x-0 top-[80px] bottom-0 bg-paper border-t border-hairline overflow-y-auto">
           <nav className="px-6 py-4">
             {mainNav.map((item) => (
               <Link

@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { LinkArrow } from "@/components/apple/LinkArrow";
+import { Reveal } from "@/components/apple/Reveal";
 import { PlatformVisual } from "@/components/visuals/PlatformVisual";
 import {
   platformOverview,
@@ -18,30 +19,41 @@ export default function PlatformPage() {
   return (
     <div className="bg-fog">
       <div className="space-y-2">
-        {/* Hero */}
+        {/* Hero - 巨型 */}
         <section className="bg-paper text-ink">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 pt-20 sm:pt-28 pb-12 text-center">
+          <div className="mx-auto max-w-6xl px-6 sm:px-8 pt-16 sm:pt-24 pb-12 text-center">
             <div className="text-eyebrow text-ink mb-3 fade-up">
               {platformOverview.eyebrow}
             </div>
-            <h1 className="text-display sm:text-hero font-semibold tracking-tight max-w-4xl mx-auto fade-up">
-              {platformOverview.title}
-            </h1>
-            <p className="mt-5 text-lead text-ash max-w-2xl mx-auto fade-up-soft">
-              {platformOverview.subtitle}
-            </p>
-            <div className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-3">
-              <LinkArrow href="#modules" size="lg">
-                查看模块
-              </LinkArrow>
-              <LinkArrow href="/contact" size="lg">
-                预约演示
-              </LinkArrow>
+            <Reveal>
+              <h1
+                className="font-semibold tracking-tight leading-[0.96] max-w-5xl mx-auto"
+                style={{ fontSize: "clamp(2.75rem, 7.6vw, 7.25rem)", letterSpacing: "-0.035em" }}
+              >
+                {platformOverview.title}
+              </h1>
+            </Reveal>
+            <Reveal delay={120}>
+              <p className="mt-7 text-lead text-ash max-w-2xl mx-auto">
+                {platformOverview.subtitle}
+              </p>
+            </Reveal>
+            <Reveal delay={200}>
+              <div className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-3">
+                <LinkArrow href="#modules" size="lg">
+                  查看模块
+                </LinkArrow>
+                <LinkArrow href="/contact" size="lg">
+                  预约演示
+                </LinkArrow>
+              </div>
+            </Reveal>
+          </div>
+          <Reveal delay={120}>
+            <div className="mx-auto max-w-6xl px-6 sm:px-8 pb-12">
+              <PlatformVisual />
             </div>
-          </div>
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 pb-12">
-            <PlatformVisual />
-          </div>
+          </Reveal>
         </section>
 
         {/* Stats strip */}
@@ -70,9 +82,11 @@ export default function PlatformPage() {
 
             <div className="space-y-3">
               {platformModules.map((m, idx) => (
-                <article
-                  id={m.id}
+                <Reveal
                   key={m.id}
+                  delay={idx * 60}
+                  as="article"
+                  id={m.id}
                   className={`rounded-marble overflow-hidden grid md:grid-cols-2 ${
                     idx % 2 === 0 ? "bg-fog" : "bg-coal text-paper"
                   }`}
@@ -110,7 +124,7 @@ export default function PlatformPage() {
                   >
                     <ModuleVisual variant={m.id} darkMode={idx % 2 === 1} />
                   </div>
-                </article>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -119,14 +133,17 @@ export default function PlatformPage() {
         {/* Workflow */}
         <section className="bg-obsidian text-paper">
           <div className="mx-auto max-w-6xl px-6 sm:px-8 py-24 text-center">
-            <div className="text-eyebrow text-white/80 mb-3">WORKFLOW</div>
-            <h2 className="text-display font-semibold tracking-tight max-w-3xl mx-auto">
-              一条流水线,从需求到量产。
-            </h2>
+            <Reveal>
+              <div className="text-eyebrow text-white/80 mb-3">WORKFLOW</div>
+              <h2 className="text-display font-semibold tracking-tight max-w-3xl mx-auto">
+                一条流水线,从需求到量产。
+              </h2>
+            </Reveal>
             <div className="mt-12 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-              {platformWorkflow.map((w) => (
-                <div
+              {platformWorkflow.map((w, i) => (
+                <Reveal
                   key={w.step}
+                  delay={i * 70}
                   className="rounded-tile bg-coal p-6 text-left border border-white/5"
                 >
                   <div className="text-eyebrow text-link">{w.step}</div>
@@ -134,7 +151,7 @@ export default function PlatformPage() {
                   <p className="mt-2 text-sm text-white/70 leading-relaxed">
                     {w.desc}
                   </p>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>
@@ -143,21 +160,20 @@ export default function PlatformPage() {
         {/* Deployment & Compliance */}
         <section className="bg-paper">
           <div className="mx-auto max-w-6xl px-6 sm:px-8 py-24">
-            <div className="text-center max-w-2xl mx-auto mb-12">
-              <div className="text-eyebrow text-ink mb-3">DEPLOYMENT</div>
-              <h2 className="text-display font-semibold tracking-tight">
-                安全交付,可控演进。
-              </h2>
-            </div>
+            <Reveal>
+              <div className="text-center max-w-2xl mx-auto mb-12">
+                <div className="text-eyebrow text-ink mb-3">DEPLOYMENT</div>
+                <h2 className="text-display font-semibold tracking-tight">
+                  安全交付,可控演进。
+                </h2>
+              </div>
+            </Reveal>
             <div className="grid gap-3 md:grid-cols-3">
-              {platformDeployment.map((d) => (
-                <div
-                  key={d.title}
-                  className="rounded-tile bg-fog p-8"
-                >
+              {platformDeployment.map((d, i) => (
+                <Reveal key={d.title} delay={i * 80} className="rounded-tile bg-fog p-8">
                   <h3 className="text-lg font-semibold">{d.title}</h3>
                   <p className="mt-3 text-base text-ash leading-relaxed">{d.desc}</p>
-                </div>
+                </Reveal>
               ))}
             </div>
           </div>

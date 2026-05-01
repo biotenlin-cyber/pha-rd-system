@@ -41,11 +41,12 @@ const config: Config = {
       },
       fontSize: {
         eyebrow: ["0.8125rem", { lineHeight: "1.2", letterSpacing: "0.01em", fontWeight: "500" }],
-        // Apple-grade hero scale (clamps inline at component level when needed)
-        hero: ["clamp(2.75rem, 5.6vw, 5.5rem)", { lineHeight: "1.05", letterSpacing: "-0.025em", fontWeight: "600" }],
-        display: ["clamp(2rem, 3.6vw, 3.25rem)", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "600" }],
-        section: ["clamp(1.75rem, 2.6vw, 2.25rem)", { lineHeight: "1.15", letterSpacing: "-0.015em", fontWeight: "600" }],
-        lead: ["clamp(1.125rem, 1.4vw, 1.375rem)", { lineHeight: "1.35", letterSpacing: "0", fontWeight: "400" }],
+        // Apple-grade type scale - 推到 96-128px
+        mega: ["clamp(3.5rem, 8.5vw, 8rem)", { lineHeight: "1.0", letterSpacing: "-0.035em", fontWeight: "600" }],
+        hero: ["clamp(2.75rem, 6.4vw, 6rem)", { lineHeight: "1.04", letterSpacing: "-0.03em", fontWeight: "600" }],
+        display: ["clamp(2.25rem, 4.4vw, 3.75rem)", { lineHeight: "1.08", letterSpacing: "-0.025em", fontWeight: "600" }],
+        section: ["clamp(1.75rem, 2.8vw, 2.5rem)", { lineHeight: "1.12", letterSpacing: "-0.02em", fontWeight: "600" }],
+        lead: ["clamp(1.125rem, 1.4vw, 1.4rem)", { lineHeight: "1.35", letterSpacing: "0", fontWeight: "400" }],
       },
       letterSpacing: {
         eyebrow: "0.02em",
