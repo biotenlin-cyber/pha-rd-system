@@ -1,0 +1,479 @@
+# 30 个 PHA 应用场景，每个领域 ~3 个
+
+# ===================== 医疗 =====================
+- code: medical.suture
+  domain: medical
+  name_zh: 可吸收外科缝合线
+  name_en: Bioresorbable Surgical Suture
+  summary: 可在体内 6–24 个月内被酶解吸收的外科缝合线，免拆线降低术后感染。
+  sub_scenarios: [单股缝线, 编织缝线, 倒刺缝线]
+  technical_requirements:
+    degradation_months: [6, 24]
+    biocompatibility_class: ISO10993-I
+    mechanical:
+      tensile_strength_mpa_min: 35
+      elongation_pct_min: 15
+    sterilization: [EtO, gamma]
+  typical_products:
+    - {name: 可吸收缝合线 USP 3-0, description: 普外科/妇产科常规缝合}
+    - {name: 倒刺缝线, description: 整形外科免打结缝合}
+  market_size_usd: 1200000000
+  market_year: 2024
+  tags: [biodegradable, implantable, fda, iso10993, regulated, premium]
+
+- code: medical.drug_microsphere
+  domain: medical
+  name_zh: 药物缓释微球
+  name_en: Drug-Eluting Microsphere
+  summary: 利用 PHA 可控降解将药物包封于微球，实现 1–6 个月可控释放。
+  sub_scenarios: [抗肿瘤微球, 缓控释疫苗, 眼科植入剂]
+  technical_requirements:
+    degradation_months: [1, 6]
+    biocompatibility_class: ISO10993-I
+    particle_size_um: [10, 100]
+    drug_loading_pct: [5, 30]
+  typical_products:
+    - {name: 紫杉醇 PHA 微球, description: 局部肿瘤化疗}
+  market_size_usd: 600000000
+  market_year: 2024
+  tags: [implantable, premium, regulated, iso10993]
+
+- code: medical.tissue_scaffold
+  domain: medical
+  name_zh: 组织工程支架
+  name_en: Tissue Engineering Scaffold
+  summary: 提供细胞贴附与生长的三维多孔支架，引导血管/骨/软骨再生。
+  sub_scenarios: [血管支架, 骨修复支架, 软骨支架]
+  technical_requirements:
+    porosity_pct_min: 70
+    biocompatibility_class: ISO10993-I
+    degradation_months: [6, 24]
+    mechanical:
+      tensile_strength_mpa_min: 5
+      elongation_pct_min: 100
+  typical_products:
+    - {name: 心血管 PHA 多孔支架, description: 血管再生引导}
+  market_size_usd: 450000000
+  market_year: 2024
+  tags: [implantable, premium, iso10993, high-toughness]
+
+# ===================== 包装 =====================
+- code: packaging.food_film
+  domain: packaging
+  name_zh: 食品级吹膜
+  name_en: Food-grade Blown Film
+  summary: 用于生鲜/冷冻/烘焙包装，需通过食品接触迁移测试，常见 EN13432/ASTM-D6400。
+  sub_scenarios: [生鲜膜, 冷冻膜, 烘焙包装膜]
+  technical_requirements:
+    thickness_um: [15, 50]
+    food_contact: true
+    composting_days_max: 180
+    mechanical:
+      tensile_strength_mpa_min: 18
+      elongation_pct_min: 200
+  typical_products:
+    - {name: PHA 生鲜膜, description: 替代 LDPE 生鲜保鲜}
+  market_size_usd: 950000000
+  market_year: 2024
+  tags: [biodegradable, food-contact, blown-film, en13432, astm-d6400, high-volume]
+
+- code: packaging.straw
+  domain: packaging
+  name_zh: 一次性吸管
+  name_en: Disposable Straw
+  summary: 替代 PP/纸吸管的可降解 PHA 吸管，挺度与口感俱佳。
+  sub_scenarios: [冷饮吸管, 热饮吸管, 弯头吸管]
+  technical_requirements:
+    food_contact: true
+    composting_days_max: 180
+    heat_resistance_celsius_min: 70
+    mechanical:
+      tensile_strength_mpa_min: 30
+  typical_products:
+    - {name: PHA 冷饮吸管, description: 替代 PP 一次性吸管}
+  market_size_usd: 200000000
+  market_year: 2024
+  tags: [biodegradable, food-contact, extrusion, en13432]
+
+- code: packaging.courier_bag
+  domain: packaging
+  name_zh: 快递包装袋
+  name_en: Courier / E-commerce Bag
+  summary: 可降解快递袋，规模化替代 PE 快递袋，目标重量 30–80 g。
+  sub_scenarios: [自封袋, 防水快递袋, 缓冲袋]
+  technical_requirements:
+    composting_days_max: 180
+    mechanical:
+      tensile_strength_mpa_min: 22
+      elongation_pct_min: 250
+      tear_strength_kn_per_m_min: 30
+  typical_products:
+    - {name: PHA 快递袋 30 g, description: 电商通用快递袋}
+  market_size_usd: 700000000
+  market_year: 2024
+  tags: [biodegradable, blown-film, en13432, high-volume]
+
+# ===================== 农业 =====================
+- code: agriculture.mulch_film
+  domain: agriculture
+  name_zh: 可降解地膜
+  name_en: Biodegradable Mulch Film
+  summary: 完全替代传统 PE 地膜，作物期内保持完整、收获后自然降解。
+  sub_scenarios: [全生物降解地膜, 黑色地膜, 透明地膜]
+  technical_requirements:
+    thickness_um: [8, 20]
+    soil_degradation_months_max: 12
+    mechanical:
+      tensile_strength_mpa_min: 14
+      elongation_pct_min: 300
+  typical_products:
+    - {name: PHA 黑色地膜 10 μm, description: 蔬菜大棚专用}
+  market_size_usd: 1500000000
+  market_year: 2024
+  tags: [biodegradable, blown-film, high-volume]
+
+- code: agriculture.controlled_release_fertilizer
+  domain: agriculture
+  name_zh: 控释肥料包衣
+  name_en: Controlled-Release Fertilizer Coating
+  summary: 利用 PHA 降解速率实现 60–180 天可控释肥，减少养分流失与面源污染。
+  sub_scenarios: [尿素包衣, 复合肥包衣, 微量元素包衣]
+  technical_requirements:
+    coating_thickness_um: [20, 60]
+    release_days: [60, 180]
+    soil_degradation_months_max: 9
+  typical_products:
+    - {name: PHA 包膜尿素, description: 60 天释放期}
+  market_size_usd: 380000000
+  market_year: 2024
+  tags: [biodegradable, high-volume]
+
+- code: agriculture.seed_coating
+  domain: agriculture
+  name_zh: 种子包衣
+  name_en: Seed Coating
+  summary: 在种子表面形成可降解保护膜，载带农药/微量元素，提升出苗率与抗逆性。
+  sub_scenarios: [玉米种衣, 蔬菜种衣, 果树种衣]
+  technical_requirements:
+    coating_thickness_um: [5, 20]
+    release_days: [14, 60]
+  typical_products:
+    - {name: PHA 玉米种衣剂, description: 含杀虫剂缓释}
+  market_size_usd: 95000000
+  market_year: 2024
+  tags: [biodegradable]
+
+# ===================== 海洋 =====================
+- code: marine.fishing_net
+  domain: marine
+  name_zh: 可降解渔网
+  name_en: Biodegradable Fishing Net
+  summary: 海水可降解渔网，缓解"幽灵渔网"造成的海洋生物缠绕与塑料污染。
+  sub_scenarios: [刺网, 拖网, 围网]
+  technical_requirements:
+    marine_degradation_months_max: 18
+    tensile_strength_mpa_min: 35
+    knot_strength_pct_min: 60
+  typical_products:
+    - {name: PHA 刺网线径 0.3 mm, description: 沿海作业刺网}
+  market_size_usd: 280000000
+  market_year: 2024
+  tags: [biodegradable, marine-degradable, extrusion, premium]
+
+- code: marine.microbead_replacement
+  domain: marine
+  name_zh: 海洋微珠替代
+  name_en: Marine Microbead Replacement
+  summary: 替代 PE/PP 微塑料微珠，应用于个护、清洁剂、磨砂膏等。
+  sub_scenarios: [个护磨砂, 工业清洁微珠, 化妆品微珠]
+  technical_requirements:
+    particle_size_um: [50, 500]
+    marine_degradation_months_max: 12
+  typical_products:
+    - {name: PHA 化妆品磨砂微珠, description: 替代 PE 微珠}
+  market_size_usd: 60000000
+  market_year: 2024
+  tags: [biodegradable, marine-degradable, premium]
+
+- code: marine.aquaculture_cage_coating
+  domain: marine
+  name_zh: 养殖网箱涂层
+  name_en: Aquaculture Cage Coating
+  summary: 在金属养殖网箱表面形成可降解防污涂层，抑制生物附着、降低维护频次。
+  sub_scenarios: [网衣涂层, 浮筒涂层]
+  technical_requirements:
+    marine_degradation_months_max: 24
+    adhesion_mpa_min: 1.5
+  typical_products:
+    - {name: PHA 防污涂层 200 μm, description: 海水网箱年度涂装}
+  market_size_usd: 45000000
+  market_year: 2024
+  tags: [marine-degradable, biodegradable]
+
+# ===================== 3D 打印 =====================
+- code: 3d_printing.fdm_filament
+  domain: 3d_printing
+  name_zh: FDM 长丝
+  name_en: FDM Filament
+  summary: 1.75 / 2.85 mm PHA 长丝，可打印高韧性、可降解的桌面 3D 模型与功能件。
+  sub_scenarios: [桌面 3D 长丝, 工业级长丝, 复合长丝]
+  technical_requirements:
+    printing_temp_celsius: [180, 220]
+    filament_diameter_mm: [1.75, 2.85]
+    mechanical:
+      tensile_strength_mpa_min: 25
+      elongation_pct_min: 80
+  typical_products:
+    - {name: PHA 长丝 1.75 mm, description: 桌面 FDM 通用}
+  market_size_usd: 75000000
+  market_year: 2024
+  tags: [biodegradable, fdm, premium, high-toughness]
+
+- code: 3d_printing.sls_powder
+  domain: 3d_printing
+  name_zh: SLS 粉末
+  name_en: SLS Powder
+  summary: 选区激光烧结用 PHA 粉末，球形度高、流动性好，可用于功能件。
+  sub_scenarios: [生物医用粉末, 工业件粉末]
+  technical_requirements:
+    particle_size_um: [40, 80]
+    sintering_temp_celsius: [120, 160]
+  typical_products:
+    - {name: PHA SLS 粉末 60 μm, description: 工业 SLS 通用}
+  market_size_usd: 28000000
+  market_year: 2024
+  tags: [biodegradable, sls, premium]
+
+- code: 3d_printing.bioprinting_ink
+  domain: 3d_printing
+  name_zh: 生物打印墨水
+  name_en: Bioprinting Ink
+  summary: 可降解 PHA 复合墨水，用于细胞共打印、组织工程支架打印。
+  sub_scenarios: [细胞共打印, 支架打印]
+  technical_requirements:
+    cell_viability_pct_min: 80
+    printing_temp_celsius_max: 60
+    biocompatibility_class: ISO10993-I
+  typical_products:
+    - {name: PHA-胶原复合墨水, description: 软骨打印用}
+  market_size_usd: 22000000
+  market_year: 2024
+  tags: [biodegradable, premium, iso10993, implantable]
+
+# ===================== 纺织 =====================
+- code: textile.nonwoven_hygiene
+  domain: textile
+  name_zh: 卫生用品无纺布
+  name_en: Hygiene Nonwoven
+  summary: 替代 PP 熔喷无纺布，用于尿不湿、卫生巾、湿巾等可堆肥个护场景。
+  sub_scenarios: [熔喷, 纺粘, SMS 复合]
+  technical_requirements:
+    grammage_gsm: [15, 80]
+    composting_days_max: 180
+    skin_contact: true
+  typical_products:
+    - {name: PHA 熔喷无纺布 25 gsm, description: 卫生巾面层}
+  market_size_usd: 320000000
+  market_year: 2024
+  tags: [biodegradable, melt-blown, en13432]
+
+- code: textile.fiber
+  domain: textile
+  name_zh: 可降解纤维
+  name_en: Biodegradable Fiber
+  summary: PHA 短纤/长丝，可与棉、人造丝混纺，制备完全可降解纺织品。
+  sub_scenarios: [短纤, 长丝, 混纺]
+  technical_requirements:
+    linear_density_dtex: [1.5, 6.0]
+    tenacity_cn_per_dtex_min: 2.5
+  typical_products:
+    - {name: PHA 短纤 1.5D × 38mm, description: 混纺面料}
+  market_size_usd: 180000000
+  market_year: 2024
+  tags: [biodegradable, premium]
+
+- code: textile.geotextile
+  domain: textile
+  name_zh: 土工布
+  name_en: Geotextile
+  summary: 公路/边坡/复绿用可降解土工布，使用周期内保持强度，期满自然降解。
+  sub_scenarios: [植被恢复土工布, 短期加筋土工布]
+  technical_requirements:
+    grammage_gsm: [100, 400]
+    soil_degradation_months: [12, 36]
+    tensile_strength_kn_per_m_min: 8
+  typical_products:
+    - {name: PHA 植被恢复土工布 200 gsm, description: 边坡复绿}
+  market_size_usd: 70000000
+  market_year: 2024
+  tags: [biodegradable, high-volume]
+
+# ===================== 电子 =====================
+- code: electronics.transient_substrate
+  domain: electronics
+  name_zh: 暂时性器件衬底
+  name_en: Transient Device Substrate
+  summary: 用于一次性医疗传感器、环境监测节点的可降解衬底。
+  sub_scenarios: [医用一次性传感器, 环境节点衬底]
+  technical_requirements:
+    dielectric_constant_max: 4.0
+    soil_degradation_months_max: 12
+    surface_roughness_um_max: 1.0
+  typical_products:
+    - {name: PHA 一次性 ECG 贴片衬底, description: 医院术后监测}
+  market_size_usd: 35000000
+  market_year: 2024
+  tags: [biodegradable, premium, iso10993]
+
+- code: electronics.biodegradable_casing
+  domain: electronics
+  name_zh: 可降解外壳
+  name_en: Biodegradable Casing
+  summary: 一次性消费电子（如试听耳机、广告机）外壳，使用周期短，处置压力大。
+  sub_scenarios: [一次性耳机外壳, 一次性传感器外壳]
+  technical_requirements:
+    impact_strength_kj_per_m2_min: 5
+    surface_finish: matte
+  typical_products:
+    - {name: PHA 一次性耳机外壳, description: 航空一次性耳机}
+  market_size_usd: 50000000
+  market_year: 2024
+  tags: [biodegradable, injection]
+
+# ===================== 化妆品 =====================
+- code: cosmetics.exfoliant_microbead
+  domain: cosmetics
+  name_zh: 化妆品磨砂微珠
+  name_en: Cosmetic Exfoliant Microbead
+  summary: 替代 PE 磨砂微珠的可海洋降解 PHA 微珠，符合欧盟 / 中国微塑料禁令。
+  sub_scenarios: [面部磨砂, 身体磨砂]
+  technical_requirements:
+    particle_size_um: [200, 800]
+    marine_degradation_months_max: 12
+  typical_products:
+    - {name: PHA 面部磨砂微珠 400 μm, description: 高端洁面}
+  market_size_usd: 110000000
+  market_year: 2024
+  tags: [biodegradable, marine-degradable, premium]
+
+- code: cosmetics.lipstick_tube
+  domain: cosmetics
+  name_zh: 口红管壳
+  name_en: Lipstick Tube
+  summary: 可堆肥的口红外壳与盖子，替代 PP/ABS 一次性化妆品包装。
+  sub_scenarios: [口红外壳, 唇釉管, 粉底瓶身]
+  technical_requirements:
+    impact_strength_kj_per_m2_min: 4
+    composting_days_max: 180
+  typical_products:
+    - {name: PHA 口红外壳, description: 替代 ABS}
+  market_size_usd: 65000000
+  market_year: 2024
+  tags: [biodegradable, injection, premium, en13432]
+
+- code: cosmetics.compostable_outer_box
+  domain: cosmetics
+  name_zh: 可堆肥外包装
+  name_en: Compostable Outer Box
+  summary: 化妆品礼盒/外盒所用可堆肥薄膜与硬包装组件。
+  sub_scenarios: [礼盒外盒, 防伪封口膜]
+  technical_requirements:
+    composting_days_max: 180
+    surface_finish: glossy
+  typical_products:
+    - {name: PHA 礼盒外膜, description: 替代 BOPP}
+  market_size_usd: 40000000
+  market_year: 2024
+  tags: [biodegradable, blown-film, en13432]
+
+# ===================== 建筑 =====================
+- code: construction.slow_release_additive
+  domain: construction
+  name_zh: 缓释外加剂载体
+  name_en: Slow-Release Concrete Additive
+  summary: 利用 PHA 降解控制混凝土外加剂（缓凝剂/防腐剂）的释放速率。
+  sub_scenarios: [缓凝剂载体, 防腐剂载体]
+  technical_requirements:
+    release_days: [30, 180]
+    alkaline_resistance: true
+  typical_products:
+    - {name: PHA 缓释缓凝剂载体, description: 大体积混凝土}
+  market_size_usd: 30000000
+  market_year: 2024
+  tags: [biodegradable]
+
+- code: construction.biodegradable_formwork
+  domain: construction
+  name_zh: 可降解模板
+  name_en: Biodegradable Formwork
+  summary: 用于复杂结构混凝土的可降解一次性模板，浇筑后自然降解免拆除。
+  sub_scenarios: [水下结构模板, 地下结构模板]
+  technical_requirements:
+    compressive_strength_mpa_min: 15
+    soil_degradation_months: [6, 18]
+  typical_products:
+    - {name: PHA 一次性模板 5 mm, description: 水下结构施工}
+  market_size_usd: 20000000
+  market_year: 2024
+  tags: [biodegradable, premium]
+
+- code: construction.green_admixture_carrier
+  domain: construction
+  name_zh: 绿色外加剂载体
+  name_en: Green Admixture Carrier
+  summary: PHA 作为环氧/酚醛等树脂载体，承担环保替代角色。
+  sub_scenarios: [环氧固化剂载体, 灌浆料载体]
+  technical_requirements:
+    compatibility_with_resin: true
+    release_days: [7, 60]
+  typical_products:
+    - {name: PHA 灌浆料载体, description: 桥梁加固}
+  market_size_usd: 15000000
+  market_year: 2024
+  tags: [biodegradable]
+
+# ===================== 碳中和应用 =====================
+- code: carbon_neutral.carbon_credit_packaging
+  domain: carbon_neutral
+  name_zh: 碳信用包装
+  name_en: Carbon-Credit Packaging
+  summary: 可参与碳信用核算的低碳/碳负包装方案，与 ISCC PLUS / 碳普惠对接。
+  sub_scenarios: [低碳包装, 碳负包装]
+  technical_requirements:
+    carbon_footprint_kgco2e_per_kg_max: 1.5
+    composting_days_max: 180
+  typical_products:
+    - {name: PHA ISCC PLUS 包装膜, description: 碳信用核算用}
+  market_size_usd: 90000000
+  market_year: 2024
+  tags: [biodegradable, premium]
+
+- code: carbon_neutral.biorefinery_byproduct
+  domain: carbon_neutral
+  name_zh: 生物炼制副产品转化
+  name_en: Biorefinery Byproduct Conversion
+  summary: 利用糖蜜、餐厨废弃油脂等副产品作为发酵碳源生产 PHA。
+  sub_scenarios: [糖蜜碳源, 餐厨废油碳源, CO2 间接转化]
+  technical_requirements:
+    cell_dry_weight_g_per_l_min: 80
+    pha_content_pct_min: 60
+  typical_products:
+    - {name: 糖蜜来源 PHB 中试线, description: 5 t/年}
+  market_size_usd: 0
+  market_year: 2024
+  tags: [biodegradable, high-volume]
+
+- code: carbon_neutral.low_carbon_substitute
+  domain: carbon_neutral
+  name_zh: 低碳材料替代
+  name_en: Low-Carbon Substitute Material
+  summary: 在快消品中以 PHA 替代石化基塑料，作为企业 ESG/碳披露重要支撑。
+  sub_scenarios: [快消品塑料替代, 一次性餐具替代]
+  technical_requirements:
+    carbon_footprint_kgco2e_per_kg_max: 2.0
+    composting_days_max: 180
+  typical_products:
+    - {name: PHA 一次性餐具, description: 大型连锁餐饮替代}
+  market_size_usd: 250000000
+  market_year: 2024
+  tags: [biodegradable, food-contact, en13432, high-volume]

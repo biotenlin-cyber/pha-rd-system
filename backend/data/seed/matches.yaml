@@ -1,0 +1,263 @@
+# 牌号-场景匹配评分（满分 100）
+# 评分细则（参见 README.md）：
+#   biocompat (生物相容)  30
+#   mechanical (力学)     30
+#   degradation (降解)    20
+#   processability (工艺) 20
+# recommendation_level: preferred / suitable / marginal / not_recommended
+
+# ===== medical.suture =====
+- {grade: PHBHHx, scenario: medical.suture, match_score: 92, recommendation_level: preferred,
+   key_metrics: {biocompat: 30, mechanical: 27, degradation: 18, processability: 17},
+   rationale: 高 HHx 含量改善韧性，断裂伸长 >300% 满足倒刺缝线弹性需求，生物相容性优秀。}
+- {grade: P3HB4HB, scenario: medical.suture, match_score: 86, recommendation_level: preferred,
+   key_metrics: {biocompat: 28, mechanical: 25, degradation: 18, processability: 15},
+   rationale: 高 4HB 弹性体提供柔软触感，6 个月降解符合短期吸收要求。}
+- {grade: PHBV, scenario: medical.suture, match_score: 65, recommendation_level: suitable,
+   key_metrics: {biocompat: 28, mechanical: 18, degradation: 12, processability: 7},
+   rationale: 拉伸强度足够但断裂伸长偏低，适合单股线但不适合编织/倒刺。}
+- {grade: PHB, scenario: medical.suture, match_score: 40, recommendation_level: marginal,
+   key_metrics: {biocompat: 28, mechanical: 8, degradation: 4, processability: 0},
+   rationale: 结晶度高、加工窗口窄、脆性大，不适合作为缝线主材。}
+
+# ===== medical.drug_microsphere =====
+- {grade: PHBHHx, scenario: medical.drug_microsphere, match_score: 90, recommendation_level: preferred,
+   key_metrics: {biocompat: 30, mechanical: 22, degradation: 20, processability: 18},
+   rationale: 降解速率可调，乳化-溶剂蒸发法易制得均一微球，生物相容性优秀。}
+- {grade: PHBV, scenario: medical.drug_microsphere, match_score: 78, recommendation_level: suitable,
+   key_metrics: {biocompat: 28, mechanical: 18, degradation: 17, processability: 15},
+   rationale: HV 含量调控可实现 1–6 月可调释放。}
+- {grade: PHB, scenario: medical.drug_microsphere, match_score: 55, recommendation_level: marginal,
+   key_metrics: {biocompat: 28, mechanical: 12, degradation: 8, processability: 7},
+   rationale: 结晶度高导致药物释放过慢，适用场景受限。}
+
+# ===== medical.tissue_scaffold =====
+- {grade: P3HB4HB, scenario: medical.tissue_scaffold, match_score: 91, recommendation_level: preferred,
+   key_metrics: {biocompat: 28, mechanical: 28, degradation: 18, processability: 17},
+   rationale: 弹性体行为契合软组织力学，3D 打印/盐沥滤工艺成型良好。}
+- {grade: PHBHHx, scenario: medical.tissue_scaffold, match_score: 88, recommendation_level: preferred,
+   key_metrics: {biocompat: 30, mechanical: 25, degradation: 17, processability: 16},
+   rationale: 多孔结构成型容易，生物相容性卓越。}
+- {grade: mcl-PHA, scenario: medical.tissue_scaffold, match_score: 70, recommendation_level: suitable,
+   key_metrics: {biocompat: 28, mechanical: 20, degradation: 12, processability: 10},
+   rationale: 适合柔软组织（如皮肤、软骨）支架，刚性场景不适用。}
+
+# ===== packaging.food_film =====
+- {grade: PHBV, scenario: packaging.food_film, match_score: 89, recommendation_level: preferred,
+   key_metrics: {biocompat: 26, mechanical: 25, degradation: 20, processability: 18},
+   rationale: 吹膜性好、食品接触合规，HV 含量 8–12% 时膜透明性与韧性平衡良好。}
+- {grade: PHBHHx, scenario: packaging.food_film, match_score: 85, recommendation_level: preferred,
+   key_metrics: {biocompat: 26, mechanical: 26, degradation: 18, processability: 15},
+   rationale: 韧性最优，适合超薄膜 (<25 μm)，加工窗口宽。}
+- {grade: P34HB, scenario: packaging.food_film, match_score: 72, recommendation_level: suitable,
+   key_metrics: {biocompat: 26, mechanical: 20, degradation: 16, processability: 10},
+   rationale: 韧性优秀但耐热较差，适合低温冷冻膜场景。}
+
+# ===== packaging.straw =====
+- {grade: PHB, scenario: packaging.straw, match_score: 78, recommendation_level: preferred,
+   key_metrics: {biocompat: 24, mechanical: 26, degradation: 14, processability: 14},
+   rationale: 高 Tm 与高刚性贡献吸管挺度，热饮温度稳定。}
+- {grade: PHBV, scenario: packaging.straw, match_score: 80, recommendation_level: preferred,
+   key_metrics: {biocompat: 24, mechanical: 24, degradation: 16, processability: 16},
+   rationale: 加工性好于 PHB，适合大规模挤出。}
+
+# ===== packaging.courier_bag =====
+- {grade: PHBHHx, scenario: packaging.courier_bag, match_score: 90, recommendation_level: preferred,
+   key_metrics: {biocompat: 24, mechanical: 30, degradation: 18, processability: 18},
+   rationale: 韧性、撕裂强度俱佳，吹膜厚度可至 25 μm 实现轻量化。}
+- {grade: P34HB, scenario: packaging.courier_bag, match_score: 82, recommendation_level: preferred,
+   key_metrics: {biocompat: 24, mechanical: 28, degradation: 16, processability: 14},
+   rationale: 弹性 + 强度兼具，适合自封袋与防水快递袋。}
+- {grade: PHBV, scenario: packaging.courier_bag, match_score: 70, recommendation_level: suitable,
+   key_metrics: {biocompat: 24, mechanical: 20, degradation: 14, processability: 12},
+   rationale: 中等韧性，适合中低端规格。}
+
+# ===== agriculture.mulch_film =====
+- {grade: PHBV, scenario: agriculture.mulch_film, match_score: 86, recommendation_level: preferred,
+   key_metrics: {biocompat: 22, mechanical: 24, degradation: 20, processability: 20},
+   rationale: 吹膜地膜首选，10 μm 薄膜可保持作物期完整。}
+- {grade: PHBHHx, scenario: agriculture.mulch_film, match_score: 80, recommendation_level: preferred,
+   key_metrics: {biocompat: 22, mechanical: 28, degradation: 16, processability: 14},
+   rationale: 韧性最优，适合机械化铺设场景。}
+- {grade: P34HB, scenario: agriculture.mulch_film, match_score: 75, recommendation_level: suitable,
+   key_metrics: {biocompat: 22, mechanical: 25, degradation: 18, processability: 10},
+   rationale: 弹性高利于覆盖不平整地表。}
+
+# ===== agriculture.controlled_release_fertilizer =====
+- {grade: PHB, scenario: agriculture.controlled_release_fertilizer, match_score: 82, recommendation_level: preferred,
+   key_metrics: {biocompat: 22, mechanical: 22, degradation: 20, processability: 18},
+   rationale: 结晶度高、降解可控，60–180 天释放期匹配作物吸收周期。}
+- {grade: PHBV, scenario: agriculture.controlled_release_fertilizer, match_score: 79, recommendation_level: preferred,
+   key_metrics: {biocompat: 22, mechanical: 20, degradation: 19, processability: 18},
+   rationale: 调节 HV 含量微调释放速率。}
+
+# ===== agriculture.seed_coating =====
+- {grade: PHBV, scenario: agriculture.seed_coating, match_score: 78, recommendation_level: preferred,
+   key_metrics: {biocompat: 22, mechanical: 16, degradation: 20, processability: 20},
+   rationale: 喷涂工艺成熟，14–60 天可控释放。}
+- {grade: mcl-PHA, scenario: agriculture.seed_coating, match_score: 70, recommendation_level: suitable,
+   key_metrics: {biocompat: 22, mechanical: 14, degradation: 18, processability: 16},
+   rationale: 软质涂层，对种子表面附着性好。}
+
+# ===== marine.fishing_net =====
+- {grade: PHBHHx, scenario: marine.fishing_net, match_score: 92, recommendation_level: preferred,
+   key_metrics: {biocompat: 22, mechanical: 30, degradation: 20, processability: 20},
+   rationale: 韧性 + 海水可降解 18 月内，平衡作业寿命与生态降解。}
+- {grade: P34HB, scenario: marine.fishing_net, match_score: 80, recommendation_level: preferred,
+   key_metrics: {biocompat: 22, mechanical: 26, degradation: 18, processability: 14},
+   rationale: 高弹性适合刺网，短期作业场景。}
+- {grade: PHBV, scenario: marine.fishing_net, match_score: 65, recommendation_level: suitable,
+   key_metrics: {biocompat: 22, mechanical: 18, degradation: 12, processability: 13},
+   rationale: 强度合格但韧性不足，仅适合一次性短期渔具。}
+
+# ===== marine.microbead_replacement =====
+- {grade: PHBHHx, scenario: marine.microbead_replacement, match_score: 88, recommendation_level: preferred,
+   key_metrics: {biocompat: 26, mechanical: 22, degradation: 20, processability: 20},
+   rationale: 海水降解速率快，适合个护与化妆品微珠。}
+- {grade: mcl-PHA, scenario: marine.microbead_replacement, match_score: 80, recommendation_level: preferred,
+   key_metrics: {biocompat: 24, mechanical: 18, degradation: 20, processability: 18},
+   rationale: 软质微珠手感舒适，海水降解时间短。}
+
+# ===== marine.aquaculture_cage_coating =====
+- {grade: PHBHHx, scenario: marine.aquaculture_cage_coating, match_score: 80, recommendation_level: preferred,
+   key_metrics: {biocompat: 22, mechanical: 22, degradation: 18, processability: 18},
+   rationale: 喷涂工艺简便，海水降解平稳。}
+- {grade: PHBV, scenario: marine.aquaculture_cage_coating, match_score: 70, recommendation_level: suitable,
+   key_metrics: {biocompat: 22, mechanical: 20, degradation: 14, processability: 14},
+   rationale: 涂层完整性好但海水降解略慢。}
+
+# ===== 3d_printing.fdm_filament =====
+- {grade: PHBHHx, scenario: 3d_printing.fdm_filament, match_score: 94, recommendation_level: preferred,
+   key_metrics: {biocompat: 28, mechanical: 30, degradation: 18, processability: 18},
+   rationale: 加工窗口宽 (180–220 ℃)，断裂伸长 >300%，无翘曲。}
+- {grade: P34HB, scenario: 3d_printing.fdm_filament, match_score: 80, recommendation_level: preferred,
+   key_metrics: {biocompat: 26, mechanical: 28, degradation: 16, processability: 10},
+   rationale: 弹性件打印优势明显，但需较低喷头温度。}
+- {grade: PHBV, scenario: 3d_printing.fdm_filament, match_score: 70, recommendation_level: suitable,
+   key_metrics: {biocompat: 24, mechanical: 22, degradation: 14, processability: 10},
+   rationale: 可打印但易出现层间脆裂，需添加增韧剂。}
+
+# ===== 3d_printing.sls_powder =====
+- {grade: PHB, scenario: 3d_printing.sls_powder, match_score: 78, recommendation_level: preferred,
+   key_metrics: {biocompat: 22, mechanical: 24, degradation: 16, processability: 16},
+   rationale: 高 Tm 与高结晶度有利于 SLS 烧结窗口控制。}
+- {grade: PHBV, scenario: 3d_printing.sls_powder, match_score: 72, recommendation_level: suitable,
+   key_metrics: {biocompat: 22, mechanical: 22, degradation: 14, processability: 14},
+   rationale: 烧结性可接受，需精确控制粉末粒径与温度窗口。}
+
+# ===== 3d_printing.bioprinting_ink =====
+- {grade: P3HB4HB, scenario: 3d_printing.bioprinting_ink, match_score: 90, recommendation_level: preferred,
+   key_metrics: {biocompat: 30, mechanical: 22, degradation: 20, processability: 18},
+   rationale: 低温打印（<60 ℃）保护细胞活性，弹性接近软组织。}
+- {grade: PHBHHx, scenario: 3d_printing.bioprinting_ink, match_score: 82, recommendation_level: preferred,
+   key_metrics: {biocompat: 30, mechanical: 22, degradation: 16, processability: 14},
+   rationale: 与胶原/明胶复合实现支架打印。}
+
+# ===== textile.nonwoven_hygiene =====
+- {grade: PHBHHx, scenario: textile.nonwoven_hygiene, match_score: 88, recommendation_level: preferred,
+   key_metrics: {biocompat: 28, mechanical: 22, degradation: 18, processability: 20},
+   rationale: 熔喷加工窗口宽，纤维细，触感柔软，皮肤接触安全。}
+- {grade: PHBV, scenario: textile.nonwoven_hygiene, match_score: 78, recommendation_level: suitable,
+   key_metrics: {biocompat: 26, mechanical: 18, degradation: 16, processability: 18},
+   rationale: 纺粘工艺良好，韧性中等。}
+
+# ===== textile.fiber =====
+- {grade: PHBV, scenario: textile.fiber, match_score: 80, recommendation_level: preferred,
+   key_metrics: {biocompat: 22, mechanical: 22, degradation: 18, processability: 18},
+   rationale: 短纤纺丝工艺成熟，可与棉混纺。}
+- {grade: PHBHHx, scenario: textile.fiber, match_score: 75, recommendation_level: suitable,
+   key_metrics: {biocompat: 22, mechanical: 22, degradation: 16, processability: 15},
+   rationale: 高韧性纤维，但熔点偏低需配方调整。}
+
+# ===== textile.geotextile =====
+- {grade: PHBV, scenario: textile.geotextile, match_score: 76, recommendation_level: preferred,
+   key_metrics: {biocompat: 18, mechanical: 22, degradation: 18, processability: 18},
+   rationale: 长丝/短纤皆可，土壤降解 12–36 月匹配工程周期。}
+- {grade: PHB, scenario: textile.geotextile, match_score: 68, recommendation_level: suitable,
+   key_metrics: {biocompat: 18, mechanical: 22, degradation: 14, processability: 14},
+   rationale: 强度足够但脆性使后处理难度上升。}
+
+# ===== electronics.transient_substrate =====
+- {grade: PHBV, scenario: electronics.transient_substrate, match_score: 80, recommendation_level: preferred,
+   key_metrics: {biocompat: 26, mechanical: 18, degradation: 18, processability: 18},
+   rationale: 流延薄膜表面平整，可承载柔性电极。}
+- {grade: PHB, scenario: electronics.transient_substrate, match_score: 65, recommendation_level: suitable,
+   key_metrics: {biocompat: 26, mechanical: 14, degradation: 12, processability: 13},
+   rationale: 介电性能良好，但脆性影响可弯折性。}
+
+# ===== electronics.biodegradable_casing =====
+- {grade: PHBHHx, scenario: electronics.biodegradable_casing, match_score: 85, recommendation_level: preferred,
+   key_metrics: {biocompat: 22, mechanical: 26, degradation: 18, processability: 19},
+   rationale: 注塑加工良好，跌落冲击表现优秀。}
+- {grade: PHBV, scenario: electronics.biodegradable_casing, match_score: 72, recommendation_level: suitable,
+   key_metrics: {biocompat: 22, mechanical: 20, degradation: 16, processability: 14},
+   rationale: 注塑可成型，韧性中等。}
+
+# ===== cosmetics.exfoliant_microbead =====
+- {grade: PHBHHx, scenario: cosmetics.exfoliant_microbead, match_score: 90, recommendation_level: preferred,
+   key_metrics: {biocompat: 30, mechanical: 22, degradation: 20, processability: 18},
+   rationale: 海水可降解 + 皮肤接触安全。}
+- {grade: mcl-PHA, scenario: cosmetics.exfoliant_microbead, match_score: 78, recommendation_level: suitable,
+   key_metrics: {biocompat: 26, mechanical: 16, degradation: 20, processability: 16},
+   rationale: 软质磨砂感更柔和。}
+
+# ===== cosmetics.lipstick_tube =====
+- {grade: PHBV, scenario: cosmetics.lipstick_tube, match_score: 80, recommendation_level: preferred,
+   key_metrics: {biocompat: 22, mechanical: 22, degradation: 18, processability: 18},
+   rationale: 注塑外观良好，可堆肥认证齐全。}
+- {grade: PHB, scenario: cosmetics.lipstick_tube, match_score: 70, recommendation_level: suitable,
+   key_metrics: {biocompat: 22, mechanical: 24, degradation: 12, processability: 12},
+   rationale: 刚性高、外观挺括，但加工窗口窄。}
+
+# ===== cosmetics.compostable_outer_box =====
+- {grade: PHBV, scenario: cosmetics.compostable_outer_box, match_score: 82, recommendation_level: preferred,
+   key_metrics: {biocompat: 22, mechanical: 22, degradation: 20, processability: 18},
+   rationale: 吹膜+高光泽工艺替代 BOPP。}
+- {grade: PHBHHx, scenario: cosmetics.compostable_outer_box, match_score: 75, recommendation_level: suitable,
+   key_metrics: {biocompat: 22, mechanical: 22, degradation: 17, processability: 14},
+   rationale: 韧性突出，外观柔光略差。}
+
+# ===== construction.slow_release_additive =====
+- {grade: PHB, scenario: construction.slow_release_additive, match_score: 78, recommendation_level: preferred,
+   key_metrics: {biocompat: 18, mechanical: 22, degradation: 20, processability: 18},
+   rationale: 高结晶度让外加剂在碱性混凝土中实现 30–180 天释放。}
+- {grade: PHBV, scenario: construction.slow_release_additive, match_score: 72, recommendation_level: suitable,
+   key_metrics: {biocompat: 18, mechanical: 20, degradation: 18, processability: 16},
+   rationale: 释放速率可调但碱性耐受略差。}
+
+# ===== construction.biodegradable_formwork =====
+- {grade: PHB, scenario: construction.biodegradable_formwork, match_score: 70, recommendation_level: suitable,
+   key_metrics: {biocompat: 16, mechanical: 22, degradation: 18, processability: 14},
+   rationale: 抗压强度合格，但厚壁挤出工艺成本偏高。}
+- {grade: PHBV, scenario: construction.biodegradable_formwork, match_score: 75, recommendation_level: preferred,
+   key_metrics: {biocompat: 16, mechanical: 22, degradation: 20, processability: 17},
+   rationale: 加工性优于 PHB，结构件更易成型。}
+
+# ===== construction.green_admixture_carrier =====
+- {grade: PHBV, scenario: construction.green_admixture_carrier, match_score: 70, recommendation_level: preferred,
+   key_metrics: {biocompat: 16, mechanical: 18, degradation: 18, processability: 18},
+   rationale: 与环氧/酚醛兼容性良好。}
+
+# ===== carbon_neutral.carbon_credit_packaging =====
+- {grade: PHBV, scenario: carbon_neutral.carbon_credit_packaging, match_score: 84, recommendation_level: preferred,
+   key_metrics: {biocompat: 22, mechanical: 22, degradation: 20, processability: 20},
+   rationale: 已有 ISCC PLUS 认证案例，碳足迹核算成熟。}
+- {grade: PHBHHx, scenario: carbon_neutral.carbon_credit_packaging, match_score: 78, recommendation_level: suitable,
+   key_metrics: {biocompat: 22, mechanical: 22, degradation: 18, processability: 16},
+   rationale: 韧性优秀，认证成本略高。}
+
+# ===== carbon_neutral.biorefinery_byproduct =====
+- {grade: PHB, scenario: carbon_neutral.biorefinery_byproduct, match_score: 76, recommendation_level: preferred,
+   key_metrics: {biocompat: 16, mechanical: 18, degradation: 22, processability: 20},
+   rationale: 糖蜜/餐厨油脂发酵产 PHB 工艺成熟，规模化路径清晰。}
+- {grade: PHBV, scenario: carbon_neutral.biorefinery_byproduct, match_score: 70, recommendation_level: suitable,
+   key_metrics: {biocompat: 16, mechanical: 18, degradation: 18, processability: 18},
+   rationale: 部分菌株支持 HV 共聚，但成本较高。}
+
+# ===== carbon_neutral.low_carbon_substitute =====
+- {grade: PHBV, scenario: carbon_neutral.low_carbon_substitute, match_score: 86, recommendation_level: preferred,
+   key_metrics: {biocompat: 22, mechanical: 22, degradation: 20, processability: 22},
+   rationale: 大宗替代潜力最大，碳足迹低于 PLA。}
+- {grade: PHB, scenario: carbon_neutral.low_carbon_substitute, match_score: 70, recommendation_level: suitable,
+   key_metrics: {biocompat: 22, mechanical: 18, degradation: 16, processability: 14},
+   rationale: 单耗最低，但应用面相对窄。}

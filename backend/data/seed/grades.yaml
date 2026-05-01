@@ -1,0 +1,101 @@
+- code: PHB
+  name_zh: 聚 3-羟基丁酸酯
+  full_name: poly(3-hydroxybutyrate)
+  polymer_family: scl-PHA
+  description: PHA 家族基础牌号，结晶度高、刚性大、加工窗口窄、生物相容性优良。
+  tm_celsius: 175.0
+  tg_celsius: 4.0
+  crystallinity_pct: 60.0
+  elongation_at_break_pct: 5.0
+  tensile_strength_mpa: 40.0
+  youngs_modulus_gpa: 3.500
+  biocompatibility_class: ISO10993-I
+  degradation_months_soil: 12.0
+  degradation_months_marine: 18.0
+  typical_processing: [injection, extrusion]
+  tags: [biodegradable, injection, iso10993]
+
+- code: PHBV
+  name_zh: PHB-co-PHV 共聚物
+  full_name: poly(3-hydroxybutyrate-co-3-hydroxyvalerate)
+  polymer_family: copolymer
+  description: 引入 HV 单元降低结晶度、改善加工性，常见 HV 含量 5%–20%。
+  tm_celsius: 153.0
+  tg_celsius: -1.0
+  crystallinity_pct: 50.0
+  elongation_at_break_pct: 25.0
+  tensile_strength_mpa: 32.0
+  youngs_modulus_gpa: 1.700
+  biocompatibility_class: ISO10993-I
+  degradation_months_soil: 10.0
+  degradation_months_marine: 14.0
+  typical_processing: [injection, extrusion, blown-film]
+  tags: [biodegradable, blown-film, food-contact, en13432]
+
+- code: PHBHHx
+  name_zh: PHBHHx 共聚物
+  full_name: poly(3-hydroxybutyrate-co-3-hydroxyhexanoate)
+  polymer_family: copolymer
+  description: HHx 共聚单体显著提升韧性，加工窗口宽，生物相容性出色，医疗与高端包装首选。
+  tm_celsius: 130.0
+  tg_celsius: -3.0
+  crystallinity_pct: 35.0
+  elongation_at_break_pct: 400.0
+  tensile_strength_mpa: 25.0
+  youngs_modulus_gpa: 0.700
+  biocompatibility_class: ISO10993-I
+  degradation_months_soil: 8.0
+  degradation_months_marine: 10.0
+  typical_processing: [injection, blown-film, fdm, melt-blown]
+  tags: [biodegradable, implantable, marine-degradable, high-toughness, fda, iso10993]
+
+- code: P34HB
+  name_zh: P(3HB-co-4HB) 共聚物
+  full_name: poly(3-hydroxybutyrate-co-4-hydroxybutyrate)
+  polymer_family: copolymer
+  description: 4HB 含量可调，柔性范围大，可从硬塑料到弹性体连续覆盖。
+  tm_celsius: 110.0
+  tg_celsius: -8.0
+  crystallinity_pct: 25.0
+  elongation_at_break_pct: 700.0
+  tensile_strength_mpa: 18.0
+  youngs_modulus_gpa: 0.300
+  biocompatibility_class: ISO10993-I
+  degradation_months_soil: 6.0
+  degradation_months_marine: 9.0
+  typical_processing: [injection, blown-film, extrusion]
+  tags: [biodegradable, high-toughness, marine-degradable, food-contact]
+
+- code: P3HB4HB
+  name_zh: 高 4HB 弹性体
+  full_name: high-4HB poly(3HB-co-4HB) elastomer
+  polymer_family: copolymer
+  description: 4HB > 50%，呈现热塑弹性体特征，可吸收医疗器械首选。
+  tm_celsius: 60.0
+  tg_celsius: -38.0
+  crystallinity_pct: 10.0
+  elongation_at_break_pct: 1000.0
+  tensile_strength_mpa: 20.0
+  youngs_modulus_gpa: 0.050
+  biocompatibility_class: ISO10993-II
+  degradation_months_soil: 4.0
+  degradation_months_marine: 6.0
+  typical_processing: [extrusion, fdm, melt-blown]
+  tags: [biodegradable, implantable, high-toughness, iso10993, fda]
+
+- code: mcl-PHA
+  name_zh: 中链 mcl-PHA
+  full_name: medium-chain-length PHA
+  polymer_family: mcl-PHA
+  description: 中链单体（C6–C14）赋予低结晶度与橡胶弹性体行为，黏接与涂层潜力强。
+  tm_celsius: 50.0
+  tg_celsius: -45.0
+  crystallinity_pct: 8.0
+  elongation_at_break_pct: 350.0
+  tensile_strength_mpa: 9.0
+  youngs_modulus_gpa: 0.020
+  biocompatibility_class: ISO10993-I
+  degradation_months_soil: 5.0
+  degradation_months_marine: 7.0
+  typical_processing: [extrusion, melt-blown]
+  tags: [biodegradable, marine-degradable, high-toughness]

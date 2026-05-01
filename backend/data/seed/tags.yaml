@@ -1,0 +1,23 @@
+- {slug: biodegradable, name_zh: 可降解, category: property, color: '#1f9e6e'}
+- {slug: implantable, name_zh: 可植入, category: property, color: '#c45ab3'}
+- {slug: marine-degradable, name_zh: 海水可降解, category: property, color: '#1e88e5'}
+- {slug: food-contact, name_zh: 食品接触, category: property, color: '#fb8c00'}
+- {slug: high-toughness, name_zh: 高韧性, category: property, color: '#43a047'}
+- {slug: high-strength, name_zh: 高强度, category: property, color: '#e53935'}
+
+- {slug: injection, name_zh: 注塑, category: process, color: '#5e35b1'}
+- {slug: blown-film, name_zh: 吹膜, category: process, color: '#039be5'}
+- {slug: extrusion, name_zh: 挤出, category: process, color: '#00897b'}
+- {slug: fdm, name_zh: FDM 打印, category: process, color: '#fb8c00'}
+- {slug: sls, name_zh: SLS 打印, category: process, color: '#8e24aa'}
+- {slug: melt-blown, name_zh: 熔喷, category: process, color: '#3949ab'}
+
+- {slug: fda, name_zh: FDA, category: certification, color: '#1565c0'}
+- {slug: ce-mark, name_zh: CE, category: certification, color: '#0277bd'}
+- {slug: iso10993, name_zh: ISO10993, category: certification, color: '#6a1b9a'}
+- {slug: en13432, name_zh: EN13432, category: certification, color: '#2e7d32'}
+- {slug: astm-d6400, name_zh: ASTM D6400, category: certification, color: '#558b2f'}
+
+- {slug: high-volume, name_zh: 大宗市场, category: market, color: '#9e9e9e'}
+- {slug: premium, name_zh: 高端市场, category: market, color: '#d4af37'}
+- {slug: regulated, name_zh: 强监管, category: market, color: '#c62828'}

@@ -1,0 +1,26 @@
+:root {
+  --pha-primary: #1f9e6e;
+  --pha-primary-soft: #e6f5ee;
+  --pha-bg: #f6f8f7;
+  --pha-card-bg: #ffffff;
+  --pha-text: #1f2937;
+  --pha-muted: #6b7280;
+  --pha-border: #e5e7eb;
+  --pha-radius: 10px;
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+    "Microsoft YaHei", Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: var(--pha-text);
+  background: var(--pha-bg);
+}
+
+a {
+  color: var(--pha-primary);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
