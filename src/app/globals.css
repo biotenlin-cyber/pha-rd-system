@@ -1,0 +1,39 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: light;
+}
+
+html,
+body {
+  @apply bg-white text-slate-800 antialiased;
+}
+
+body {
+  font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+}
+
+/* 章节装饰:细网格 */
+.bg-grid {
+  background-image:
+    linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+/* 渐变文字工具 */
+.text-gradient-brand {
+  background: linear-gradient(90deg, #0b3d91 0%, #1e90ff 60%, #38bdf8 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* 链接焦点态 */
+:focus-visible {
+  outline: 2px solid #1e90ff;
+  outline-offset: 2px;
+  border-radius: 4px;
+}

@@ -1,0 +1,184 @@
+"use client";
+
+import { useState } from "react";
+import { Send, CheckCircle2 } from "lucide-react";
+
+type FormState = {
+  name: string;
+  company: string;
+  email: string;
+  phone: string;
+  topic: string;
+  message: string;
+};
+
+const initial: FormState = {
+  name: "",
+  company: "",
+  email: "",
+  phone: "",
+  topic: "产品咨询",
+  message: "",
+};
+
+export function ContactForm() {
+  const [form, setForm] = useState<FormState>(initial);
+  const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const update =
+    <K extends keyof FormState>(key: K) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+      setForm((prev) => ({ ...prev, [key]: e.target.value }));
+    };
+
+  const onSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    setError(null);
+    if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+      setError("请填写姓名、邮箱和留言内容。");
+      return;
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.email)) {
+      setError("邮箱格式不正确。");
+      return;
+    }
+    console.info("[ContactForm] submission", form);
+    setSubmitted(true);
+    setForm(initial);
+  };
+
+  if (submitted) {
+    return (
+      <div className="rounded-2xl bg-white border border-slate-200 p-10 text-center">
+        <div className="mx-auto h-12 w-12 grid place-items-center rounded-full bg-brand-50 text-brand-900">
+          <CheckCircle2 size={24} />
+        </div>
+        <h3 className="mt-5 text-xl font-semibold text-slate-900">
+          已收到您的留言
+        </h3>
+        <p className="mt-3 text-sm text-slate-600 leading-relaxed max-w-md mx-auto">
+          感谢您对都佰城的关注。我们的商务团队将在 1—2 个工作日内与您取得联系。
+        </p>
+        <button
+          type="button"
+          onClick={() => setSubmitted(false)}
+          className="mt-6 text-sm font-medium text-brand-900 hover:text-brand-700"
+        >
+          再发一条留言
+        </button>
+      </div>
+    );
+  }
+
+  return (
+    <form
+      onSubmit={onSubmit}
+      className="rounded-2xl bg-white border border-slate-200 p-6 sm:p-8 space-y-5"
+      noValidate
+    >
+      <div className="grid gap-5 sm:grid-cols-2">
+        <Field label="姓名" required>
+          <input
+            type="text"
+            value={form.name}
+            onChange={update("name")}
+            className={inputClass}
+            placeholder="请填写您的姓名"
+            required
+          />
+        </Field>
+        <Field label="公司">
+          <input
+            type="text"
+            value={form.company}
+            onChange={update("company")}
+            className={inputClass}
+            placeholder="所在公司或机构"
+          />
+        </Field>
+        <Field label="邮箱" required>
+          <input
+            type="email"
+            value={form.email}
+            onChange={update("email")}
+            className={inputClass}
+            placeholder="name@company.com"
+            required
+          />
+        </Field>
+        <Field label="电话">
+          <input
+            type="tel"
+            value={form.phone}
+            onChange={update("phone")}
+            className={inputClass}
+            placeholder="(可选)"
+          />
+        </Field>
+      </div>
+
+      <Field label="咨询主题">
+        <select value={form.topic} onChange={update("topic")} className={inputClass}>
+          <option>产品咨询</option>
+          <option>技术合作</option>
+          <option>样品申请</option>
+          <option>媒体联络</option>
+          <option>其他</option>
+        </select>
+      </Field>
+
+      <Field label="留言" required>
+        <textarea
+          value={form.message}
+          onChange={update("message")}
+          rows={5}
+          className={`${inputClass} resize-y`}
+          placeholder="请简要描述您的需求,以便我们更高效地与您沟通。"
+          required
+        />
+      </Field>
+
+      {error && (
+        <p className="text-sm text-red-600" role="alert">
+          {error}
+        </p>
+      )}
+
+      <div className="flex items-center justify-between gap-4 pt-2">
+        <p className="text-xs text-slate-500">
+          您提交的信息将仅用于业务联系,我们承诺不会用于其他用途。
+        </p>
+        <button
+          type="submit"
+          className="inline-flex items-center gap-2 h-11 px-6 rounded-full bg-brand-900 text-white text-sm font-medium hover:bg-brand-800 active:bg-brand-950 transition"
+        >
+          <Send size={16} /> 提交
+        </button>
+      </div>
+    </form>
+  );
+}
+
+const inputClass =
+  "w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100 transition";
+
+function Field({
+  label,
+  required,
+  children,
+}: {
+  label: string;
+  required?: boolean;
+  children: React.ReactNode;
+}) {
+  return (
+    <label className="block">
+      <span className="block text-sm font-medium text-slate-700 mb-1.5">
+        {label}
+        {required && <span className="text-accent-500 ml-0.5">*</span>}
+      </span>
+      {children}
+    </label>
+  );
+}
