@@ -1,79 +1,70 @@
 import Link from "next/link";
-import { Mail, MapPin, Phone, Clock } from "lucide-react";
-import { mainNav, siteConfig } from "@/data/site";
+import { footerNav, siteConfig } from "@/data/site";
 
 export function Footer() {
   return (
-    <footer className="bg-slate-950 text-slate-300">
-      <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 py-16">
-        <div className="grid gap-10 lg:grid-cols-12">
-          <div className="lg:col-span-5">
-            <div className="flex items-center gap-2">
-              <span className="grid h-9 w-9 place-items-center rounded-xl bg-white text-brand-900 font-semibold">
-                都
-              </span>
-              <span className="flex flex-col leading-tight">
-                <span className="text-base font-semibold text-white">
-                  {siteConfig.fullName}
-                </span>
-                <span className="text-[11px] text-slate-400">DUBAICHENG NEW MATERIAL</span>
-              </span>
+    <footer className="bg-fog text-ash">
+      <div className="mx-auto max-w-[1024px] px-6 sm:px-8 py-8 text-xs leading-[1.6]">
+        <p className="text-ash">
+          1. 产品参数与认证情况以最新批次随附技术文件为准。本网站涉及的应用案例仅供示意,实际效果取决于客户具体加工与使用条件。
+        </p>
+        <p className="mt-3 text-ash">
+          2. 都佰城新材料保留对产品规格、工艺、价格等进行调整的权利。如需获取最新技术资料或样品,请通过{" "}
+          <Link href="/contact" className="text-link hover:text-linkHover">
+            联系我们
+          </Link>{" "}
+          页面与商务团队取得联系。
+        </p>
+
+        <div className="mt-8 border-t border-hairline pt-8 grid gap-8 md:grid-cols-4">
+          {footerNav.map((col) => (
+            <div key={col.title}>
+              <h3 className="text-[12px] font-semibold text-ink mb-3">
+                {col.title}
+              </h3>
+              <ul className="space-y-2">
+                {col.items.map((it) => (
+                  <li key={it.href + it.label}>
+                    <Link
+                      href={it.href}
+                      className="text-ash hover:text-ink transition"
+                    >
+                      {it.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
             </div>
-            <p className="mt-5 text-sm leading-relaxed text-slate-400 max-w-md">
-              {siteConfig.description}
-            </p>
-          </div>
-
-          <div className="lg:col-span-3">
-            <h3 className="text-sm font-semibold text-white mb-4">站点导航</h3>
-            <ul className="space-y-2 text-sm">
-              {mainNav.map((item) => (
-                <li key={item.href}>
-                  <Link
-                    href={item.href}
-                    className="text-slate-400 hover:text-white transition"
-                  >
-                    {item.label}
-                  </Link>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="lg:col-span-4">
-            <h3 className="text-sm font-semibold text-white mb-4">联系我们</h3>
-            <ul className="space-y-3 text-sm text-slate-400">
-              <li className="flex gap-3">
-                <MapPin size={16} className="mt-0.5 shrink-0 text-accent-400" />
-                <span>{siteConfig.contact.address}</span>
-              </li>
-              <li className="flex gap-3">
-                <Phone size={16} className="mt-0.5 shrink-0 text-accent-400" />
-                <span>{siteConfig.contact.phone}</span>
-              </li>
-              <li className="flex gap-3">
-                <Mail size={16} className="mt-0.5 shrink-0 text-accent-400" />
-                <a
-                  href={`mailto:${siteConfig.contact.email}`}
-                  className="hover:text-white transition"
-                >
-                  {siteConfig.contact.email}
-                </a>
-              </li>
-              <li className="flex gap-3">
-                <Clock size={16} className="mt-0.5 shrink-0 text-accent-400" />
-                <span>{siteConfig.contact.workingHours}</span>
-              </li>
-            </ul>
-          </div>
+          ))}
         </div>
 
-        <div className="mt-12 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 text-xs text-slate-500">
-          <span>
-            © {new Date().getFullYear()} {siteConfig.fullName}. All rights reserved.
-          </span>
-          <span>沪 ICP 备 XXXXXXXX 号</span>
+        <div className="mt-8 border-t border-hairline pt-5 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <p className="text-ash">
+            Copyright © {new Date().getFullYear()} {siteConfig.fullName}. 保留所有权利。
+          </p>
+          <ul className="flex flex-wrap gap-x-5 gap-y-2 text-ash">
+            <li>
+              <Link href="#" className="hover:text-ink">
+                隐私政策
+              </Link>
+            </li>
+            <li>
+              <Link href="#" className="hover:text-ink">
+                使用条款
+              </Link>
+            </li>
+            <li>
+              <Link href="#" className="hover:text-ink">
+                法律声明
+              </Link>
+            </li>
+            <li>
+              <span className="text-ash">沪 ICP 备 XXXXXXXX 号</span>
+            </li>
+          </ul>
         </div>
+
+        <div className="mt-4 text-ash">中国大陆</div>
       </div>
     </footer>
   );

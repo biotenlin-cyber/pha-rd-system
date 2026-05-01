@@ -4,36 +4,80 @@
 
 :root {
   color-scheme: light;
+  --apple-blur: saturate(180%) blur(20px);
 }
 
 html,
 body {
-  @apply bg-white text-slate-800 antialiased;
+  @apply bg-paper text-ink antialiased;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 body {
   font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
 }
 
-/* 章节装饰:细网格 */
-.bg-grid {
-  background-image:
-    linear-gradient(rgba(15, 23, 42, 0.04) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(15, 23, 42, 0.04) 1px, transparent 1px);
-  background-size: 32px 32px;
+/* Apple 风格的链接箭头(用于 Learn more 模式) */
+.link-arrow {
+  @apply inline-flex items-center text-link hover:text-linkHover transition;
+}
+.link-arrow::after {
+  content: "›";
+  margin-left: 0.25rem;
+  font-weight: 400;
+  transition: transform 200ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+.link-arrow:hover::after {
+  transform: translateX(3px);
 }
 
-/* 渐变文字工具 */
-.text-gradient-brand {
-  background: linear-gradient(90deg, #0b3d91 0%, #1e90ff 60%, #38bdf8 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+/* 顶部导航毛玻璃 */
+.apple-blur {
+  backdrop-filter: var(--apple-blur);
+  -webkit-backdrop-filter: var(--apple-blur);
 }
 
-/* 链接焦点态 */
+/* 大标题渐显 */
+.fade-up {
+  animation: fadeUp 800ms cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 数字上升变体 */
+.fade-up-soft {
+  animation: fadeUp 1000ms cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation-delay: 120ms;
+}
+
+/* 隐藏滚动条但保留滚动(用于 Apple 横向产品列表) */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* 焦点态 */
 :focus-visible {
-  outline: 2px solid #1e90ff;
+  outline: 2px solid #0071e3;
   outline-offset: 2px;
   border-radius: 4px;
+}
+
+/* Apple 风格 hairline 分隔线 */
+.hairline {
+  background: #d2d2d7;
+  height: 1px;
 }

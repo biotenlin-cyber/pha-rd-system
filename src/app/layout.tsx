@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://www.dubaicheng.com"),
   title: {
     default: `${siteConfig.name} — ${siteConfig.tagline}`,
-    template: `%s | ${siteConfig.name}`,
+    template: `%s — ${siteConfig.name}`,
   },
   description: siteConfig.description,
   keywords: [
@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     "生物可降解材料",
     "可持续材料",
     "生物基材料",
+    "研发管理平台",
   ],
   openGraph: {
     type: "website",
@@ -35,9 +36,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-CN">
-      <body className="min-h-screen flex flex-col">
+      <body className="min-h-screen flex flex-col bg-paper">
         <Header />
-        <main className="flex-1">{children}</main>
+        <main className="flex-1 pt-11">{children}</main>
         <Footer />
       </body>
     </html>

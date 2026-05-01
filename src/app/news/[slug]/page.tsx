@@ -1,10 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft, ArrowRight } from "lucide-react";
-import { Container } from "@/components/ui/Container";
 import { news } from "@/data/news";
 import { formatDate } from "@/lib/utils";
+import { LinkArrow } from "@/components/apple/LinkArrow";
 
 export function generateStaticParams() {
   return news.map((n) => ({ slug: n.slug }));
@@ -41,78 +40,103 @@ export default async function NewsDetailPage({
   const next = idx < sorted.length - 1 ? sorted[idx + 1] : null;
 
   return (
-    <>
-      <section className="relative overflow-hidden bg-tech-radial text-white">
-        <div
-          className="absolute inset-0 bg-grid opacity-20 mix-blend-overlay"
-          aria-hidden
-        />
-        <Container className="relative pt-32 pb-16 sm:pt-40 sm:pb-20" size="narrow">
-          <Link
-            href="/news"
-            className="inline-flex items-center gap-1 text-sm text-white/80 hover:text-white transition"
-          >
-            <ArrowLeft size={16} /> 返回新闻列表
+    <article className="bg-paper">
+      {/* Crumbs */}
+      <div className="border-b border-hairline">
+        <div className="mx-auto max-w-3xl px-6 sm:px-8 py-4 text-sm">
+          <Link href="/news" className="text-link hover:text-linkHover">
+            ‹ Newsroom
           </Link>
-          <div className="mt-8 inline-flex items-center rounded-full bg-white/10 border border-white/20 px-3 py-1 text-xs text-white/80 backdrop-blur">
-            {item.category}
-          </div>
-          <h1 className="mt-4 text-3xl sm:text-4xl font-semibold leading-tight">
+        </div>
+      </div>
+
+      {/* Headline */}
+      <header className="border-b border-hairline">
+        <div className="mx-auto max-w-3xl px-6 sm:px-8 py-16 sm:py-20">
+          <div className="text-eyebrow text-link">{item.category}</div>
+          <h1 className="mt-4 text-display sm:text-[clamp(2.5rem,4vw,3.75rem)] font-semibold tracking-tight leading-[1.1]">
             {item.title}
           </h1>
-          <time className="mt-4 inline-block text-sm text-white/70">
-            {formatDate(item.date)}
-          </time>
-        </Container>
+          <div className="mt-6 flex items-center gap-3 text-sm text-smoke">
+            <time>{formatDate(item.date)}</time>
+            <span>·</span>
+            <span>都佰城新闻中心</span>
+          </div>
+        </div>
+      </header>
+
+      {/* Body */}
+      <div className="mx-auto max-w-prose2 px-6 sm:px-8 py-16">
+        <p className="text-xl leading-[1.6] text-ink/90 font-medium">
+          {item.excerpt}
+        </p>
+        <div className="mt-8 space-y-6 text-lg leading-[1.7] text-ink/85">
+          {item.body.map((p, i) => (
+            <p key={i}>{p}</p>
+          ))}
+        </div>
+
+        <hr className="my-16 border-hairline" />
+
+        <div className="text-sm text-smoke">
+          <p>
+            如需了解更多关于本篇内容的细节,或寻求合作,请通过{" "}
+            <Link href="/contact" className="text-link">
+              联系我们
+            </Link>{" "}
+            页面与都佰城团队取得联系。
+          </p>
+        </div>
+      </div>
+
+      {/* Prev / Next */}
+      <nav className="bg-fog">
+        <div className="mx-auto max-w-6xl px-6 sm:px-8 py-16 grid gap-3 md:grid-cols-2">
+          {prev ? (
+            <Link
+              href={`/news/${prev.slug}`}
+              className="group rounded-tile bg-paper p-8 hover:bg-haze transition"
+            >
+              <div className="text-eyebrow text-smoke">‹ 上一篇</div>
+              <div className="mt-3 text-lg font-semibold tracking-tight group-hover:text-link line-clamp-2">
+                {prev.title}
+              </div>
+            </Link>
+          ) : (
+            <div />
+          )}
+          {next ? (
+            <Link
+              href={`/news/${next.slug}`}
+              className="group rounded-tile bg-paper p-8 hover:bg-haze transition md:text-right"
+            >
+              <div className="text-eyebrow text-smoke">下一篇 ›</div>
+              <div className="mt-3 text-lg font-semibold tracking-tight group-hover:text-link line-clamp-2">
+                {next.title}
+              </div>
+            </Link>
+          ) : (
+            <div />
+          )}
+        </div>
+      </nav>
+
+      {/* CTA */}
+      <section className="bg-paper">
+        <div className="mx-auto max-w-4xl px-6 sm:px-8 py-20 text-center border-t border-hairline">
+          <h2 className="text-display font-semibold tracking-tight">
+            想第一时间获得都佰城动态?
+          </h2>
+          <div className="mt-6 flex justify-center gap-x-6 gap-y-3 flex-wrap">
+            <LinkArrow href="/news" size="lg">
+              返回 Newsroom
+            </LinkArrow>
+            <LinkArrow href="/contact" size="lg">
+              订阅与媒体联络
+            </LinkArrow>
+          </div>
+        </div>
       </section>
-
-      <article className="py-16 sm:py-20">
-        <Container size="narrow">
-          <div className="prose prose-slate max-w-none">
-            <p className="text-lg leading-relaxed text-slate-700 border-l-4 border-accent-500 pl-5 bg-tech-soft py-4 rounded-r-lg">
-              {item.excerpt}
-            </p>
-            <div className="mt-8 space-y-5 text-base leading-relaxed text-slate-700">
-              {item.body.map((p, i) => (
-                <p key={i}>{p}</p>
-              ))}
-            </div>
-          </div>
-
-          <div className="mt-16 pt-8 border-t border-slate-200 grid gap-4 sm:grid-cols-2">
-            {prev ? (
-              <Link
-                href={`/news/${prev.slug}`}
-                className="group rounded-xl border border-slate-200 p-5 hover:border-brand-200 hover:shadow-soft transition"
-              >
-                <div className="text-xs text-slate-500 inline-flex items-center gap-1">
-                  <ArrowLeft size={12} /> 上一篇
-                </div>
-                <div className="mt-2 text-sm font-medium text-slate-900 group-hover:text-brand-900 line-clamp-2">
-                  {prev.title}
-                </div>
-              </Link>
-            ) : (
-              <div />
-            )}
-            {next ? (
-              <Link
-                href={`/news/${next.slug}`}
-                className="group rounded-xl border border-slate-200 p-5 hover:border-brand-200 hover:shadow-soft transition sm:text-right"
-              >
-                <div className="text-xs text-slate-500 inline-flex items-center gap-1 sm:justify-end sm:w-full">
-                  下一篇 <ArrowRight size={12} />
-                </div>
-                <div className="mt-2 text-sm font-medium text-slate-900 group-hover:text-brand-900 line-clamp-2">
-                  {next.title}
-                </div>
-              </Link>
-            ) : (
-              <div />
-            )}
-          </div>
-        </Container>
-      </article>
-    </>
+    </article>
   );
 }

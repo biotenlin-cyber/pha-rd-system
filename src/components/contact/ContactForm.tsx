@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Send, CheckCircle2 } from "lucide-react";
+import { CheckCircle2 } from "lucide-react";
 
 type FormState = {
   name: string;
@@ -50,20 +50,20 @@ export function ContactForm() {
 
   if (submitted) {
     return (
-      <div className="rounded-2xl bg-white border border-slate-200 p-10 text-center">
-        <div className="mx-auto h-12 w-12 grid place-items-center rounded-full bg-brand-50 text-brand-900">
-          <CheckCircle2 size={24} />
+      <div className="rounded-marble bg-fog p-12 text-center">
+        <div className="mx-auto h-12 w-12 grid place-items-center rounded-full bg-ink text-white">
+          <CheckCircle2 size={22} strokeWidth={1.6} />
         </div>
-        <h3 className="mt-5 text-xl font-semibold text-slate-900">
-          已收到您的留言
+        <h3 className="mt-5 text-2xl font-semibold tracking-tight">
+          已收到您的留言。
         </h3>
-        <p className="mt-3 text-sm text-slate-600 leading-relaxed max-w-md mx-auto">
+        <p className="mt-3 text-base text-ash leading-relaxed max-w-md mx-auto">
           感谢您对都佰城的关注。我们的商务团队将在 1—2 个工作日内与您取得联系。
         </p>
         <button
           type="button"
           onClick={() => setSubmitted(false)}
-          className="mt-6 text-sm font-medium text-brand-900 hover:text-brand-700"
+          className="mt-6 link-arrow text-sm"
         >
           再发一条留言
         </button>
@@ -72,11 +72,7 @@ export function ContactForm() {
   }
 
   return (
-    <form
-      onSubmit={onSubmit}
-      className="rounded-2xl bg-white border border-slate-200 p-6 sm:p-8 space-y-5"
-      noValidate
-    >
+    <form onSubmit={onSubmit} className="space-y-5" noValidate>
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="姓名" required>
           <input
@@ -84,7 +80,7 @@ export function ContactForm() {
             value={form.name}
             onChange={update("name")}
             className={inputClass}
-            placeholder="请填写您的姓名"
+            placeholder="您的姓名"
             required
           />
         </Field>
@@ -121,8 +117,9 @@ export function ContactForm() {
       <Field label="咨询主题">
         <select value={form.topic} onChange={update("topic")} className={inputClass}>
           <option>产品咨询</option>
-          <option>技术合作</option>
+          <option>研发平台演示</option>
           <option>样品申请</option>
+          <option>技术合作</option>
           <option>媒体联络</option>
           <option>其他</option>
         </select>
@@ -145,15 +142,15 @@ export function ContactForm() {
         </p>
       )}
 
-      <div className="flex items-center justify-between gap-4 pt-2">
-        <p className="text-xs text-slate-500">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 pt-3">
+        <p className="text-xs text-smoke">
           您提交的信息将仅用于业务联系,我们承诺不会用于其他用途。
         </p>
         <button
           type="submit"
-          className="inline-flex items-center gap-2 h-11 px-6 rounded-full bg-brand-900 text-white text-sm font-medium hover:bg-brand-800 active:bg-brand-950 transition"
+          className="inline-flex items-center justify-center h-11 px-7 rounded-full bg-link text-white text-sm font-medium hover:bg-linkHover transition"
         >
-          <Send size={16} /> 提交
+          提交
         </button>
       </div>
     </form>
@@ -161,7 +158,7 @@ export function ContactForm() {
 }
 
 const inputClass =
-  "w-full rounded-lg border border-slate-200 bg-white px-3.5 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:border-brand-400 focus:ring-2 focus:ring-brand-100 transition";
+  "w-full rounded-2xl border border-hairline bg-paper px-4 py-3 text-base text-ink placeholder:text-smoke focus:outline-none focus:border-link focus:ring-4 focus:ring-link/15 transition";
 
 function Field({
   label,
@@ -174,9 +171,9 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="block text-sm font-medium text-slate-700 mb-1.5">
+      <span className="block text-sm font-medium text-ink mb-2">
         {label}
-        {required && <span className="text-accent-500 ml-0.5">*</span>}
+        {required && <span className="text-link ml-0.5">*</span>}
       </span>
       {children}
     </label>

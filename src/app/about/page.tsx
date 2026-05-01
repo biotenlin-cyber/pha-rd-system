@@ -1,147 +1,157 @@
 import type { Metadata } from "next";
-import { Compass, Target, Heart, BadgeCheck } from "lucide-react";
-import { PageHero } from "@/components/PageHero";
-import { Section } from "@/components/ui/Section";
-import { Container } from "@/components/ui/Container";
+import { LinkArrow } from "@/components/apple/LinkArrow";
 import { companyIntro } from "@/data/company";
 
 export const metadata: Metadata = {
-  title: "关于我们",
+  title: "关于都佰城",
   description: "了解都佰城的公司背景、愿景使命、发展历程与资质认证。",
 };
 
-const valueIcons = {
-  vision: Compass,
-  mission: Target,
-  values: Heart,
-} as const;
-
 export default function AboutPage() {
   return (
-    <>
-      <PageHero
-        eyebrow="ABOUT US"
-        title="关于都佰城"
-        subtitle="一家以 PHA 为核心的合成生物学新材料企业,致力于为全球客户提供高性能、全生物降解的可持续材料解决方案。"
-      />
-
-      <Section
-        eyebrow="OUR STORY"
-        title="公司简介"
-        subtitle="自 2015 年创立以来,都佰城始终聚焦于 PHA 这一具有完整生物可降解性的高性能材料。"
-      >
-        <div className="grid gap-12 lg:grid-cols-12">
-          <div className="lg:col-span-7 space-y-5 text-base leading-relaxed text-slate-700">
-            {companyIntro.long.map((p, i) => (
-              <p key={i}>{p}</p>
-            ))}
+    <div className="bg-fog">
+      <div className="space-y-2">
+        {/* Hero */}
+        <section className="bg-paper text-ink">
+          <div className="mx-auto max-w-4xl px-6 sm:px-8 pt-24 sm:pt-32 pb-20 text-center">
+            <div className="text-eyebrow mb-3 fade-up">ABOUT US</div>
+            <h1 className="text-display sm:text-hero font-semibold tracking-tight fade-up">
+              用合成生物学,
+              <br />
+              重新定义可持续材料。
+            </h1>
+            <p className="mt-6 text-lead text-ash max-w-2xl mx-auto fade-up-soft">
+              {companyIntro.short}
+            </p>
           </div>
-          <div className="lg:col-span-5">
-            <div className="rounded-2xl border border-slate-200 bg-tech-soft p-8">
-              <div className="grid grid-cols-2 gap-6">
-                {companyIntro.stats.map((s) => (
-                  <div key={s.label}>
-                    <div className="text-3xl font-semibold text-brand-900">
-                      {s.value}
-                    </div>
-                    <div className="mt-1 text-xs text-slate-500">{s.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </Section>
+        </section>
 
-      <Section
-        eyebrow="VISION & MISSION"
-        title="愿景 · 使命 · 价值观"
-        className="bg-tech-soft"
-      >
-        <div className="grid gap-6 md:grid-cols-3">
-          {(["vision", "mission", "values"] as const).map((key) => {
-            const item = companyIntro[key];
-            const Icon = valueIcons[key];
-            return (
-              <div
-                key={key}
-                className="rounded-2xl bg-white border border-slate-200 p-8 hover:shadow-soft transition"
-              >
-                <div className="flex h-12 w-12 items-center justify-center rounded-xl bg-brand-50 text-brand-900">
-                  <Icon size={22} />
-                </div>
-                <h3 className="mt-5 text-xl font-semibold text-slate-900">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-sm leading-relaxed text-slate-600">
-                  {item.body}
-                </p>
-              </div>
-            );
-          })}
-        </div>
-      </Section>
-
-      <Section eyebrow="MILESTONES" title="发展历程">
-        <div className="relative max-w-3xl mx-auto">
-          <div
-            className="absolute left-3 sm:left-1/2 top-0 bottom-0 w-px bg-slate-200 -translate-x-px"
-            aria-hidden
-          />
-          <ul className="space-y-10">
-            {companyIntro.timeline.map((m, idx) => (
-              <li
-                key={m.year}
-                className="relative pl-10 sm:pl-0 sm:grid sm:grid-cols-2 sm:gap-12 sm:items-center"
-              >
-                <div
-                  className={
-                    idx % 2 === 0 ? "sm:text-right sm:pr-12" : "sm:order-2 sm:pl-12"
-                  }
-                >
-                  <div className="text-sm font-medium text-accent-500 mb-1">
-                    {m.year}
-                  </div>
-                  <h3 className="text-lg font-semibold text-slate-900">
-                    {m.title}
-                  </h3>
-                  <p className="mt-2 text-sm text-slate-600 leading-relaxed">
-                    {m.desc}
-                  </p>
-                </div>
-                <div
-                  className={`absolute left-0 sm:left-1/2 top-1.5 h-3 w-3 rounded-full bg-brand-900 ring-4 ring-white -translate-x-1/2`}
-                  aria-hidden
-                />
-              </li>
-            ))}
-          </ul>
-        </div>
-      </Section>
-
-      <section className="py-16 sm:py-20 bg-tech-soft">
-        <Container>
-          <div className="text-center max-w-2xl mx-auto mb-12">
-            <div className="text-sm font-medium uppercase tracking-[0.2em] text-accent-500 mb-3">
-              CERTIFICATIONS
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-semibold text-slate-900">
-              资质与认证
+        {/* Long story */}
+        <section className="bg-paper">
+          <div className="mx-auto max-w-3xl px-6 sm:px-8 py-20 border-t border-hairline">
+            <div className="text-eyebrow text-ink mb-4">OUR STORY</div>
+            <h2 className="text-display font-semibold tracking-tight mb-8">
+              从一个菌种,长成一座工厂。
             </h2>
+            <div className="space-y-6 text-lg leading-[1.7] text-ink/85">
+              {companyIntro.long.map((p, i) => (
+                <p key={i}>{p}</p>
+              ))}
+            </div>
           </div>
-          <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto">
-            {companyIntro.qualifications.map((q) => (
-              <li
-                key={q}
-                className="flex items-start gap-3 rounded-xl bg-white border border-slate-200 px-5 py-4"
-              >
-                <BadgeCheck size={20} className="mt-0.5 text-accent-500 shrink-0" />
-                <span className="text-sm text-slate-700">{q}</span>
-              </li>
+        </section>
+
+        {/* Stats */}
+        <section className="bg-paper">
+          <div className="mx-auto max-w-6xl px-6 sm:px-8 py-16 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-10 border-t border-hairline">
+            {companyIntro.stats.map((s) => (
+              <div key={s.label} className="text-center">
+                <div className="text-section font-semibold text-ink">{s.value}</div>
+                <div className="mt-1 text-sm text-smoke">{s.label}</div>
+              </div>
             ))}
-          </ul>
-        </Container>
-      </section>
-    </>
+          </div>
+        </section>
+
+        {/* Values */}
+        <section className="bg-obsidian text-paper">
+          <div className="mx-auto max-w-6xl px-6 sm:px-8 py-24">
+            <div className="text-center max-w-3xl mx-auto mb-16">
+              <div className="text-eyebrow text-white/80 mb-3">VISION · MISSION · VALUES</div>
+              <h2 className="text-display font-semibold tracking-tight">
+                我们相信,材料能改变世界。
+              </h2>
+            </div>
+            <div className="grid gap-3 md:grid-cols-3">
+              {(["vision", "mission", "values"] as const).map((key) => {
+                const item = companyIntro[key];
+                return (
+                  <div key={key} className="rounded-tile bg-coal p-10">
+                    <h3 className="text-2xl font-semibold tracking-tight">
+                      {item.title}
+                    </h3>
+                    <p className="mt-4 text-base text-white/75 leading-relaxed">
+                      {item.body}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Timeline */}
+        <section id="milestones" className="bg-paper">
+          <div className="mx-auto max-w-4xl px-6 sm:px-8 py-24">
+            <div className="text-center mb-16">
+              <div className="text-eyebrow text-ink mb-3">MILESTONES</div>
+              <h2 className="text-display font-semibold tracking-tight">
+                十年,一步一个脚印。
+              </h2>
+            </div>
+            <ol className="space-y-10 sm:space-y-12">
+              {companyIntro.timeline.map((m) => (
+                <li
+                  key={m.year}
+                  className="grid gap-3 sm:grid-cols-12 sm:gap-8 items-start"
+                >
+                  <div className="sm:col-span-3">
+                    <div className="text-2xl sm:text-3xl font-semibold tracking-tight text-ink">
+                      {m.year}
+                    </div>
+                  </div>
+                  <div className="sm:col-span-9 sm:border-l sm:border-hairline sm:pl-8">
+                    <h3 className="text-xl font-semibold tracking-tight">
+                      {m.title}
+                    </h3>
+                    <p className="mt-2 text-base text-ash leading-relaxed">{m.desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </div>
+        </section>
+
+        {/* Certifications */}
+        <section id="certifications" className="bg-fog">
+          <div className="mx-auto max-w-6xl px-6 sm:px-8 py-24">
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <div className="text-eyebrow text-ink mb-3">CERTIFICATIONS</div>
+              <h2 className="text-display font-semibold tracking-tight">
+                资质 与 认证。
+              </h2>
+            </div>
+            <ul className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {companyIntro.qualifications.map((q) => (
+                <li
+                  key={q}
+                  className="rounded-tile bg-paper px-6 py-5 text-base text-ink"
+                >
+                  {q}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </section>
+
+        {/* Platform pointer - 强化系统融合 */}
+        <section className="bg-obsidian text-paper">
+          <div className="mx-auto max-w-4xl px-6 sm:px-8 py-24 text-center">
+            <div className="text-eyebrow text-white/80 mb-3">R&D PLATFORM</div>
+            <h2 className="text-display font-semibold tracking-tight">
+              我们的研发,跑在自研的平台上。
+            </h2>
+            <p className="mt-5 text-lead text-white/75 max-w-2xl mx-auto">
+              都佰城内部研发依靠 PHA-RD 研发管理平台:把材料数据、产品节点与专利资产装进同一个系统。
+            </p>
+            <div className="mt-7 flex justify-center">
+              <LinkArrow href="/platform" size="lg" className="text-white hover:text-white/85">
+                了解 PHA-RD 平台
+              </LinkArrow>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
   );
 }
