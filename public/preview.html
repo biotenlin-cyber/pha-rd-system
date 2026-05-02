@@ -1,0 +1,906 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>都佰城 PHA — 重塑塑料的未来</title>
+<meta name="description" content="自主菌种、万吨级量产、全球认证。一种从自然来,也回归自然的高性能材料。" />
+
+<style>
+/* ============================================
+   都佰城 PHA · Apple-style Standalone Preview
+   设计 token 与 docs/DESIGN.md 一致
+   ============================================ */
+
+:root {
+  /* Color */
+  --paper: #ffffff;
+  --fog: #f5f5f7;
+  --haze: #fafafc;
+  --obsidian: #000000;
+  --coal: #161617;
+  --ink: #1d1d1f;
+  --ash: #424245;
+  --smoke: #6e6e73;
+  --silver: #86868b;
+  --hairline: #d2d2d7;
+  --link: #0066cc;
+  --link-hover: #0077ed;
+  --apple-blue: #0071e3;
+  --apple-blue-hover: #0077ed;
+
+  /* Motion */
+  --ease-apple: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Layout */
+  --container: 980px;
+  --apple-blur: saturate(180%) blur(20px);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  font-family:
+    "SF Pro Display", "SF Pro Text", "SF Pro Icons",
+    -apple-system, BlinkMacSystemFont,
+    "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei",
+    "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 17px;
+  line-height: 1.47;
+  letter-spacing: -0.022em;
+  background: var(--paper);
+  color: var(--ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+@media (max-width: 767px) {
+  html, body { font-size: 15px; }
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ============================================
+   PROMO BAR (apple.com 顶部横条)
+   ============================================ */
+.promo-bar {
+  position: fixed; top: 0; inset-inline: 0;
+  height: 30px;
+  background: var(--fog);
+  border-bottom: 1px solid var(--hairline);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px;
+  z-index: 60;
+  padding: 0 16px;
+}
+.promo-bar a { color: var(--link); margin-left: 6px; }
+.promo-bar a:hover { color: var(--link-hover); }
+
+/* ============================================
+   TOP NAV (44px, 毛玻璃)
+   ============================================ */
+.top-nav {
+  position: fixed; top: 30px; inset-inline: 0;
+  height: 44px;
+  background: rgba(255, 255, 255, 0.72);
+  backdrop-filter: var(--apple-blur);
+  -webkit-backdrop-filter: var(--apple-blur);
+  border-bottom: 1px solid rgba(210, 210, 215, 0.6);
+  z-index: 50;
+}
+.top-nav-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 22px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-size: 14px;
+  letter-spacing: -0.01em;
+}
+.top-nav .brand {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink);
+}
+.top-nav ul {
+  list-style: none;
+  display: flex; gap: 28px;
+}
+.top-nav ul a {
+  color: var(--ink);
+  opacity: 0.85;
+  transition: opacity 200ms;
+}
+.top-nav ul a:hover { opacity: 1; }
+
+main { padding-top: 74px; }
+
+/* ============================================
+   TYPOGRAPHY
+   ============================================ */
+.eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+.lead {
+  font-size: clamp(1.125rem, 1.4vw, 1.375rem);
+  line-height: 1.4;
+  color: var(--ash);
+  font-weight: 400;
+}
+
+/* ============================================
+   SECTION SHELL
+   ============================================ */
+section { padding: 0; }
+.section-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 22px;
+}
+@media (min-width: 640px) {
+  .section-inner { padding: 0 32px; }
+}
+
+.tile-stack > * + * { margin-top: 8px; }
+
+/* ============================================
+   HERO BLOCKS (mega type)
+   ============================================ */
+.hero-block {
+  background: var(--paper);
+  text-align: center;
+  padding-top: 64px;
+  padding-bottom: 32px;
+  overflow: hidden;
+}
+.hero-block.dark { background: var(--obsidian); color: var(--paper); }
+.hero-block .eyebrow { margin-bottom: 12px; }
+.hero-block.dark .eyebrow { color: rgba(255,255,255,0.8); }
+
+@media (min-width: 640px) {
+  .hero-block { padding-top: 96px; }
+}
+
+.mega-title {
+  font-weight: 600;
+  line-height: 0.96;
+  letter-spacing: -0.04em;
+  font-size: clamp(3rem, 8.5vw, 8rem);
+  max-width: 900px;
+  margin: 0 auto;
+}
+.mega-sub {
+  margin-top: 12px;
+  font-weight: 600;
+  line-height: 0.96;
+  letter-spacing: -0.035em;
+  font-size: clamp(2rem, 5.6vw, 5.25rem);
+  color: var(--smoke);
+}
+.hero-block.dark .mega-sub { color: rgba(255,255,255,0.55); }
+
+.lead-text {
+  margin: 28px auto 0;
+  max-width: 560px;
+}
+.hero-block.dark .lead-text { color: rgba(255,255,255,0.75); }
+
+/* CTA row */
+.cta-row {
+  margin-top: 28px;
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 12px 24px;
+}
+
+.link-arrow {
+  display: inline-flex; align-items: center;
+  color: var(--link);
+  font-size: 17px;
+  transition: color 200ms;
+}
+.link-arrow::after {
+  content: "›";
+  margin-left: 4px;
+  transition: transform 200ms var(--ease-apple);
+}
+.link-arrow:hover { color: var(--link-hover); }
+.link-arrow:hover::after { transform: translateX(3px); }
+.hero-block.dark .link-arrow { color: #fff; }
+.hero-block.dark .link-arrow:hover { color: rgba(255,255,255,0.85); }
+
+.btn-primary {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 44px; padding: 0 24px;
+  background: var(--apple-blue);
+  color: #fff;
+  border-radius: 9999px;
+  font-size: 15px; font-weight: 500;
+  transition: background 200ms;
+  border: none; cursor: pointer;
+}
+.btn-primary:hover { background: var(--apple-blue-hover); }
+
+/* Hero visual area */
+.hero-visual {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 24px 22px 64px;
+}
+@media (min-width: 640px) {
+  .hero-visual { padding-bottom: 96px; }
+}
+
+/* ============================================
+   SPLIT TILE (双卡)
+   ============================================ */
+.split {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px;
+}
+@media (min-width: 768px) {
+  .split { grid-template-columns: 1fr 1fr; }
+}
+.tile {
+  background: var(--paper);
+  padding: 64px 32px 56px;
+  text-align: center;
+}
+.tile.dark { background: var(--obsidian); color: var(--paper); }
+.tile h3 {
+  font-weight: 600;
+  font-size: clamp(1.75rem, 2.8vw, 2.5rem);
+  line-height: 1.12;
+  letter-spacing: -0.003em;
+  margin-top: 12px;
+}
+.tile p {
+  margin-top: 12px;
+  color: var(--ash);
+  max-width: 460px; margin-inline: auto;
+  font-size: 17px;
+}
+.tile.dark p { color: rgba(255,255,255,0.7); }
+.tile .tile-cta {
+  margin-top: 24px;
+  display: flex; flex-wrap: wrap; justify-content: center;
+  gap: 12px 24px;
+}
+.tile .eyebrow { margin-bottom: 0; color: var(--ink); }
+.tile.dark .eyebrow { color: rgba(255,255,255,0.8); }
+
+/* Tile inline visual placeholder */
+.tile-visual {
+  max-width: 320px; margin: 32px auto 0;
+  aspect-ratio: 4 / 3;
+  border-radius: 18px;
+  display: flex; align-items: center; justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+.tile-visual.pellet { background: radial-gradient(circle at 35% 35%, #f6f6f8, #d3d3d8); }
+.tile-visual.film   { background: linear-gradient(135deg, #eef0f3, #cdd1d8); }
+.tile-visual.fiber  { background: linear-gradient(160deg, #1f1f22, #2c2c30); }
+.tile-visual.dark   { background: radial-gradient(circle at 30% 30%, #1f1f22, #0a0a0b); }
+.tile-visual::after {
+  content: "";
+  position: absolute;
+  width: 60%; height: 60%;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,0.4) 0%, transparent 60%);
+}
+
+/* ============================================
+   SHOP & LEARN GRID (底部 3 卡)
+   ============================================ */
+.shop-grid {
+  background: var(--paper);
+  padding: 96px 0;
+}
+.shop-grid .section-inner {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 768px) {
+  .shop-grid .section-inner { grid-template-columns: 1fr 1fr 1fr; }
+}
+.shop-card {
+  background: var(--fog);
+  border-radius: 28px;
+  padding: 40px 32px;
+  display: flex; flex-direction: column;
+  transition: background 200ms;
+}
+.shop-card:hover { background: var(--haze); }
+.shop-card .eyebrow { margin-bottom: 12px; }
+.shop-card h4 {
+  font-weight: 600;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  line-height: 1.15;
+  letter-spacing: -0.003em;
+}
+.shop-card .link-arrow {
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+/* ============================================
+   FOOTER (Apple Shop & Learn 多列)
+   ============================================ */
+footer {
+  background: var(--fog);
+  color: var(--silver);
+  font-size: 12px;
+  line-height: 1.6;
+  padding: 32px 0 0;
+}
+.footer-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 22px;
+}
+.footer-legal { color: var(--silver); }
+.footer-legal + .footer-legal { margin-top: 12px; }
+.footer-legal a { color: var(--link); }
+.footer-legal a:hover { color: var(--link-hover); }
+
+.footer-cols {
+  margin-top: 36px;
+  padding-top: 36px;
+  border-top: 1px solid var(--hairline);
+  display: grid;
+  gap: 32px 24px;
+  grid-template-columns: repeat(2, 1fr);
+}
+@media (min-width: 640px) { .footer-cols { grid-template-columns: repeat(3, 1fr); } }
+@media (min-width: 1024px) { .footer-cols { grid-template-columns: repeat(5, 1fr); } }
+
+.footer-col h5 {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--ink);
+  margin-bottom: 12px;
+}
+.footer-col ul { list-style: none; }
+.footer-col li + li { margin-top: 6px; }
+.footer-col a {
+  color: var(--silver);
+  transition: color 150ms;
+}
+.footer-col a:hover { color: var(--ink); text-decoration: underline; text-underline-offset: 2px; }
+
+.footer-secondary {
+  margin-top: 36px;
+  padding-top: 28px;
+  border-top: 1px solid var(--hairline);
+  color: var(--silver);
+}
+.footer-secondary a { color: var(--link); }
+
+.footer-bottom {
+  margin-top: 36px;
+  padding: 20px 0;
+  border-top: 1px solid var(--hairline);
+  display: flex; flex-direction: column; gap: 12px;
+  color: var(--silver);
+}
+@media (min-width: 640px) {
+  .footer-bottom { flex-direction: row; align-items: center; justify-content: space-between; }
+}
+.footer-legal-links {
+  list-style: none;
+  display: flex; flex-wrap: wrap; gap: 8px 20px;
+}
+.footer-region {
+  padding: 16px 0 24px;
+  color: var(--silver);
+}
+
+/* ============================================
+   FADE-UP ENTRANCE
+   ============================================ */
+.fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  animation: fadeUp 800ms var(--ease-apple) forwards;
+}
+.fade-up.delay-1 { animation-delay: 80ms; }
+.fade-up.delay-2 { animation-delay: 180ms; }
+.fade-up.delay-3 { animation-delay: 260ms; }
+@keyframes fadeUp {
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* IntersectionObserver-driven reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 800ms var(--ease-apple), transform 800ms var(--ease-apple);
+}
+.reveal.in {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+:focus-visible {
+  outline: 2px solid var(--apple-blue);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+/* ============================================
+   PHA / PLATFORM HERO VISUALS (pure CSS)
+   ============================================ */
+.pha-visual {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(180deg, #f7f7f9 0%, #e8eaef 100%);
+  border-radius: 28px;
+  overflow: hidden;
+}
+.pha-visual::before,
+.pha-visual::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(40px);
+}
+.pha-visual::before {
+  width: 320px; height: 320px;
+  background: radial-gradient(circle, rgba(0,113,227,0.4), transparent 70%);
+  top: -60px; left: 20%;
+}
+.pha-visual::after {
+  width: 280px; height: 280px;
+  background: radial-gradient(circle, rgba(180,200,180,0.6), transparent 70%);
+  bottom: -40px; right: 15%;
+}
+.pha-pellets {
+  position: absolute; inset: 0;
+  display: flex; align-items: center; justify-content: center;
+  gap: 14px;
+}
+.pha-pellet {
+  width: 28px; height: 28px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%, #fff, #c5c5cc);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+.pha-pellet:nth-child(2) { transform: scale(1.4) translateY(-18px); }
+.pha-pellet:nth-child(4) { transform: scale(1.6); }
+.pha-pellet:nth-child(6) { transform: scale(1.2) translateY(20px); }
+
+.platform-visual {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  background: linear-gradient(180deg, #1a1a1d, #0c0c0e);
+  border-radius: 28px;
+  padding: 32px;
+  overflow: hidden;
+}
+.platform-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px;
+  height: 100%;
+}
+.platform-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 14px;
+  padding: 14px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  font-size: 12px;
+  color: rgba(255,255,255,0.85);
+}
+.platform-card strong {
+  display: block; font-size: 18px; font-weight: 600; color: #fff;
+}
+.platform-card .pulse {
+  width: 36px; height: 36px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #0071e3, #0a84ff);
+  opacity: 0.85;
+}
+
+/* ============================================
+   PRODUCT HIGHLIGHT (data pillars)
+   ============================================ */
+.pillars {
+  background: var(--fog);
+  padding: 80px 0;
+}
+.pillars-head { text-align: center; max-width: 720px; margin: 0 auto 48px; }
+.pillars-head h2 {
+  font-weight: 600;
+  font-size: clamp(2.25rem, 4.4vw, 3.75rem);
+  line-height: 1.08;
+  letter-spacing: -0.003em;
+}
+.pillars-grid {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 22px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+@media (min-width: 1024px) {
+  .pillars-grid { grid-template-columns: repeat(4, 1fr); }
+}
+.pillar {
+  background: var(--paper);
+  border-radius: 22px;
+  padding: 32px;
+  text-align: center;
+  min-height: 180px;
+  display: flex; flex-direction: column; justify-content: center;
+}
+.pillar-value {
+  font-weight: 600;
+  font-size: clamp(2rem, 3.6vw, 3.25rem);
+  letter-spacing: -0.02em;
+  line-height: 1;
+  color: var(--ink);
+}
+.pillar-label {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--smoke);
+}
+
+/* dark grain on dark sections */
+.hero-block.dark::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 30% 40%, rgba(0,113,227,0.10), transparent 50%);
+  pointer-events: none;
+}
+.hero-block.dark { position: relative; }
+
+</style>
+</head>
+<body>
+
+<!-- =========================================
+     PROMO BAR
+     ========================================= -->
+<div class="promo-bar">
+  <span>都佰城 PHA-RD 平台现已开放预约演示。</span>
+  <a href="#platform">走进平台 ›</a>
+</div>
+
+<!-- =========================================
+     TOP NAV
+     ========================================= -->
+<header class="top-nav">
+  <div class="top-nav-inner">
+    <a class="brand" href="#">都佰城</a>
+    <ul>
+      <li><a href="#products">产品</a></li>
+      <li><a href="#platform">平台</a></li>
+      <li><a href="#about">关于</a></li>
+      <li><a href="#news">资讯</a></li>
+      <li><a href="#contact">联系</a></li>
+    </ul>
+  </div>
+</header>
+
+<main>
+
+  <div class="tile-stack" style="background: var(--fog);">
+
+    <!-- =========================================
+         TILE 1 · 品牌主张 (PHA · 巨型 hero)
+         ========================================= -->
+    <section class="hero-block">
+      <div class="eyebrow fade-up">都佰城 PHA</div>
+      <h1 class="mega-title fade-up">重塑塑料的未来。</h1>
+      <p class="mega-sub fade-up delay-1">从一颗颗粒开始。</p>
+      <p class="lead lead-text fade-up delay-2">
+        自主菌种、万吨级量产、全球认证。一种从自然来,也回归自然的高性能材料。
+      </p>
+      <div class="cta-row fade-up delay-3">
+        <a class="link-arrow" href="#products">了解 PHA 产品</a>
+        <a class="link-arrow" href="#contact">申请样品</a>
+      </div>
+      <div class="hero-visual">
+        <div class="pha-visual">
+          <div class="pha-pellets">
+            <div class="pha-pellet"></div>
+            <div class="pha-pellet"></div>
+            <div class="pha-pellet"></div>
+            <div class="pha-pellet"></div>
+            <div class="pha-pellet"></div>
+            <div class="pha-pellet"></div>
+            <div class="pha-pellet"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         TILE 2 · PHA-RD 平台 (黑底巨型)
+         ========================================= -->
+    <section class="hero-block dark" id="platform">
+      <div class="eyebrow">都佰城研发管理平台 · PHA-RD</div>
+      <h2 class="mega-title reveal">
+        一个系统,<br />
+        <span style="color:rgba(255,255,255,0.55)">掌管整个研发链。</span>
+      </h2>
+      <p class="lead lead-text reveal">
+        材料研发、产品开发、知识产权,装进同一个工作流。让 12 万次实验,变成可检索的资产。
+      </p>
+      <div class="cta-row reveal">
+        <a class="link-arrow" href="#platform">走进平台</a>
+        <a class="link-arrow" href="#contact">预约演示</a>
+      </div>
+      <div class="hero-visual">
+        <div class="platform-visual">
+          <div class="platform-grid">
+            <div class="platform-card">
+              <span>材料研发</span>
+              <strong>1,247</strong>
+              <div class="pulse"></div>
+            </div>
+            <div class="platform-card">
+              <span>产品开发</span>
+              <strong>318</strong>
+              <div class="pulse" style="background: linear-gradient(135deg,#30d158,#34d399);"></div>
+            </div>
+            <div class="platform-card">
+              <span>专利</span>
+              <strong>56</strong>
+              <div class="pulse" style="background: linear-gradient(135deg,#bf5af2,#a78bfa);"></div>
+            </div>
+            <div class="platform-card">
+              <span>样品发出</span>
+              <strong>892</strong>
+              <div class="pulse" style="background: linear-gradient(135deg,#ff9f0a,#fbbf24);"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         TILE 3 · 双产品 (薄膜/注塑)
+         ========================================= -->
+    <section class="split" id="products">
+      <div class="tile reveal">
+        <div class="eyebrow">薄膜级 · DBC-F100</div>
+        <h3>高韧性。可堆肥。</h3>
+        <p>购物袋、农膜、食品包装,以 PHA 替代一次性塑料。</p>
+        <div class="tile-visual film"></div>
+        <div class="tile-cta">
+          <a class="link-arrow" href="#">了解更多</a>
+          <a class="link-arrow" href="#">申请样品</a>
+        </div>
+      </div>
+      <div class="tile reveal">
+        <div class="eyebrow">注塑级 · DBC-I200</div>
+        <h3>通用。耐热。可降解。</h3>
+        <p>高流动性 PHA 注塑原料,适用于餐具、容器与电子配件。</p>
+        <div class="tile-visual pellet"></div>
+        <div class="tile-cta">
+          <a class="link-arrow" href="#">了解更多</a>
+          <a class="link-arrow" href="#">申请样品</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         PILLARS · 产品亮点 (4 数据柱)
+         ========================================= -->
+    <section class="pillars">
+      <div class="pillars-head reveal">
+        <div class="eyebrow" style="color: var(--ink); margin-bottom: 12px;">PRODUCT HIGHLIGHTS</div>
+        <h2>关键性能,一眼读懂。</h2>
+      </div>
+      <div class="pillars-grid">
+        <div class="pillar reveal">
+          <div class="pillar-value">≥25</div>
+          <div class="pillar-label">MPa 拉伸强度</div>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-value">≥400%</div>
+          <div class="pillar-label">断裂伸长率</div>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-value">EN13432</div>
+          <div class="pillar-label">工业堆肥认证</div>
+        </div>
+        <div class="pillar reveal">
+          <div class="pillar-value">海洋</div>
+          <div class="pillar-label">环境可降解</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         TILE 4 · 应用场景 (黑底)
+         ========================================= -->
+    <section class="split">
+      <div class="tile dark reveal">
+        <div class="eyebrow">应用 · 包装 / 3D 打印</div>
+        <h3>在每一只袋子里,看见可持续。</h3>
+        <p>从电商缓冲材料到 3D 打印线材,以 PHA 重塑日常用品的全生命周期。</p>
+        <div class="tile-visual dark"></div>
+        <div class="tile-cta">
+          <a class="link-arrow" style="color:#fff;" href="#">查看应用案例</a>
+        </div>
+      </div>
+      <div class="tile dark reveal">
+        <div class="eyebrow">应用 · 医疗 / 农业</div>
+        <h3>更友好的材料,与人和土地共处。</h3>
+        <p>可吸收医用器械与无微塑料残留的农用地膜,把 PHA 推向严苛场景。</p>
+        <div class="tile-visual fiber"></div>
+        <div class="tile-cta">
+          <a class="link-arrow" style="color:#fff;" href="#">查看应用案例</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         TILE 5 · 资讯 + 认证
+         ========================================= -->
+    <section class="split" id="news">
+      <div class="tile reveal">
+        <div class="eyebrow">都佰城动态</div>
+        <h3>万吨级 PHA 工厂正式投产。</h3>
+        <p>盐城智能化工厂全线试车完成,公司进入规模化稳定供货阶段。</p>
+        <div class="tile-cta">
+          <a class="link-arrow" href="#">阅读全文</a>
+        </div>
+      </div>
+      <div class="tile reveal">
+        <div class="eyebrow">全球认证</div>
+        <h3>EN13432 / BPI / OK Compost。</h3>
+        <p>覆盖工业堆肥、土壤、海洋等多种环境的可降解认证体系。</p>
+        <div class="tile-cta">
+          <a class="link-arrow" href="#">查看资质清单</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+         SHOP & LEARN GRID
+         ========================================= -->
+    <section class="shop-grid" id="contact">
+      <div class="section-inner">
+        <a class="shop-card reveal" href="#">
+          <div class="eyebrow">EXPLORE</div>
+          <h4>浏览全部 PHA 产品。</h4>
+          <span class="link-arrow">查看产品矩阵</span>
+        </a>
+        <a class="shop-card reveal" href="#">
+          <div class="eyebrow">PLATFORM</div>
+          <h4>了解 PHA-RD 研发管理平台。</h4>
+          <span class="link-arrow">走进平台</span>
+        </a>
+        <a class="shop-card reveal" href="#">
+          <div class="eyebrow">CONTACT</div>
+          <h4>与我们的团队聊聊。</h4>
+          <span class="link-arrow">申请样品 / 预约演示</span>
+        </a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+<!-- =========================================
+     FOOTER (Apple Shop & Learn 多列)
+     ========================================= -->
+<footer id="about">
+  <div class="footer-inner">
+    <p class="footer-legal">
+      1. 产品参数与认证情况以最新批次随附技术文件为准。本网站涉及的应用案例仅供示意,实际效果取决于客户具体加工与使用条件。
+    </p>
+    <p class="footer-legal">
+      2. 都佰城新材料保留对产品规格、工艺、价格等进行调整的权利。如需获取最新技术资料或样品,请通过 <a href="#contact">联系我们</a> 页面与商务团队取得联系。
+    </p>
+    <p class="footer-legal">
+      3. 都佰城研发管理平台 (PHA-RD) 为公司内部研发系统,目前面向特邀生态伙伴开放试用,不对公众开放注册。
+    </p>
+
+    <div class="footer-cols">
+      <div class="footer-col">
+        <h5>选购 PHA 产品</h5>
+        <ul>
+          <li><a href="#">薄膜级 DBC-F100</a></li>
+          <li><a href="#">注塑级 DBC-I200</a></li>
+          <li><a href="#">纤维级 DBC-X300</a></li>
+          <li><a href="#">改性级 DBC-M400</a></li>
+          <li><a href="#">3D 打印线材 DBC-3D10</a></li>
+          <li><a href="#">全部产品</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>应用场景</h5>
+        <ul>
+          <li><a href="#">包装</a></li>
+          <li><a href="#">医疗</a></li>
+          <li><a href="#">农业</a></li>
+          <li><a href="#">3D 打印 / 消费品</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>都佰城 PHA-RD 平台</h5>
+        <ul>
+          <li><a href="#">平台总览</a></li>
+          <li><a href="#">材料研发管理</a></li>
+          <li><a href="#">产品开发管理</a></li>
+          <li><a href="#">知识产权管理</a></li>
+          <li><a href="#">数据分析与协作</a></li>
+          <li><a href="#">预约演示</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>关于都佰城</h5>
+        <ul>
+          <li><a href="#">公司简介</a></li>
+          <li><a href="#">发展历程</a></li>
+          <li><a href="#">资质认证</a></li>
+          <li><a href="#">Newsroom</a></li>
+          <li><a href="#">投资者关系</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>支持与合作</h5>
+        <ul>
+          <li><a href="#">样品申请</a></li>
+          <li><a href="#">技术合作</a></li>
+          <li><a href="#">媒体联络</a></li>
+          <li><a href="#">招贤纳士</a></li>
+          <li><a href="#">供应商门户</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-secondary">
+      <p>还有更多了解都佰城的方式: <a href="#contact">申请样品</a>  或  <a href="#platform">预约 PHA-RD 平台演示 ›</a></p>
+      <p style="margin-top:8px;">想加入我们?访问 <a href="#">招贤纳士</a> 页面查看最新岗位。</p>
+    </div>
+
+    <div class="footer-bottom">
+      <p>Copyright © 2026 都佰城新材料科技有限公司. 保留所有权利。</p>
+      <ul class="footer-legal-links">
+        <li><a href="#">隐私政策</a></li>
+        <li><a href="#">使用条款</a></li>
+        <li><a href="#">法律声明</a></li>
+        <li><a href="#">网站地图</a></li>
+        <li><span>沪 ICP 备 XXXXXXXX 号</span></li>
+      </ul>
+    </div>
+    <div class="footer-region">中国大陆</div>
+  </div>
+</footer>
+
+<script>
+/* IntersectionObserver-driven reveal: 与 Next 项目一致的入场动画 */
+(function () {
+  if (!("IntersectionObserver" in window)) {
+    document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
