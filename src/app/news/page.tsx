@@ -23,7 +23,7 @@ export default function NewsPage() {
     <div className="bg-paper">
       {/* Hero - Newsroom 标题区 */}
       <section className="border-b border-hairline">
-        <div className="mx-auto max-w-6xl px-6 sm:px-8 pt-20 sm:pt-28 pb-12 text-center">
+        <div className="mx-auto max-w-apple px-6 sm:px-8 pt-20 sm:pt-28 pb-12 text-center">
           <div className="text-eyebrow text-ink mb-3 fade-up">NEWSROOM</div>
           <h1 className="text-display sm:text-hero font-semibold tracking-tight fade-up">
             来自都佰城的最新消息。
@@ -34,7 +34,7 @@ export default function NewsPage() {
       {/* Featured */}
       {feature && (
         <section className="border-b border-hairline">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 py-16">
+          <div className="mx-auto max-w-apple px-6 sm:px-8 py-16">
             <Link
               href={`/news/${feature.slug}`}
               className="group block rounded-marble overflow-hidden bg-fog hover:bg-haze transition"
@@ -67,7 +67,7 @@ export default function NewsPage() {
 
       {/* List */}
       <section>
-        <div className="mx-auto max-w-6xl px-6 sm:px-8 py-16">
+        <div className="mx-auto max-w-apple px-6 sm:px-8 py-16">
           <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
             {rest.map((n) => (
               <Link

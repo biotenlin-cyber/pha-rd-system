@@ -12,7 +12,7 @@ export default function HomePage() {
       <div className="space-y-2">
         {/* Tile 1: 品牌主张 - PHA - 巨型 hero */}
         <section className="bg-paper text-ink relative overflow-hidden">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 pt-16 sm:pt-24 pb-8 text-center">
+          <div className="mx-auto max-w-apple px-6 sm:px-8 pt-16 sm:pt-24 pb-8 text-center">
             <div className="text-eyebrow text-ink mb-3 fade-up">都佰城 PHA</div>
             <Reveal>
               <h1
@@ -55,7 +55,7 @@ export default function HomePage() {
 
         {/* Tile 2: 都佰城研发管理平台 - 黑底巨型 */}
         <section className="bg-obsidian text-paper relative overflow-hidden">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 pt-16 sm:pt-24 pb-8 text-center">
+          <div className="mx-auto max-w-apple px-6 sm:px-8 pt-16 sm:pt-24 pb-8 text-center">
             <div className="text-eyebrow text-white/80 mb-3 fade-up">
               都佰城研发管理平台 · PHA-RD
             </div>
@@ -184,7 +184,7 @@ export default function HomePage() {
 
         {/* Tile 6: 全站 CTA - apple "Shop and Learn" 风格 */}
         <section className="bg-paper">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 py-24 grid gap-3 md:grid-cols-3">
+          <div className="mx-auto max-w-apple px-6 sm:px-8 py-24 grid gap-3 md:grid-cols-3">
             <Link
               href="/products"
               className="group rounded-marble bg-fog p-10 hover:bg-haze transition flex flex-col"

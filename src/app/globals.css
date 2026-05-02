@@ -13,10 +13,20 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
+  /* 17px - apple.com 桌面端正文(SF Pro 设计的最佳尺寸) */
+  font-size: 17px;
+}
+
+@media (max-width: 767px) {
+  html,
+  body {
+    font-size: 15px;
+  }
 }
 
 body {
   font-feature-settings: "rlig" 1, "calt" 1, "ss01" 1;
+  letter-spacing: -0.022em; /* apple.com 正文实测字距 */
 }
 
 /* Apple 风格的链接箭头(用于 Learn more 模式) */

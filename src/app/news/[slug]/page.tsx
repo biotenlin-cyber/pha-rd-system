@@ -91,7 +91,7 @@ export default async function NewsDetailPage({
 
       {/* Prev / Next */}
       <nav className="bg-fog">
-        <div className="mx-auto max-w-6xl px-6 sm:px-8 py-16 grid gap-3 md:grid-cols-2">
+        <div className="mx-auto max-w-apple px-6 sm:px-8 py-16 grid gap-3 md:grid-cols-2">
           {prev ? (
             <Link
               href={`/news/${prev.slug}`}

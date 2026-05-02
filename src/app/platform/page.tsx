@@ -21,7 +21,7 @@ export default function PlatformPage() {
       <div className="space-y-2">
         {/* Hero - 巨型 */}
         <section className="bg-paper text-ink">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 pt-16 sm:pt-24 pb-12 text-center">
+          <div className="mx-auto max-w-apple px-6 sm:px-8 pt-16 sm:pt-24 pb-12 text-center">
             <div className="text-eyebrow text-ink mb-3 fade-up">
               {platformOverview.eyebrow}
             </div>
@@ -50,7 +50,7 @@ export default function PlatformPage() {
             </Reveal>
           </div>
           <Reveal delay={120}>
-            <div className="mx-auto max-w-6xl px-6 sm:px-8 pb-12">
+            <div className="mx-auto max-w-apple px-6 sm:px-8 pb-12">
               <PlatformVisual />
             </div>
           </Reveal>
@@ -58,7 +58,7 @@ export default function PlatformPage() {
 
         {/* Stats strip */}
         <section className="bg-paper">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 py-12 sm:py-16 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-10 border-t border-hairline">
+          <div className="mx-auto max-w-apple px-6 sm:px-8 py-12 sm:py-16 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-10 border-t border-hairline">
             {platformOverview.stats.map((s) => (
               <div key={s.label} className="text-center">
                 <div className="text-section font-semibold text-ink">{s.value}</div>
@@ -70,7 +70,7 @@ export default function PlatformPage() {
 
         {/* Modules */}
         <section id="modules" className="bg-paper">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 py-20 sm:py-28">
+          <div className="mx-auto max-w-apple px-6 sm:px-8 py-20 sm:py-28">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <div className="text-eyebrow text-ink mb-3">PLATFORM MODULES</div>
               <h2 className="text-display font-semibold tracking-tight">
@@ -132,7 +132,7 @@ export default function PlatformPage() {
 
         {/* Workflow */}
         <section className="bg-obsidian text-paper">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 py-24 text-center">
+          <div className="mx-auto max-w-apple px-6 sm:px-8 py-24 text-center">
             <Reveal>
               <div className="text-eyebrow text-white/80 mb-3">WORKFLOW</div>
               <h2 className="text-display font-semibold tracking-tight max-w-3xl mx-auto">
@@ -159,7 +159,7 @@ export default function PlatformPage() {
 
         {/* Deployment & Compliance */}
         <section className="bg-paper">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 py-24">
+          <div className="mx-auto max-w-apple px-6 sm:px-8 py-24">
             <Reveal>
               <div className="text-center max-w-2xl mx-auto mb-12">
                 <div className="text-eyebrow text-ink mb-3">DEPLOYMENT</div>
@@ -181,7 +181,7 @@ export default function PlatformPage() {
 
         {/* CTA */}
         <section className="bg-fog">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 py-24 text-center">
+          <div className="mx-auto max-w-apple px-6 sm:px-8 py-24 text-center">
             <h2 className="text-display font-semibold tracking-tight">
               想看一次平台的真实演示?
             </h2>

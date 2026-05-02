@@ -11,7 +11,7 @@ type Props = {
 };
 
 const variantClass: Record<Variant, string> = {
-  filled: "bg-link text-white hover:bg-linkHover",
+  filled: "bg-appleBlue text-white hover:bg-appleBlueHover",
   outline: "border border-link text-link hover:bg-link hover:text-white",
   filledLight: "bg-white text-ink hover:bg-fog",
 };

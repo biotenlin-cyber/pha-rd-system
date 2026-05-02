@@ -40,7 +40,7 @@ export default function RootLayout({
       <body className="min-h-screen flex flex-col bg-paper">
         <PromoBar />
         <Header />
-        <main className="flex-1 pt-[80px]">{children}</main>
+        <main className="flex-1 pt-[74px]">{children}</main>
         <Footer />
       </body>
     </html>

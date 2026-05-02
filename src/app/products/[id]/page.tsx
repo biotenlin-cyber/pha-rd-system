@@ -49,7 +49,7 @@ export default async function ProductDetailPage({
 
       {/* HERO */}
       <section className="bg-paper">
-        <div className="mx-auto max-w-6xl px-6 sm:px-8 pt-12 sm:pt-20 pb-8 text-center">
+        <div className="mx-auto max-w-apple px-6 sm:px-8 pt-12 sm:pt-20 pb-8 text-center">
           <div className="text-eyebrow text-ink mb-3 fade-up">
             <span className="text-link">新一代</span>{" "}
             {p.category} · {p.model}
@@ -69,7 +69,7 @@ export default async function ProductDetailPage({
             <div className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-3">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center h-11 px-6 rounded-full bg-link text-white text-[15px] font-medium hover:bg-linkHover transition"
+                className="inline-flex items-center justify-center h-11 px-6 rounded-full bg-appleBlue text-white text-[15px] font-medium hover:bg-appleBlueHover transition"
               >
                 申请样品
               </Link>
@@ -92,7 +92,7 @@ export default async function ProductDetailPage({
 
       {/* HIGHLIGHTS - 4 个数据柱 */}
       <section id="highlights" className="bg-fog">
-        <div className="mx-auto max-w-6xl px-6 sm:px-8 py-20 sm:py-28">
+        <div className="mx-auto max-w-apple px-6 sm:px-8 py-20 sm:py-28">
           <Reveal>
             <div className="text-center max-w-3xl mx-auto mb-14">
               <div className="text-eyebrow text-ink mb-3">PRODUCT HIGHLIGHTS</div>
@@ -157,7 +157,7 @@ export default async function ProductDetailPage({
 
       {/* APPLICATIONS */}
       <section className="bg-fog">
-        <div className="mx-auto max-w-6xl px-6 sm:px-8 py-24">
+        <div className="mx-auto max-w-apple px-6 sm:px-8 py-24">
           <Reveal>
             <div className="text-center max-w-3xl mx-auto mb-14">
               <div className="text-eyebrow text-ink mb-3">APPLICATIONS</div>
@@ -230,7 +230,7 @@ export default async function ProductDetailPage({
       {/* RELATED */}
       {related.length > 0 && (
         <section className="bg-fog">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 py-20">
+          <div className="mx-auto max-w-apple px-6 sm:px-8 py-20">
             <div className="flex items-end justify-between mb-8">
               <h2 className="text-section font-semibold tracking-tight">
                 同类型其他 PHA 牌号。
@@ -272,7 +272,7 @@ export default async function ProductDetailPage({
             <div className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-3">
               <Link
                 href="/contact"
-                className="inline-flex items-center justify-center h-11 px-6 rounded-full bg-link text-white text-[15px] font-medium hover:bg-linkHover transition"
+                className="inline-flex items-center justify-center h-11 px-6 rounded-full bg-appleBlue text-white text-[15px] font-medium hover:bg-appleBlueHover transition"
               >
                 申请样品
               </Link>

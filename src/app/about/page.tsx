@@ -43,7 +43,7 @@ export default function AboutPage() {
 
         {/* Stats */}
         <section className="bg-paper">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 py-16 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-10 border-t border-hairline">
+          <div className="mx-auto max-w-apple px-6 sm:px-8 py-16 grid grid-cols-2 md:grid-cols-4 gap-6 sm:gap-10 border-t border-hairline">
             {companyIntro.stats.map((s) => (
               <div key={s.label} className="text-center">
                 <div className="text-section font-semibold text-ink">{s.value}</div>
@@ -55,7 +55,7 @@ export default function AboutPage() {
 
         {/* Values */}
         <section className="bg-obsidian text-paper">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 py-24">
+          <div className="mx-auto max-w-apple px-6 sm:px-8 py-24">
             <div className="text-center max-w-3xl mx-auto mb-16">
               <div className="text-eyebrow text-white/80 mb-3">VISION · MISSION · VALUES</div>
               <h2 className="text-display font-semibold tracking-tight">
@@ -114,7 +114,7 @@ export default function AboutPage() {
 
         {/* Certifications */}
         <section id="certifications" className="bg-fog">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 py-24">
+          <div className="mx-auto max-w-apple px-6 sm:px-8 py-24">
             <div className="text-center max-w-3xl mx-auto mb-12">
               <div className="text-eyebrow text-ink mb-3">CERTIFICATIONS</div>
               <h2 className="text-display font-semibold tracking-tight">

@@ -61,7 +61,7 @@ export default function ContactPage() {
 
         {/* Channels */}
         <section className="bg-paper">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 py-12 border-t border-hairline">
+          <div className="mx-auto max-w-apple px-6 sm:px-8 py-12 border-t border-hairline">
             <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
               {channels.map((c) => (
                 <a
@@ -101,7 +101,7 @@ export default function ContactPage() {
 
         {/* Map placeholder + further links */}
         <section className="bg-fog">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 py-20 grid gap-4 lg:grid-cols-2">
+          <div className="mx-auto max-w-apple px-6 sm:px-8 py-20 grid gap-4 lg:grid-cols-2">
             <div className="rounded-tile overflow-hidden bg-paper border border-hairline relative min-h-[320px]">
               <div className="absolute inset-0 flex items-center justify-center text-center px-8">
                 <div>

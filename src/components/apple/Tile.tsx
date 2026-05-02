@@ -50,7 +50,7 @@ export function Tile({
     >
       <div
         className={cn(
-          "relative z-10 mx-auto w-full max-w-6xl px-6 sm:px-8 flex flex-col items-center",
+          "relative z-10 mx-auto w-full max-w-apple px-6 sm:px-8 flex flex-col items-center",
           align === "left" ? "items-start text-left" : "items-center text-center",
         )}
       >

@@ -42,7 +42,7 @@ export default function ProductsPage() {
       <div className="space-y-2">
         {/* HERO */}
         <section className="bg-paper text-ink">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 pt-20 sm:pt-28 pb-20 text-center">
+          <div className="mx-auto max-w-apple px-6 sm:px-8 pt-20 sm:pt-28 pb-20 text-center">
             <div className="text-eyebrow mb-3 fade-up">PHA PRODUCTS</div>
             <Reveal>
               <h1
@@ -73,7 +73,7 @@ export default function ProductsPage() {
 
         {/* TECH ADVANTAGES */}
         <section className="bg-paper">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 py-20 border-t border-hairline">
+          <div className="mx-auto max-w-apple px-6 sm:px-8 py-20 border-t border-hairline">
             <Reveal>
               <div className="text-center max-w-3xl mx-auto mb-12">
                 <div className="text-eyebrow text-ink mb-3">CORE STRENGTHS</div>
@@ -105,7 +105,7 @@ export default function ProductsPage() {
               id={categoryAnchors[cat]}
               className={dark ? "bg-obsidian text-paper" : "bg-paper text-ink"}
             >
-              <div className="mx-auto max-w-6xl px-6 sm:px-8 py-24">
+              <div className="mx-auto max-w-apple px-6 sm:px-8 py-24">
                 <Reveal>
                   <div className="text-center max-w-3xl mx-auto mb-16">
                     <div
@@ -195,7 +195,7 @@ export default function ProductsPage() {
 
         {/* APPLICATIONS */}
         <section id="applications" className="bg-paper">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 py-24">
+          <div className="mx-auto max-w-apple px-6 sm:px-8 py-24">
             <Reveal>
               <div className="text-center max-w-3xl mx-auto mb-16">
                 <div className="text-eyebrow text-ink mb-3">APPLICATIONS</div>
@@ -221,7 +221,7 @@ export default function ProductsPage() {
 
         {/* CTA */}
         <section className="bg-fog">
-          <div className="mx-auto max-w-6xl px-6 sm:px-8 py-24 text-center">
+          <div className="mx-auto max-w-apple px-6 sm:px-8 py-24 text-center">
             <Reveal>
               <h2 className="text-display font-semibold tracking-tight">
                 不确定哪款牌号最合适?

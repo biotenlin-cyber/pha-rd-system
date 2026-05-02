@@ -148,7 +148,7 @@ export function ContactForm() {
         </p>
         <button
           type="submit"
-          className="inline-flex items-center justify-center h-11 px-7 rounded-full bg-link text-white text-sm font-medium hover:bg-linkHover transition"
+          className="inline-flex items-center justify-center h-11 px-7 rounded-full bg-appleBlue text-white text-sm font-medium hover:bg-appleBlueHover transition"
         >
           提交
         </button>
