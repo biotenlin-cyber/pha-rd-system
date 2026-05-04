@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Bioten™ 博碳PHA — Barrier, born from biology.</title>
+<meta name="description" content="Bioten™ 博碳PHA — A bio-based waterborne PHA barrier coating platform for paper packaging." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600&family=Noto+Sans+SC:wght@400;500&display=swap" rel="stylesheet" />
+
+<style>
+/* ============================================
+   Bioten™ 博碳PHA · Standalone Hero Preview
+   设计 token 与 docs/BIOTEN-DESIGN.md 一致
+   方案 A · 温和材料科技风
+   ============================================ */
+
+:root {
+  /* Fiber White — 背景纸白 */
+  --fiber-white: #F6F2EA;
+  --pulp-ivory: #ECE5D8;
+  --mist-white: #F8FAF8;
+  --warm-ash: #D8D2C7;
+
+  /* Bio Carbon — 主黑绿 */
+  --bio-carbon: #17231F;
+  --deep-chlorophyll: #243A32;
+  --graphite-green: #3C4A43;
+
+  /* Mineral Blue — 水性科技蓝 */
+  --mineral-blue: #7FAFC4;
+  --waterborne-blue: #A8D3DE;
+  --ice-blue: #D9ECF1;
+  --technical-blue: #2D6F9F;
+  --technical-blue-hover: #1F5F88;
+
+  /* Bio Green */
+  --algae-green: #6F927C;
+  --moss-green: #82976E;
+  --regen-green: #4E735D;
+
+  /* PHA Amber */
+  --pha-amber: #C9A66B;
+  --fermentation-gold: #D8C18A;
+  --cellulose-beige: #BFAF91;
+
+  /* Motion */
+  --ease-bio: cubic-bezier(0.22, 1, 0.36, 1);
+
+  --container: 1180px;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html, body {
+  font-family: "Inter", "Noto Sans SC", -apple-system, BlinkMacSystemFont,
+    "Helvetica Neue", "PingFang SC", sans-serif;
+  font-size: 17px;
+  line-height: 1.5;
+  letter-spacing: -0.01em;
+  background: var(--fiber-white);
+  color: var(--bio-carbon);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+@media (max-width: 767px) {
+  html, body { font-size: 15px; }
+}
+
+a { color: inherit; text-decoration: none; }
+img { max-width: 100%; display: block; }
+
+/* ============================================
+   纸纤维背景纹理 (subtle, 全局)
+   ============================================ */
+body::before {
+  content: "";
+  position: fixed; inset: 0;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(23,35,31,0.025) 1px, transparent 0);
+  background-size: 4px 4px;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ============================================
+   TOP NAV (极简,纤细)
+   ============================================ */
+.bioten-nav {
+  position: fixed; top: 0; inset-inline: 0;
+  z-index: 100;
+  background: rgba(246, 242, 234, 0.78);
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  border-bottom: 1px solid rgba(23, 35, 31, 0.06);
+  height: 64px;
+}
+.bioten-nav-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  height: 100%;
+  padding: 0 32px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.bioten-brand {
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-size: 24px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  color: var(--bio-carbon);
+  display: inline-flex; align-items: baseline; gap: 8px;
+}
+.bioten-brand sup {
+  font-size: 11px; vertical-align: super; opacity: 0.5;
+}
+.bioten-brand-cn {
+  font-family: "Noto Serif SC", serif;
+  font-size: 14px;
+  color: var(--graphite-green);
+  font-weight: 400;
+  letter-spacing: 0.04em;
+  margin-left: 4px;
+}
+.bioten-nav ul {
+  display: flex; gap: 36px;
+  list-style: none;
+  font-size: 13px;
+  letter-spacing: 0.02em;
+}
+.bioten-nav ul a {
+  color: var(--graphite-green);
+  transition: color 200ms;
+}
+.bioten-nav ul a:hover { color: var(--bio-carbon); }
+
+main { padding-top: 64px; position: relative; z-index: 2; }
+
+/* ============================================
+   HERO — Barrier, born from biology.
+   ============================================ */
+.hero {
+  position: relative;
+  padding: 96px 0 80px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 72% 35%, rgba(168, 211, 222, 0.45), transparent 34%),
+    radial-gradient(circle at 28% 72%, rgba(201, 166, 107, 0.16), transparent 28%),
+    linear-gradient(135deg, #F6F2EA 0%, #EEF4F3 48%, #DDEBF0 100%);
+}
+.hero-bg-typo {
+  position: absolute;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-family: "Cormorant Garamond", serif;
+  font-size: clamp(8rem, 28vw, 22rem);
+  font-weight: 500;
+  color: rgba(23, 35, 31, 0.04);
+  letter-spacing: -0.04em;
+  pointer-events: none;
+  user-select: none;
+  white-space: nowrap;
+  line-height: 0.8;
+}
+
+.hero-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  display: grid;
+  gap: 48px;
+  grid-template-columns: 1fr;
+  align-items: center;
+}
+@media (min-width: 980px) {
+  .hero-inner { grid-template-columns: 1.1fr 1fr; gap: 64px; }
+}
+
+.hero-eyebrow {
+  display: inline-flex; align-items: center; gap: 10px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--graphite-green);
+  margin-bottom: 28px;
+}
+.hero-eyebrow .dot {
+  width: 6px; height: 6px; border-radius: 50%;
+  background: var(--algae-green);
+  box-shadow: 0 0 0 4px rgba(111, 146, 124, 0.18);
+}
+
+.hero-title {
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-weight: 500;
+  font-size: clamp(2.75rem, 6.5vw, 5.5rem);
+  line-height: 1.0;
+  letter-spacing: -0.02em;
+  color: var(--bio-carbon);
+}
+.hero-title .ital {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--deep-chlorophyll);
+}
+
+.hero-title-cn {
+  font-family: "Noto Serif SC", serif;
+  font-weight: 600;
+  font-size: clamp(1.5rem, 2.6vw, 2.2rem);
+  line-height: 1.3;
+  letter-spacing: 0.01em;
+  margin-top: 24px;
+  color: var(--deep-chlorophyll);
+}
+
+.hero-sub {
+  margin-top: 28px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--graphite-green);
+  max-width: 520px;
+}
+
+.hero-cta {
+  margin-top: 36px;
+  display: flex; flex-wrap: wrap; gap: 12px;
+}
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  height: 48px; padding: 0 24px;
+  border-radius: 9999px;
+  font-size: 14px; font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: all 220ms var(--ease-bio);
+  cursor: pointer;
+  border: none;
+}
+.btn-primary {
+  background: var(--technical-blue);
+  color: var(--mist-white);
+}
+.btn-primary:hover {
+  background: var(--technical-blue-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(45, 111, 159, 0.25);
+}
+.btn-secondary {
+  background: rgba(255, 255, 255, 0.54);
+  border: 1px solid rgba(23, 35, 31, 0.12);
+  color: var(--bio-carbon);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.btn-secondary:hover {
+  background: rgba(255, 255, 255, 0.72);
+}
+.btn .arr {
+  margin-left: 8px;
+  transition: transform 200ms var(--ease-bio);
+}
+.btn:hover .arr { transform: translateX(3px); }
+
+/* ============================================
+   HERO VISUAL — 透明膜在纸纤维上生长
+   纯 CSS 微距材料场景
+   ============================================ */
+.hero-visual {
+  position: relative;
+  aspect-ratio: 4 / 5;
+  max-width: 480px;
+  margin: 0 auto;
+  border-radius: 24px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(168, 211, 222, 0.4), transparent 60%),
+    linear-gradient(180deg, #FAF6EC 0%, #E8DDC8 100%);
+  box-shadow:
+    0 40px 80px -20px rgba(23, 35, 31, 0.18),
+    0 8px 24px -8px rgba(23, 35, 31, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+/* 纸纤维基材 (底层) */
+.paper-fiber {
+  position: absolute;
+  inset: 50% 0 0 0;
+  background:
+    repeating-linear-gradient(
+      87deg,
+      rgba(191, 175, 145, 0.3) 0px,
+      rgba(191, 175, 145, 0.3) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      94deg,
+      rgba(191, 175, 145, 0.2) 0px,
+      rgba(191, 175, 145, 0.2) 1px,
+      transparent 1px,
+      transparent 7px
+    ),
+    linear-gradient(180deg, #E8DDC8 0%, #C9B898 100%);
+}
+.paper-fiber::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 20%, rgba(255,255,255,0.2), transparent 60%);
+}
+
+/* Bioten 透明阻隔膜 (核心层) */
+.barrier-film {
+  position: absolute;
+  left: 0; right: 0; top: 50%;
+  height: 8px;
+  background: linear-gradient(180deg,
+    rgba(168, 211, 222, 0.0) 0%,
+    rgba(168, 211, 222, 0.55) 40%,
+    rgba(127, 175, 196, 0.45) 100%);
+  border-top: 1px solid rgba(168, 211, 222, 0.7);
+  box-shadow:
+    0 -1px 0 rgba(217, 236, 241, 0.8),
+    0 8px 18px -4px rgba(45, 111, 159, 0.2);
+  animation: filmShimmer 6s ease-in-out infinite;
+}
+@keyframes filmShimmer {
+  0%, 100% { box-shadow: 0 -1px 0 rgba(217,236,241,0.8), 0 8px 18px -4px rgba(45,111,159,0.20); }
+  50%      { box-shadow: 0 -1px 0 rgba(217,236,241,1.0), 0 10px 24px -4px rgba(45,111,159,0.30); }
+}
+
+/* 水滴 — 高接触角 */
+.droplet-water {
+  position: absolute;
+  top: calc(50% - 32px);
+  left: 28%;
+  width: 38px; height: 32px;
+  background: radial-gradient(ellipse at 30% 30%,
+    rgba(255, 255, 255, 0.9) 0%,
+    rgba(217, 236, 241, 0.7) 35%,
+    rgba(127, 175, 196, 0.4) 100%);
+  border-radius: 50% 50% 48% 48% / 60% 60% 40% 40%;
+  box-shadow:
+    inset -2px -4px 8px rgba(45, 111, 159, 0.2),
+    inset 2px 2px 6px rgba(255, 255, 255, 0.7),
+    0 4px 8px rgba(23, 35, 31, 0.12);
+  animation: floatDrop 5s ease-in-out infinite;
+}
+.droplet-water::after {
+  content: "H₂O";
+  position: absolute;
+  top: -22px; left: 50%;
+  transform: translateX(-50%);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--graphite-green);
+  opacity: 0.55;
+}
+
+/* 油滴 — 被排斥 */
+.droplet-oil {
+  position: absolute;
+  top: calc(50% - 22px);
+  right: 30%;
+  width: 26px; height: 22px;
+  background: radial-gradient(ellipse at 30% 30%,
+    rgba(232, 215, 174, 0.95) 0%,
+    rgba(201, 166, 107, 0.85) 50%,
+    rgba(148, 119, 73, 0.7) 100%);
+  border-radius: 50% 50% 45% 45% / 60% 60% 40% 40%;
+  box-shadow:
+    inset -1px -2px 4px rgba(148, 119, 73, 0.4),
+    inset 1px 1px 3px rgba(255, 255, 255, 0.5),
+    0 3px 6px rgba(23, 35, 31, 0.1);
+  animation: floatDrop 4.2s ease-in-out infinite reverse;
+}
+.droplet-oil::after {
+  content: "Oil";
+  position: absolute;
+  top: -18px; left: 50%;
+  transform: translateX(-50%);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px;
+  letter-spacing: 0.08em;
+  color: var(--graphite-green);
+  opacity: 0.55;
+}
+@keyframes floatDrop {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-3px); }
+}
+
+/* PHA 乳液微粒 (悬浮在水相) */
+.pha-particles { position: absolute; inset: 0 0 50% 0; }
+.pha-particle {
+  position: absolute;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 30% 30%,
+    rgba(255, 255, 255, 0.9), var(--pha-amber));
+  box-shadow: 0 0 8px rgba(201, 166, 107, 0.4);
+  animation: drift 8s ease-in-out infinite;
+}
+.pha-particle:nth-child(1) { top: 20%; left: 18%; animation-delay: 0s; }
+.pha-particle:nth-child(2) { top: 35%; left: 42%; animation-delay: -1.5s; width: 4px; height: 4px; }
+.pha-particle:nth-child(3) { top: 12%; left: 70%; animation-delay: -3s; width: 8px; height: 8px; }
+.pha-particle:nth-child(4) { top: 28%; left: 85%; animation-delay: -4.5s; }
+.pha-particle:nth-child(5) { top: 8%; left: 30%; animation-delay: -2s; width: 3px; height: 3px; opacity: 0.7; }
+.pha-particle:nth-child(6) { top: 40%; left: 60%; animation-delay: -6s; width: 5px; height: 5px; }
+.pha-particle:nth-child(7) { top: 22%; left: 8%; animation-delay: -3.5s; width: 4px; height: 4px; opacity: 0.8; }
+@keyframes drift {
+  0%, 100% { transform: translate(0, 0); }
+  33%      { transform: translate(4px, -3px); }
+  66%      { transform: translate(-3px, 5px); }
+}
+
+/* 视觉边缘 caption */
+.visual-caption {
+  position: absolute;
+  bottom: 20px; left: 24px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(23, 35, 31, 0.55);
+}
+.visual-caption b {
+  display: block;
+  font-weight: 500;
+  color: var(--bio-carbon);
+  font-size: 11px;
+}
+.visual-tag {
+  position: absolute;
+  top: 24px; right: 24px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--graphite-green);
+  display: inline-flex; align-items: center; gap: 8px;
+}
+.visual-tag::before {
+  content: "";
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--mineral-blue);
+  box-shadow: 0 0 0 3px rgba(127, 175, 196, 0.25);
+  animation: tagPulse 2.4s ease-in-out infinite;
+}
+@keyframes tagPulse {
+  0%, 100% { box-shadow: 0 0 0 3px rgba(127,175,196,0.25); }
+  50%      { box-shadow: 0 0 0 6px rgba(127,175,196,0.05); }
+}
+
+/* ============================================
+   MATERIAL DATA PLATES — 三张实验室玻璃片
+   ============================================ */
+.plates {
+  max-width: var(--container);
+  margin: 80px auto 0;
+  padding: 0 32px;
+  display: grid;
+  gap: 16px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 768px) { .plates { grid-template-columns: repeat(3, 1fr); } }
+
+.plate {
+  position: relative;
+  background: rgba(248, 250, 248, 0.52);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+  border-radius: 18px;
+  padding: 28px 28px 24px;
+  backdrop-filter: blur(22px);
+  -webkit-backdrop-filter: blur(22px);
+  box-shadow:
+    0 24px 70px rgba(45, 111, 159, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+  transition: transform 320ms var(--ease-bio), box-shadow 320ms var(--ease-bio);
+}
+.plate:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 30px 80px rgba(45, 111, 159, 0.14),
+    inset 0 1px 0 rgba(255, 255, 255, 0.72);
+}
+
+.plate-id {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--graphite-green);
+  opacity: 0.6;
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.plate-id .line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, rgba(23,35,31,0.18), transparent);
+}
+
+.plate-title {
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.15;
+  color: var(--bio-carbon);
+  margin-bottom: 8px;
+  letter-spacing: -0.005em;
+}
+.plate-route {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  color: var(--technical-blue);
+  margin-bottom: 18px;
+}
+
+.plate-mini {
+  height: 36px;
+  border-top: 1px solid rgba(23, 35, 31, 0.08);
+  padding-top: 14px;
+  display: flex; align-items: center; justify-content: space-between;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--graphite-green);
+}
+.plate-mini .arr { color: var(--technical-blue); transition: transform 200ms; }
+.plate:hover .plate-mini .arr { transform: translateX(3px); }
+
+/* 顶部色带 */
+.plate.green::before,
+.plate.blue::before,
+.plate.amber::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 24px; right: 24px;
+  height: 2px;
+  border-radius: 0 0 2px 2px;
+}
+.plate.green::before { background: var(--algae-green); }
+.plate.blue::before  { background: var(--technical-blue); }
+.plate.amber::before { background: var(--pha-amber); }
+
+/* ============================================
+   SECTION · From PHA emulsion to functional film.
+   ============================================ */
+.principle {
+  position: relative;
+  padding: 140px 0 120px;
+  background: var(--mist-white);
+  overflow: hidden;
+}
+.principle-inner {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 32px;
+}
+.principle-eyebrow {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--algae-green);
+  margin-bottom: 20px;
+}
+.principle-title {
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-size: clamp(2.25rem, 4.5vw, 3.75rem);
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  color: var(--bio-carbon);
+  max-width: 720px;
+  margin-bottom: 16px;
+}
+.principle-title .ital { font-style: italic; color: var(--deep-chlorophyll); }
+.principle-title-cn {
+  font-family: "Noto Serif SC", serif;
+  font-weight: 600;
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  color: var(--deep-chlorophyll);
+  margin-bottom: 56px;
+  letter-spacing: 0.02em;
+}
+
+/* 横向膜层剖面 */
+.diagram {
+  position: relative;
+  margin-top: 56px;
+  border-radius: 16px;
+  overflow: hidden;
+  background: linear-gradient(180deg, #FAF6EC 0%, #F0E5CE 100%);
+  box-shadow: 0 30px 80px -20px rgba(23, 35, 31, 0.12);
+}
+.layer {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  align-items: center;
+  padding: 28px 32px;
+  font-family: "Inter", "Noto Sans SC", sans-serif;
+  position: relative;
+}
+.layer + .layer { border-top: 1px solid rgba(23, 35, 31, 0.06); }
+.layer-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--graphite-green);
+}
+.layer-name {
+  font-family: "Cormorant Garamond", "Noto Serif SC", serif;
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--bio-carbon);
+}
+.layer-name small {
+  display: block;
+  margin-top: 4px;
+  font-family: "Inter", sans-serif;
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--graphite-green);
+  letter-spacing: 0;
+}
+.layer.l1 { background: linear-gradient(180deg, rgba(217, 236, 241, 0.6), rgba(217, 236, 241, 0.2)); }
+.layer.l2 { background: linear-gradient(180deg, rgba(168, 211, 222, 0.55), rgba(168, 211, 222, 0.35)); position: relative; }
+.layer.l2::after {
+  content: "";
+  position: absolute; left: 0; right: 0; bottom: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(45, 111, 159, 0.4), transparent);
+}
+.layer.l3 {
+  background: linear-gradient(180deg, rgba(232, 215, 174, 0.5), rgba(201, 166, 107, 0.25));
+  background-image:
+    repeating-linear-gradient(87deg, rgba(191,175,145,0.3) 0 1px, transparent 1px 6px),
+    linear-gradient(180deg, rgba(232,215,174,0.5), rgba(201,166,107,0.25));
+}
+.layer.l4 {
+  background: linear-gradient(180deg, rgba(111, 146, 124, 0.18), rgba(78, 115, 93, 0.1));
+  border-top: 1px dashed rgba(78, 115, 93, 0.3);
+}
+.layer.l4 .layer-name { font-style: italic; color: var(--deep-chlorophyll); }
+
+/* ============================================
+   FOOTER MICRO
+   ============================================ */
+.foot {
+  padding: 48px 32px 64px;
+  text-align: center;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--graphite-green);
+  opacity: 0.7;
+}
+.foot strong {
+  display: block;
+  font-family: "Cormorant Garamond", serif;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 0;
+  color: var(--bio-carbon);
+  opacity: 1;
+  margin-bottom: 12px;
+  font-style: italic;
+}
+
+/* ============================================
+   Reveal
+   ============================================ */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 900ms var(--ease-bio), transform 900ms var(--ease-bio);
+}
+.reveal.in { opacity: 1; transform: translateY(0); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+</style>
+</head>
+<body>
+
+<!-- ============================================
+     TOP NAV
+     ============================================ -->
+<nav class="bioten-nav">
+  <div class="bioten-nav-inner">
+    <a href="#" class="bioten-brand">
+      Bioten<sup>™</sup>
+      <span class="bioten-brand-cn">博碳PHA</span>
+    </a>
+    <ul>
+      <li><a href="#">Solutions</a></li>
+      <li><a href="#">Technology</a></li>
+      <li><a href="#">Applications</a></li>
+      <li><a href="#">Sustainability</a></li>
+      <li><a href="#">Resources</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main>
+
+  <!-- ============================================
+       HERO — Barrier, born from biology.
+       ============================================ -->
+  <section class="hero">
+    <div class="hero-bg-typo">BIOTEN</div>
+
+    <div class="hero-inner">
+
+      <div class="hero-text">
+        <div class="hero-eyebrow">
+          <span class="dot"></span>
+          <span>BIO-BASED · WATERBORNE · BARRIER PLATFORM</span>
+        </div>
+
+        <h1 class="hero-title">
+          Barrier,<br />
+          <span class="ital">born from biology.</span>
+        </h1>
+
+        <p class="hero-title-cn">
+          来自生物的工程阻隔。
+        </p>
+
+        <p class="hero-sub">
+          Bioten™ 博碳PHA — a bio-based waterborne PHA coating platform engineered for paper packaging.
+          Designed for barrier performance, processability, and circularity.
+        </p>
+
+        <div class="hero-cta">
+          <a href="#" class="btn btn-primary">
+            Start a Coating Trial<span class="arr">→</span>
+          </a>
+          <a href="#" class="btn btn-secondary">
+            View Technology<span class="arr">→</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- 主视觉:透明膜在纸纤维上 -->
+      <div class="hero-visual">
+        <div class="visual-tag">Live · Material Scene</div>
+
+        <div class="pha-particles">
+          <div class="pha-particle"></div>
+          <div class="pha-particle"></div>
+          <div class="pha-particle"></div>
+          <div class="pha-particle"></div>
+          <div class="pha-particle"></div>
+          <div class="pha-particle"></div>
+          <div class="pha-particle"></div>
+        </div>
+
+        <div class="droplet-water"></div>
+        <div class="droplet-oil"></div>
+
+        <div class="barrier-film"></div>
+        <div class="paper-fiber"></div>
+
+        <div class="visual-caption">
+          <span>CROSS-SECTION · 1:1000 SCALE</span>
+          <b>Bioten film on paper fiber</b>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================
+       MATERIAL DATA PLATES
+       ============================================ -->
+  <section class="plates">
+    <div class="plate green reveal">
+      <div class="plate-id">CARD 01<span class="line"></span></div>
+      <div class="plate-title">Water<br />/ Grease Barrier</div>
+      <div class="plate-route">Cobb · WVTR · Kit pathway</div>
+      <div class="plate-mini">
+        <span>Validation route</span>
+        <span class="arr">→</span>
+      </div>
+    </div>
+
+    <div class="plate blue reveal">
+      <div class="plate-id">CARD 02<span class="line"></span></div>
+      <div class="plate-title">Heat-sealable<br />Coating</div>
+      <div class="plate-route">Conversion · sealing window</div>
+      <div class="plate-mini">
+        <span>Process spec</span>
+        <span class="arr">→</span>
+      </div>
+    </div>
+
+    <div class="plate amber reveal">
+      <div class="plate-id">CARD 03<span class="line"></span></div>
+      <div class="plate-title">Repulping<br />Design</div>
+      <div class="plate-route">Fiber recovery validation</div>
+      <div class="plate-mini">
+        <span>Circularity route</span>
+        <span class="arr">→</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================
+       MATERIAL PRINCIPLE — emulsion → film
+       ============================================ -->
+  <section class="principle">
+    <div class="principle-inner">
+      <div class="principle-eyebrow reveal">MATERIAL PRINCIPLE</div>
+      <h2 class="principle-title reveal">
+        From PHA emulsion <br />
+        <span class="ital">to functional film.</span>
+      </h2>
+      <p class="principle-title-cn reveal">从 PHA 乳液到纸基包装阻隔系统。</p>
+
+      <div class="diagram reveal">
+        <div class="layer l1">
+          <div class="layer-label">LAYER 01</div>
+          <div class="layer-name">
+            Food / Liquid / Oil
+            <small>外部介质 — 由阻隔层隔绝在表面</small>
+          </div>
+        </div>
+        <div class="layer l2">
+          <div class="layer-label">LAYER 02 · BIOTEN</div>
+          <div class="layer-name">
+            <em>Bioten Barrier Layer</em>
+            <small>水性 PHA 涂层 · 极薄 · 半透明 · 工程阻隔膜</small>
+          </div>
+        </div>
+        <div class="layer l3">
+          <div class="layer-label">LAYER 03</div>
+          <div class="layer-name">
+            Paper Fiber Substrate
+            <small>纸纤维基材 — 性能保留 · 印刷兼容</small>
+          </div>
+        </div>
+        <div class="layer l4">
+          <div class="layer-label">LAYER 04</div>
+          <div class="layer-name">
+            <em>Repulping / Recovery Pathway</em>
+            <small>循环路径 — 进入再浆体系,纤维可回收</small>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ============================================
+       FOOTER MICRO
+       ============================================ -->
+  <footer class="foot">
+    <strong>The invisible layer that helps paper perform.</strong>
+    BIOTEN™ 博碳PHA · BIO-BASED WATERBORNE BARRIER PLATFORM
+    <br />
+    © 2026 · Preview composition based on docs/BIOTEN-DESIGN.md
+  </footer>
+
+</main>
+
+<script>
+(function () {
+  if (!("IntersectionObserver" in window)) {
+    document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("in"); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("in");
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: "0px 0px -8% 0px" });
+  document.querySelectorAll(".reveal").forEach(function (el) { io.observe(el); });
+})();
+</script>
+
+</body>
+</html>
