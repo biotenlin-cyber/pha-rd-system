@@ -10,6 +10,11 @@ class Settings(BaseSettings):
     search_backend: str = "trgm"
     log_level: str = "INFO"
 
+    anthropic_api_key: str = ""
+    anthropic_default_model: str = "claude-sonnet-4-6"
+    anthropic_oa_model: str = "claude-opus-4-7"
+    anthropic_critique_model: str = "claude-haiku-4-5-20251001"
+
     @property
     def cors_origin_list(self) -> list[str]:
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]

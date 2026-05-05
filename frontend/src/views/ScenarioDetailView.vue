@@ -2,16 +2,20 @@
 import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { fetchScenario } from '@/api/scenarios'
+import { fetchScenarioPatents } from '@/api/patents'
 import MatchTable from '@/components/MatchTable.vue'
 import TagChip from '@/components/TagChip.vue'
 import PlaceholderLinks from '@/components/PlaceholderLinks.vue'
-import type { ScenarioDetail } from '@/types/models'
+import LinkedPatentList from '@/components/LinkedPatentList.vue'
+import type { LinkedPatent, ScenarioDetail } from '@/types/models'
 
 const route = useRoute()
 const scenario = ref<ScenarioDetail | null>(null)
+const linkedPatents = ref<LinkedPatent[]>([])
 
 const load = async (code: string) => {
   scenario.value = await fetchScenario(code)
+  linkedPatents.value = await fetchScenarioPatents(code)
 }
 
 const formatMarket = (n: number | null) => {
@@ -81,7 +85,8 @@ watch(() => route.params.code, (c) => c && load(c as string))
       <MatchTable :matches="scenario.matches" row-type="grade" />
     </section>
 
-    <PlaceholderLinks :links="scenario.external_links" title="关联专利 / 项目" />
+    <LinkedPatentList :patents="linkedPatents" title="关联发明专利" />
+    <PlaceholderLinks :links="scenario.external_links" title="其它外部链接（项目等）" />
   </div>
 </template>
 

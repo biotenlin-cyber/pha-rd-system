@@ -4,7 +4,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.db.deps import get_db
 from app.schemas.common import Page, Pagination
 from app.schemas.scenario import ExternalLink, ScenarioDetail, ScenarioMatchSummary, ScenarioSummary
-from app.services import match_service, scenario_service
+from app.services import match_service, patent_service, scenario_service
 
 router = APIRouter()
 
@@ -51,3 +51,9 @@ async def get_external_links(
 ):
     detail = await scenario_service.get_scenario_detail(db, key)
     return await scenario_service.list_scenario_external_links(db, detail["id"], type)
+
+
+@router.get("/{key}/patents")
+async def get_linked_patents(key: str, db: AsyncSession = Depends(get_db)):
+    detail = await scenario_service.get_scenario_detail(db, key)
+    return await patent_service.list_patents_for_scenario(db, detail["id"])

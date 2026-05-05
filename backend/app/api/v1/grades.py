@@ -3,7 +3,7 @@ from sqlalchemy.ext.asyncio import AsyncSession
 
 from app.db.deps import get_db
 from app.schemas.grade import Grade, GradeDetail, GradeMatchSummary
-from app.services import grade_service
+from app.services import grade_service, patent_service
 
 router = APIRouter()
 
@@ -59,3 +59,9 @@ async def get_recommended_scenarios(
 ):
     detail = await grade_service.get_grade_detail(db, key)
     return await grade_service.recommend_scenarios_for_grade(db, detail["id"], top=top)
+
+
+@router.get("/{key}/patents")
+async def get_linked_patents(key: str, db: AsyncSession = Depends(get_db)):
+    detail = await grade_service.get_grade_detail(db, key)
+    return await patent_service.list_patents_for_grade(db, detail["id"])

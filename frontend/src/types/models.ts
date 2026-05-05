@@ -132,3 +132,215 @@ export interface SearchResponse {
   facets: { domain: SearchFacet[]; tag: SearchFacet[]; type: SearchFacet[] }
   data: SearchHit[]
 }
+
+// ── patents ───────────────────────────────────────────────────────────
+export interface PatentSummary {
+  id: string
+  internal_code: string
+  publication_no: string | null
+  title_zh: string
+  country_code: string
+  patent_type: string
+  legal_status: string
+  application_date: string | null
+  grant_date: string | null
+  primary_applicant: string | null
+  first_inventor: string | null
+  primary_ipc: string | null
+  tags: string[]
+}
+
+export interface PatentInventor {
+  inventor_id: number
+  name_zh: string
+  name_en: string | null
+  seq: number
+  contribution_pct: number | null
+  is_corresponding: boolean
+}
+
+export interface PatentApplicant {
+  applicant_id: number
+  name_zh: string
+  name_en: string | null
+  applicant_type: string
+  country_code: string | null
+  role: string
+  share_pct: number | null
+}
+
+export interface PatentClassification {
+  id: number
+  scheme: string
+  code: string
+  full_symbol: string | null
+  section: string | null
+  class_code: string | null
+  subclass: string | null
+  main_group: string | null
+  classification_value: string
+  is_primary: boolean
+  rank_order: number | null
+}
+
+export interface PatentLegalEvent {
+  id: number
+  event_code: string
+  event_date: string
+  event_desc: string | null
+  source: string | null
+}
+
+export interface PatentScenarioLink {
+  scenario_id: number
+  scenario_code: string
+  scenario_name_zh: string
+  domain_code: string
+  relevance: number
+}
+
+export interface PatentGradeLink {
+  grade_id: number
+  grade_code: string
+  grade_name_zh: string
+  relevance: number
+}
+
+export interface PatentDetail {
+  id: string
+  internal_code: string
+  docdb_key: string | null
+  publication_no: string | null
+  application_no: string | null
+  grant_no: string | null
+  title_zh: string
+  title_en: string | null
+  abstract_zh: string | null
+  abstract_en: string | null
+  tech_field: string | null
+  country_code: string
+  patent_type: string
+  legal_status: string
+  application_route: string
+  is_service_invention: boolean
+  application_date: string | null
+  publication_date: string | null
+  grant_date: string | null
+  next_annual_fee_due: string | null
+  agency_name: string | null
+  agent_name: string | null
+  internal_owner: string | null
+  claim_count: number | null
+  independent_claim_count: number | null
+  page_count: number | null
+  tags: string[]
+  inventors: PatentInventor[]
+  applicants: PatentApplicant[]
+  classifications: PatentClassification[]
+  legal_events: PatentLegalEvent[]
+  scenarios: PatentScenarioLink[]
+  grades: PatentGradeLink[]
+  has_disclosure: boolean
+  draft_count: number
+  oa_count: number
+}
+
+export interface Disclosure {
+  id: number
+  patent_id: string
+  submitted_by: string | null
+  problem_statement: string | null
+  existing_solutions: string | null
+  proposed_solution: string | null
+  key_points: unknown[]
+  advantages: string | null
+  embodiments: unknown[]
+  attachments: unknown[]
+  confidentiality_level: string
+  status: string
+}
+
+export interface Draft {
+  id: number
+  patent_id: string
+  parent_draft_id: number | null
+  amendment_oa_id: number | null
+  version: number
+  section: string
+  content: string
+  ai_generated: boolean
+  ai_model: string | null
+  ai_confidence: string | null
+  is_filed: boolean
+  filed_at: string | null
+  reviewed_by: string | null
+  reviewed_at: string | null
+  review_score_clarity: number | null
+  review_score_essential: number | null
+  review_score_generalization: number | null
+  review_score_support: number | null
+  review_score_chinese: number | null
+  review_score_format: number | null
+  review_decision: string | null
+  review_notes: string | null
+  created_at: string
+  updated_at: string
+}
+
+export interface OfficeAction {
+  id: number
+  patent_id: string
+  action_no: string
+  oa_type: string
+  received_date: string | null
+  due_date: string | null
+  examiner_name: string | null
+  issues: unknown[]
+  response_content: string | null
+  responded_at: string | null
+  status: string
+}
+
+export interface PatentAnalytics {
+  total: number
+  by_legal_status: SearchFacet[]
+  by_country: SearchFacet[]
+  by_year: SearchFacet[]
+  by_top_applicant: SearchFacet[]
+  by_top_inventor: SearchFacet[]
+  by_subclass: SearchFacet[]
+  by_grade: SearchFacet[]
+  by_domain: SearchFacet[]
+}
+
+export interface PatentHeatmapCell {
+  domain: string
+  grade: string
+  count: number
+}
+
+export interface LinkedPatent {
+  id: string
+  internal_code: string
+  publication_no: string | null
+  title_zh: string
+  legal_status: string
+  country_code: string
+  application_date: string | null
+  relevance: number
+}
+
+export interface AIDraftJob {
+  id: string
+  scenario: string
+  status: string
+  model: string | null
+  input_tokens: number | null
+  output_tokens: number | null
+  cache_read_tokens: number | null
+  started_at: string | null
+  completed_at: string | null
+  error: string | null
+  result_draft_id: number | null
+  preview: string | null
+}

@@ -28,6 +28,48 @@ const routes: RouteRecordRaw[] = [
     component: () => import('@/views/SearchResultsView.vue'),
   },
   {
+    path: '/patents',
+    name: 'patent-list',
+    component: () => import('@/views/PatentListView.vue'),
+  },
+  {
+    path: '/patents/analytics',
+    name: 'patent-analytics',
+    component: () => import('@/views/PatentAnalyticsView.vue'),
+  },
+  {
+    path: '/patents/import',
+    name: 'patent-import',
+    component: () => import('@/views/PatentImportView.vue'),
+  },
+  {
+    path: '/patents/:code',
+    name: 'patent-detail',
+    component: () => import('@/views/PatentDetailView.vue'),
+    children: [
+      {
+        path: '',
+        name: 'patent-detail-overview',
+        component: () => import('@/views/patent/PatentOverview.vue'),
+      },
+      {
+        path: 'disclosure',
+        name: 'patent-detail-disclosure',
+        component: () => import('@/views/patent/PatentDisclosure.vue'),
+      },
+      {
+        path: 'drafts',
+        name: 'patent-detail-drafts',
+        component: () => import('@/views/patent/PatentDrafts.vue'),
+      },
+      {
+        path: 'office-actions',
+        name: 'patent-detail-oas',
+        component: () => import('@/views/patent/PatentOAs.vue'),
+      },
+    ],
+  },
+  {
     path: '/:pathMatch(.*)*',
     name: 'not-found',
     component: () => import('@/views/NotFoundView.vue'),

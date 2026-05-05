@@ -2,16 +2,20 @@
 import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { fetchGrade } from '@/api/grades'
+import { fetchGradePatents } from '@/api/patents'
 import MatchTable from '@/components/MatchTable.vue'
 import PerformanceRadar from '@/components/PerformanceRadar.vue'
 import PlaceholderLinks from '@/components/PlaceholderLinks.vue'
-import type { GradeDetail } from '@/types/models'
+import LinkedPatentList from '@/components/LinkedPatentList.vue'
+import type { GradeDetail, LinkedPatent } from '@/types/models'
 
 const route = useRoute()
 const grade = ref<GradeDetail | null>(null)
+const linkedPatents = ref<LinkedPatent[]>([])
 
 const load = async (code: string) => {
   grade.value = await fetchGrade(code)
+  linkedPatents.value = await fetchGradePatents(code)
 }
 
 onMounted(() => load(route.params.code as string))
@@ -55,7 +59,8 @@ watch(() => route.params.code, (c) => c && load(c as string))
       <MatchTable :matches="grade.matches" row-type="scenario" />
     </section>
 
-    <PlaceholderLinks :links="[]" title="关联专利 / 项目" />
+    <LinkedPatentList :patents="linkedPatents" title="关联发明专利" />
+    <PlaceholderLinks :links="[]" title="其它外部链接（项目等）" />
   </div>
 </template>
 

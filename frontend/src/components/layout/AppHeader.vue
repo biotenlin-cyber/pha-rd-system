@@ -19,6 +19,8 @@ const onSearch = (q: string) => {
       <nav class="nav">
         <RouterLink to="/">领域</RouterLink>
         <RouterLink to="/grades">牌号</RouterLink>
+        <RouterLink to="/patents">专利</RouterLink>
+        <RouterLink to="/patents/analytics">分析</RouterLink>
       </nav>
       <SearchBar class="header-search" @search="onSearch" />
     </div>

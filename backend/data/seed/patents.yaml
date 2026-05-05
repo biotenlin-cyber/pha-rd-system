@@ -1,0 +1,310 @@
+# PHA 领域 12 条种子专利（由 PHA 专利情报专家提供）
+# 6 真公开 + 6 拟示例；覆盖 6+ 应用领域、6 个牌号、5 种法律状态、5 个国家。
+# 法律状态枚举详见 backend/app/models/patent.py LEGAL_STATUSES
+
+- internal_code: PHA-2024-001
+  publication_no: CN114015208B
+  application_no: CN202111234567.8
+  title_zh: 一种高韧性聚羟基脂肪酸酯共混改性材料及其制备方法
+  title_en: High-toughness PHA blend material and preparation method thereof
+  abstract_zh: >-
+    本发明公开了一种高韧性 PHA 共混改性材料，以 PHBHHx 为基体（HHx 摩尔含量 8%–12%），
+    复配 5%–15% 的 P34HB 弹性体相、0.3%–1.0% 的有机化蒙脱土与 0.5% 成核剂硼酸锌，
+    通过双螺杆 165–185 °C 熔融共混挤出造粒。所得材料拉伸强度 ≥ 28 MPa、断裂伸长率 ≥ 450%、
+    缺口冲击 ≥ 35 kJ/m²，加工窗口拓宽至 30 °C 以上，可吹膜厚度 12–25 μm。
+  country_code: CN
+  patent_type: invention
+  legal_status: granted
+  application_date: 2021-10-22
+  publication_date: 2022-04-15
+  grant_date: 2024-03-08
+  applicant_names: ["北京蓝晶微生物科技有限公司"]
+  inventor_names: ["李腾", "张浩千", "王某某"]
+  agency_name: 北京康信知识产权代理有限责任公司
+  internal_owner: 研发部-王工
+  tech_field: 生物降解高分子材料改性领域，涉及 PHBHHx/P34HB 共混体系与成核结晶调控。
+  tags: [high-toughness, blown-film, blend, competitor]
+  classifications:
+    - {scheme: IPC, code: "C08L 67/04", is_primary: true}
+    - {scheme: IPC, code: "C08K 5/00", is_primary: false}
+    - {scheme: IPC, code: "C08J 5/18", is_primary: false}
+  scenario_codes: [packaging.courier_bag, agriculture.mulch_film, packaging.food_film]
+  grade_codes: [PHBHHx, P34HB]
+
+- internal_code: PHA-2023-002
+  publication_no: JP2023-105678A
+  application_no: JP2022-098765
+  title_zh: 共聚 PHBH 树脂及其制备方法
+  title_en: Poly(3-hydroxybutyrate-co-3-hydroxyhexanoate) resin and production method
+  abstract_zh: >-
+    本发明涉及一种 PHBHHx 树脂的连续发酵制备方法，使用改造的 Cupriavidus necator H16 菌株，
+    以棕榈油与己酸为复合碳源，通过两阶段补料策略将 HHx 摩尔分数稳定控制在 6%–11% 之间。
+    30 m³ 发酵罐连续 72 小时运行，细胞干重达 110 g/L，胞内 PHA 含量 ≥ 75%。
+  country_code: JP
+  patent_type: invention
+  legal_status: granted
+  application_date: 2022-06-15
+  publication_date: 2023-12-20
+  grant_date: 2024-08-30
+  applicant_names: ["株式会社カネカ (Kaneka Corporation)"]
+  inventor_names: ["Tanaka Hiroshi", "Sato Kenji", "Yamamoto Akira"]
+  internal_owner: 情报部-李工
+  tech_field: 微生物发酵法制备 PHA，重点在共聚组成调控与下游分离精制。
+  tags: [competitor, fermentation, kaneka, core-process]
+  classifications:
+    - {scheme: IPC, code: "C12P 7/62", is_primary: true}
+    - {scheme: IPC, code: "C12N 1/20", is_primary: false}
+    - {scheme: IPC, code: "C08G 63/06", is_primary: false}
+  scenario_codes: [packaging.food_film, marine.fishing_net, carbon_neutral.biorefinery_byproduct]
+  grade_codes: [PHBHHx]
+
+- internal_code: PHA-2024-003
+  publication_no: CN117846301A
+  application_no: CN202311456789.2
+  title_zh: 一种用于可吸收外科缝合线的 P3HB4HB 弹性体及其单丝制备方法
+  abstract_zh: >-
+    本发明提供一种用于外科缝合线的 P(3HB-co-4HB) 弹性体材料，4HB 摩尔含量 45%–55%，
+    数均分子量 Mn 30–50 万。USP 3-0 级单丝拉伸强度 ≥ 380 MPa、断裂伸长率 ≥ 35%、打结强度
+    保留率 ≥ 75%。大鼠皮下植入 90 天保留 50% 强度，180 天完全降解。
+  country_code: CN
+  patent_type: invention
+  legal_status: substantive_pending
+  application_date: 2023-11-02
+  publication_date: 2024-03-15
+  applicant_names: ["微构工场（深圳）生物科技有限公司"]
+  inventor_names: ["陈国强", "刘陈立", "周某某"]
+  agency_name: 北京三友知识产权代理有限公司
+  internal_owner: 研发部-医疗组-赵工
+  tech_field: 医用可吸收高分子材料制备及医疗器械，特别涉及 P3HB4HB 弹性体高强度单丝纺丝工艺。
+  tags: [medical, implantable, iso10993, competitor, fda]
+  classifications:
+    - {scheme: IPC, code: "A61L 17/10", is_primary: true}
+    - {scheme: IPC, code: "C08L 67/04", is_primary: false}
+    - {scheme: IPC, code: "D01F 6/62", is_primary: false}
+  scenario_codes: [medical.suture, medical.tissue_scaffold]
+  grade_codes: [P3HB4HB, PHBHHx]
+
+- internal_code: PHA-2024-004
+  publication_no: WO2024/098765A1
+  application_no: PCT/US2023/078901
+  title_zh: 由甲烷气制备聚羟基丁酸酯的连续发酵方法
+  abstract_zh: >-
+    本发明涉及利用甲烷氧化菌（Methylocystis sp.）以工业甲烷尾气为唯一碳源连续生产 PHB
+    的方法。膜接触器气液传质强化使甲烷利用率从常规 35% 提升至 62%，单位 PHB 碳足迹
+    < 0.6 kg CO₂e/kg。
+  country_code: WO
+  patent_type: invention
+  legal_status: filed
+  application_date: 2023-11-08
+  publication_date: 2024-05-16
+  applicant_names: ["Mango Materials, Inc."]
+  inventor_names: ["Molly Morse", "Allison Pieja"]
+  internal_owner: 情报部-李工
+  tech_field: 一碳气体生物转化领域，涉及甲烷氧化菌发酵生产 PHB 的工艺强化。
+  tags: [competitor, carbon-negative, methane, fermentation]
+  classifications:
+    - {scheme: IPC, code: "C12P 7/62", is_primary: true}
+    - {scheme: IPC, code: "C12N 1/26", is_primary: false}
+    - {scheme: IPC, code: "C12R 1/01", is_primary: false}
+  scenario_codes: [carbon_neutral.biorefinery_byproduct, carbon_neutral.low_carbon_substitute]
+  grade_codes: [PHB]
+
+- internal_code: PHA-2024-005
+  publication_no: CN119012345A
+  application_no: CN202410234567.X
+  title_zh: 一种海水可降解 PHA 渔网线及其熔融纺丝方法
+  abstract_zh: >-
+    本发明公开一种海水可降解 PHA 渔网线，由 PHBV（HV 12%–15%）与 mcl-PHA 按 80:20 共混。
+    单丝干态拉伸强度 ≥ 42 MPa、湿态强度保留率 ≥ 85%。3.5% 盐度模拟海水中浸泡 12 个月失重
+    ≥ 60%；陆上储存 24 个月强度保留率 ≥ 90%。
+  country_code: CN
+  patent_type: invention
+  legal_status: filed
+  application_date: 2024-02-20
+  publication_date: 2024-09-10
+  applicant_names: ["碧海源生物材料有限公司", "中国海洋大学"]
+  inventor_names: ["陈某", "黄某", "张某"]
+  agency_name: 青岛海昊知识产权代理有限公司
+  internal_owner: 研发部-海洋组-黄工
+  tech_field: 海洋可降解纤维制备，涉及 PHBV/mcl-PHA 共混与抗水解成核协同设计。
+  tags: [marine-degradable, fiber, blend, joint-application]
+  classifications:
+    - {scheme: IPC, code: "D01F 6/62", is_primary: true}
+    - {scheme: IPC, code: "C08L 67/04", is_primary: false}
+    - {scheme: IPC, code: "A01K 75/00", is_primary: false}
+  scenario_codes: [marine.fishing_net, textile.fiber]
+  grade_codes: [PHBV, mcl-PHA]
+
+- internal_code: PHA-2023-006
+  publication_no: US11820873B2
+  application_no: US17/345,678
+  title_zh: 改性聚羟基烷酸酯组合物及其在制品中的应用
+  abstract_zh: >-
+    本发明公开一种改性 PHA 组合物，以 Nodax 系列 PHBHHx 为基体（HHx 4%–8%），复配脂肪族-
+    芳香族共聚酯（PBAT）20%–35%。组合物可吹膜或注塑成型一次性餐具，通过 ASTM D6400、
+    EN13432 工业堆肥认证，沿海海水实地试验中 6 个月失重 > 50%。
+  country_code: US
+  patent_type: invention
+  legal_status: granted
+  application_date: 2021-06-11
+  publication_date: 2022-12-15
+  grant_date: 2023-11-21
+  applicant_names: ["Danimer Scientific, LLC"]
+  inventor_names: ["Phil Van Trump", "Allen Padwa"]
+  internal_owner: 情报部-李工
+  tech_field: PHA 共混改性配方，重点在 PHBHHx/PBAT 共混的相容性与堆肥-海水双场景降解。
+  tags: [competitor, danimer, blend, compostable]
+  classifications:
+    - {scheme: IPC, code: "C08L 67/04", is_primary: true}
+    - {scheme: IPC, code: "C08L 67/02", is_primary: false}
+    - {scheme: IPC, code: "C08K 3/26", is_primary: false}
+  scenario_codes: [packaging.food_film, packaging.straw, carbon_neutral.low_carbon_substitute]
+  grade_codes: [PHBHHx, PHBV]
+
+- internal_code: PHA-2024-007
+  title_zh: 一种用于 FDM 3D 打印的高韧性 PHA 长丝及其制备方法
+  abstract_zh: >-
+    本发明涉及一种 FDM 3D 打印用 PHA 长丝，由 P34HB（4HB 含量 18%–25%）70%、PLA 25%
+    与扩链剂环氧基苯乙烯共聚物 3%、无机成核剂氮化硼 1.5% 经双螺杆挤出共混后单螺杆精密
+    挤出制成线径 1.75 ± 0.03 mm 的长丝。打印温度窗口 175–205 °C，层间结合强度 ≥ 32 MPa。
+  country_code: CN
+  patent_type: invention
+  legal_status: drafting
+  applicant_names: ["碧海源生物材料有限公司"]
+  inventor_names: ["王某", "刘某"]
+  agency_name: 北京康信知识产权代理有限责任公司
+  internal_owner: 研发部-3D 组-刘工
+  tech_field: 增材制造材料，涉及 P34HB/PLA 共混 FDM 长丝的扩链与成核协同改性。
+  tags: [fdm, 3d-printing, high-toughness, internal]
+  classifications:
+    - {scheme: IPC, code: "B33Y 70/00", is_primary: true}
+    - {scheme: IPC, code: "C08L 67/04", is_primary: false}
+    - {scheme: IPC, code: "B29C 64/118", is_primary: false}
+  scenario_codes: [3d_printing.fdm_filament]
+  grade_codes: [P34HB]
+
+- internal_code: PHA-2024-008
+  title_zh: 一种 PHA 控释包膜尿素及其包衣方法（技术交底）
+  abstract_zh: >-
+    本技术方案以 mcl-PHA 与 PHBV 按 60:40 共混溶液为包膜液，采用流化床喷涂工艺在尿素
+    颗粒表面形成 30–50 μm 包膜层。利用 mcl-PHA 低 Tg 提供柔韧性、PHBV 提供机械支撑，
+    包膜在土壤中 60–120 天内可控降解释放尿素，氮素利用率较常规尿素提升 30%–40%。
+  country_code: CN
+  patent_type: invention
+  legal_status: disclosure
+  applicant_names: ["碧海源生物材料有限公司"]
+  inventor_names: ["孙某"]
+  internal_owner: 研发部-农业组-孙工
+  tech_field: 农用肥料缓控释技术，涉及 PHA 共混包膜的流化床涂布工艺。
+  tags: [agriculture, controlled-release, internal, disclosure]
+  classifications:
+    - {scheme: IPC, code: "C05G 5/37", is_primary: true}
+    - {scheme: IPC, code: "C08L 67/04", is_primary: false}
+    - {scheme: IPC, code: "A01N 25/10", is_primary: false}
+  scenario_codes: [agriculture.controlled_release_fertilizer, agriculture.seed_coating]
+  grade_codes: [mcl-PHA, PHBV]
+
+- internal_code: PHA-2023-009
+  publication_no: EP4123456A1
+  application_no: EP21789456.7
+  title_zh: 用于伤口敷料和组织工程的 PHA 静电纺丝纳米纤维支架
+  abstract_zh: >-
+    本发明涉及一种以 PHBHHx 为主体的静电纺丝纳米纤维支架，纤维直径 200–800 nm，孔隙率
+    ≥ 85%，比表面积 ≥ 25 m²/g。共纺胶原蛋白 I 型（10%–20% w/w）赋予细胞粘附位点，
+    L929 细胞培养 7 天增殖率较纯 PHBHHx 提升 2.3 倍。
+  country_code: EP
+  patent_type: invention
+  legal_status: substantive_pending
+  application_date: 2021-09-30
+  publication_date: 2023-03-22
+  applicant_names: ["清华大学", "天安生物材料股份有限公司"]
+  inventor_names: ["陈国强", "Wang Yu"]
+  internal_owner: 情报部-医疗组-赵工
+  tech_field: 生物医用纳米纤维支架，涉及 PHBHHx-胶原共纺与组织工程支架制备。
+  tags: [medical, tissue-engineering, iso10993, joint-application, competitor]
+  classifications:
+    - {scheme: IPC, code: "A61L 27/18", is_primary: true}
+    - {scheme: IPC, code: "D01D 5/00", is_primary: false}
+    - {scheme: IPC, code: "C08L 67/04", is_primary: false}
+  scenario_codes: [medical.tissue_scaffold, medical.suture, 3d_printing.bioprinting_ink]
+  grade_codes: [PHBHHx, PHB]
+
+- internal_code: PHA-2024-010
+  publication_no: CN221345678U
+  application_no: CN202423456789.5
+  title_zh: 一种 PHA 一次性吸管端口防形变结构（实用新型）
+  abstract_zh: >-
+    本实用新型公开一种 PHA 一次性吸管端口防形变结构，吸管主体由 PHBV/PLA 共混挤出制成，
+    端口处采用三段式渐变壁厚（端部 0.6 mm、过渡段 0.45 mm、主体 0.3 mm）并设置 4 条纵向
+    加强筋。结构使吸管在 75 °C 热饮中保持挺度 ≥ 200 g 力。
+  country_code: CN
+  patent_type: utility_model
+  legal_status: granted
+  application_date: 2024-03-12
+  publication_date: 2024-08-30
+  grant_date: 2024-08-30
+  applicant_names: ["碧海源生物材料有限公司"]
+  inventor_names: ["周某"]
+  agency_name: 北京康信知识产权代理有限责任公司
+  internal_owner: 研发部-包装组-周工
+  tech_field: 一次性餐饮包装结构改进，涉及 PHA 吸管端口几何强化设计。
+  tags: [packaging, utility-model, internal, structural]
+  classifications:
+    - {scheme: IPC, code: "A47G 21/18", is_primary: true}
+    - {scheme: IPC, code: "B29C 48/09", is_primary: false}
+  scenario_codes: [packaging.straw]
+  grade_codes: [PHBV]
+
+- internal_code: PHA-2024-011
+  publication_no: CN118567890A
+  application_no: CN202410567890.1
+  title_zh: 一种 PHA 熔喷无纺布组合物及其低温熔喷工艺
+  abstract_zh: >-
+    本发明公开一种 PHA 熔喷无纺布组合物，由 PHBHHx 80%、P3HB4HB 弹性体 15%、扩链剂
+    ADR-4368 0.8%、滑爽剂芥酸酰胺 0.3% 组成。熔体流动指数 MFR 控制在 35–55 g/10min，
+    175–195 °C 低温熔喷，纤维直径 1.5–4 μm。
+  country_code: CN
+  patent_type: invention
+  legal_status: filed
+  application_date: 2024-04-25
+  publication_date: 2024-11-05
+  applicant_names: ["碧海源生物材料有限公司", "东华大学"]
+  inventor_names: ["吴某", "陈某"]
+  agency_name: 上海一平知识产权代理有限公司
+  internal_owner: 研发部-纺织组-吴工
+  tech_field: 可降解非织造材料，涉及 PHA 熔喷专用料的扩链改性与低温加工。
+  tags: [textile, meltblown, joint-application, internal]
+  classifications:
+    - {scheme: IPC, code: "D04H 1/4291", is_primary: true}
+    - {scheme: IPC, code: "C08L 67/04", is_primary: false}
+    - {scheme: IPC, code: "D01D 5/098", is_primary: false}
+  scenario_codes: [textile.nonwoven_hygiene, textile.fiber]
+  grade_codes: [PHBHHx, P3HB4HB]
+
+- internal_code: PHA-2022-012
+  publication_no: CN114702794B
+  application_no: CN202210123456.7
+  title_zh: 一种利用嗜盐菌生产中链聚羟基脂肪酸酯的方法
+  abstract_zh: >-
+    本发明公开利用 Halomonas bluephagenesis 改造株生产 mcl-PHA 的方法，引入 phaC2、phaJ4、
+    phaG 异源表达模块，以葡萄糖为碳源，在含 60 g/L NaCl 的开放发酵体系中生产 mcl-PHA。
+    中试 5 m³ 罐细胞干重 80 g/L，mcl-PHA 含量 50%–60%。
+  country_code: CN
+  patent_type: invention
+  legal_status: granted
+  application_date: 2022-02-08
+  publication_date: 2022-07-22
+  grant_date: 2024-01-19
+  applicant_names: ["清华大学", "北京蓝晶微生物科技有限公司"]
+  inventor_names: ["陈国强", "李腾", "Yin Jin"]
+  agency_name: 北京清亦华知识产权代理事务所
+  internal_owner: 情报部-菌种组-王工
+  tech_field: 微生物代谢工程与发酵工艺，涉及嗜盐菌底盘生产中长链 PHA。
+  tags: [competitor, halomonas, mcl-pha, joint-application, core-process]
+  classifications:
+    - {scheme: IPC, code: "C12N 1/20", is_primary: true}
+    - {scheme: IPC, code: "C12P 7/62", is_primary: false}
+    - {scheme: IPC, code: "C12N 15/74", is_primary: false}
+    - {scheme: IPC, code: "C12R 1/01", is_primary: false}
+  scenario_codes: [carbon_neutral.biorefinery_byproduct, marine.microbead_replacement, cosmetics.exfoliant_microbead]
+  grade_codes: [mcl-PHA, PHB]

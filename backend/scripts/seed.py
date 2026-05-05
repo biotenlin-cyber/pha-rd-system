@@ -17,10 +17,14 @@ from app.models import (
     ApplicationScenario,
     GradeScenarioMatch,
     GradeTag,
+    Patent,
+    PatentDisclosure,
+    PatentLegalEvent,
     PhaGrade,
     ScenarioTag,
     Tag,
 )
+from app.services import patent_service
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data" / "seed"
 
@@ -251,16 +255,109 @@ async def _upsert_matches(
 
 
 async def _reset(db: AsyncSession) -> None:
-    await db.execute(text("TRUNCATE grade_scenario_matches RESTART IDENTITY CASCADE"))
-    await db.execute(text("TRUNCATE scenario_tags RESTART IDENTITY CASCADE"))
-    await db.execute(text("TRUNCATE grade_tags RESTART IDENTITY CASCADE"))
-    await db.execute(text("TRUNCATE scenario_external_links RESTART IDENTITY CASCADE"))
-    await db.execute(text("TRUNCATE grade_external_links RESTART IDENTITY CASCADE"))
-    await db.execute(text("TRUNCATE application_scenarios RESTART IDENTITY CASCADE"))
-    await db.execute(text("TRUNCATE pha_grades RESTART IDENTITY CASCADE"))
-    await db.execute(text("TRUNCATE tags RESTART IDENTITY CASCADE"))
-    await db.execute(text("TRUNCATE application_domains RESTART IDENTITY CASCADE"))
+    # Truncate in dependency order (CASCADE cleans children automatically)
+    for tbl in (
+        "patent_draft_jobs",
+        "patent_drafts",
+        "patent_office_actions",
+        "patent_disclosures",
+        "patent_prior_art_searches",
+        "patent_fee_events",
+        "patent_legal_events",
+        "patent_citations",
+        "patent_priorities",
+        "patent_classifications",
+        "patent_inventors",
+        "patent_applicants",
+        "patent_scenarios",
+        "patent_grades",
+        "patents",
+        "applicants",
+        "inventors",
+        "grade_scenario_matches",
+        "scenario_tags",
+        "grade_tags",
+        "scenario_external_links",
+        "grade_external_links",
+        "application_scenarios",
+        "pha_grades",
+        "tags",
+        "application_domains",
+    ):
+        await db.execute(text(f"TRUNCATE {tbl} RESTART IDENTITY CASCADE"))
     await db.commit()
+
+
+async def _upsert_patents(db: AsyncSession) -> int:
+    rows = _load("patents")
+    n = 0
+    for row in rows:
+        # Map YAML row → patent_service payload
+        payload = {
+            **row,
+            "applicant_names": row.get("applicant_names") or [],
+            "inventor_names": row.get("inventor_names") or [],
+        }
+        patent = await patent_service.upsert_patent(db, dict(payload))
+        # Add a couple of representative legal events so the UI can show timeline
+        if patent.application_date:
+            await patent_service.add_legal_event(
+                db,
+                patent.id,
+                event_code="filed",
+                event_date=patent.application_date,
+                event_desc="申请",
+                source="seed",
+            )
+        if patent.publication_date:
+            await patent_service.add_legal_event(
+                db,
+                patent.id,
+                event_code="published",
+                event_date=patent.publication_date,
+                event_desc="公开",
+                source="seed",
+            )
+        if patent.grant_date:
+            await patent_service.add_legal_event(
+                db,
+                patent.id,
+                event_code="granted",
+                event_date=patent.grant_date,
+                event_desc="授权",
+                source="seed",
+            )
+        # Disclosure for the disclosure/drafting status patents (PHA-2024-007, 008)
+        if patent.legal_status in ("disclosure", "drafting"):
+            existing = await db.execute(
+                text("SELECT id FROM patent_disclosures WHERE patent_id = :pid"),
+                {"pid": patent.id},
+            )
+            if existing.scalar_one_or_none() is None:
+                tags_l = patent.tags or []
+                db.add(
+                    PatentDisclosure(
+                        patent_id=patent.id,
+                        submitted_by=patent.internal_owner or "研发组",
+                        problem_statement="现有 PHA 在该应用场景下存在加工窗口窄、力学指标不足或降解周期不可控的问题。",
+                        existing_solutions="检索到的现有技术多采用单一 PHA 牌号或 PLA 共混，难以兼顾上述指标。",
+                        proposed_solution="采用多元共混 + 成核/扩链协同改性，并通过精确的工艺参数窗口控制实现性能目标。",
+                        key_points=[
+                            "共混体系中各组分配比的关键区间",
+                            "成核 / 扩链剂用量与协同机理",
+                            "关键工艺温度窗口与停留时间",
+                        ],
+                        advantages="性能指标较单一牌号显著提升，加工窗口拓宽，降解周期可控。",
+                        embodiments=[
+                            {"id": 1, "title": "实施例 1", "content": "按主权利要求最优配比制备样品，性能指标达标。"},
+                        ],
+                        confidentiality_level="internal",
+                        status="approved" if patent.legal_status == "drafting" else "submitted",
+                    )
+                )
+        n += 1
+    await db.commit()
+    return n
 
 
 async def main(reset: bool, only: str | None) -> None:
@@ -283,6 +380,9 @@ async def main(reset: bool, only: str | None) -> None:
 
         n = await _upsert_matches(db, grades, scenarios)
         print(f"[seed] matches: {n}")
+
+        np = await _upsert_patents(db)
+        print(f"[seed] patents: {np}")
 
         total_scenarios = (
             await db.execute(select(func.count()).select_from(ApplicationScenario))
