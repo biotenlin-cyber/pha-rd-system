@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630">
+  <defs>
+    <linearGradient id="bg" x1="0" x2="0" y1="0" y2="1">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#f5f5f7"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="50%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#0071e3" stop-opacity="0.18"/>
+      <stop offset="60%" stop-color="#0071e3" stop-opacity="0.04"/>
+      <stop offset="100%" stop-color="#0071e3" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect width="1200" height="630" fill="url(#glow)"/>
+  <circle cx="600" cy="232" r="46" fill="#1d1d1f"/>
+  <text x="600" y="392" text-anchor="middle"
+        font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif"
+        font-size="84" font-weight="600" fill="#1d1d1f" letter-spacing="-2.4">
+    都佰城 PHA
+  </text>
+  <text x="600" y="446" text-anchor="middle"
+        font-family="-apple-system, BlinkMacSystemFont, 'PingFang SC', 'Microsoft YaHei', sans-serif"
+        font-size="34" font-weight="400" fill="#6e6e73" letter-spacing="-0.5">
+    重塑塑料的未来 · 从一颗颗粒开始
+  </text>
+  <text x="600" y="540" text-anchor="middle"
+        font-family="ui-monospace, 'SF Mono', Menlo, monospace"
+        font-size="18" font-weight="500" fill="#86868b" letter-spacing="6">
+    BIO-BASED · WATERBORNE · CIRCULAR
+  </text>
+</svg>

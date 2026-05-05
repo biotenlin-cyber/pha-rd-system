@@ -46,7 +46,7 @@ export default function ContactPage() {
       <div className="space-y-2">
         {/* Hero */}
         <section className="bg-paper">
-          <div className="mx-auto max-w-4xl px-6 sm:px-8 pt-20 sm:pt-28 pb-16 text-center">
+          <div className="mx-auto max-w-apple px-6 sm:px-8 pt-20 sm:pt-28 pb-16 text-center">
             <div className="text-eyebrow text-ink mb-3 fade-up">CONTACT</div>
             <h1 className="text-display sm:text-hero font-semibold tracking-tight fade-up">
               我们,

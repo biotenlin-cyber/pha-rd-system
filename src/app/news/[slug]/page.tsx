@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { news } from "@/data/news";
 import { formatDate } from "@/lib/utils";
 import { LinkArrow } from "@/components/apple/LinkArrow";
+import { JsonLd, articleLd, breadcrumbLd } from "@/components/seo/JsonLd";
 
 export function generateStaticParams() {
   return news.map((n) => ({ slug: n.slug }));
@@ -41,6 +42,14 @@ export default async function NewsDetailPage({
 
   return (
     <article className="bg-paper">
+      <JsonLd data={articleLd(item)} />
+      <JsonLd
+        data={breadcrumbLd([
+          { name: "首页", url: "/" },
+          { name: "Newsroom", url: "/news" },
+          { name: item.title, url: `/news/${item.slug}` },
+        ])}
+      />
       {/* Crumbs */}
       <div className="border-b border-hairline">
         <div className="mx-auto max-w-3xl px-6 sm:px-8 py-4 text-sm">
@@ -54,7 +63,7 @@ export default async function NewsDetailPage({
       <header className="border-b border-hairline">
         <div className="mx-auto max-w-3xl px-6 sm:px-8 py-16 sm:py-20">
           <div className="text-eyebrow text-link">{item.category}</div>
-          <h1 className="mt-4 text-display sm:text-[clamp(2.5rem,4vw,3.75rem)] font-semibold tracking-tight leading-[1.1]">
+          <h1 className="mt-4 text-display font-semibold tracking-tight">
             {item.title}
           </h1>
           <div className="mt-6 flex items-center gap-3 text-sm text-smoke">
@@ -123,7 +132,7 @@ export default async function NewsDetailPage({
 
       {/* CTA */}
       <section className="bg-paper">
-        <div className="mx-auto max-w-4xl px-6 sm:px-8 py-20 text-center border-t border-hairline">
+        <div className="mx-auto max-w-apple px-6 sm:px-8 py-20 text-center border-t border-hairline">
           <h2 className="text-display font-semibold tracking-tight">
             想第一时间获得都佰城动态?
           </h2>

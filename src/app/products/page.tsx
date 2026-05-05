@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Hero } from "@/components/apple/Hero";
 import { LinkArrow } from "@/components/apple/LinkArrow";
 import { Reveal } from "@/components/apple/Reveal";
 import { ProductVisual } from "@/components/visuals/ProductVisual";
@@ -41,35 +42,21 @@ export default function ProductsPage() {
     <div className="bg-fog">
       <div className="space-y-2">
         {/* HERO */}
-        <section className="bg-paper text-ink">
-          <div className="mx-auto max-w-apple px-6 sm:px-8 pt-20 sm:pt-28 pb-20 text-center">
-            <div className="text-eyebrow mb-3 fade-up">PHA PRODUCTS</div>
-            <Reveal>
-              <h1
-                className="font-semibold tracking-tight leading-[1.0] max-w-5xl mx-auto"
-                style={{ fontSize: "clamp(3rem, 8.5vw, 8rem)", letterSpacing: "-0.035em" }}
-              >
-                一种材料。
-                <br />
-                <span className="text-smoke">无数种可能。</span>
-              </h1>
-            </Reveal>
-            <Reveal delay={120}>
-              <p className="mt-7 text-lead text-ash max-w-2xl mx-auto">
-                从薄膜到注塑,从纤维到高端改性。八款核心牌号,适配你的下一款产品。
-              </p>
-            </Reveal>
-            <Reveal delay={200}>
-              <div className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-3">
-                {categories.map((c) => (
-                  <LinkArrow key={c} href={`#${categoryAnchors[c]}`}>
-                    {c}
-                  </LinkArrow>
-                ))}
-              </div>
-            </Reveal>
-          </div>
-        </section>
+        <Hero
+          eyebrow="PHA PRODUCTS"
+          size="mega"
+          title={
+            <>
+              一种材料。
+              <span className="block text-smoke mt-2">无数种可能。</span>
+            </>
+          }
+          subtitle="从薄膜到注塑,从纤维到高端改性。八款核心牌号,适配你的下一款产品。"
+          cta={categories.map((c) => ({
+            label: c,
+            href: `#${categoryAnchors[c]}`,
+          }))}
+        />
 
         {/* TECH ADVANTAGES */}
         <section className="bg-paper">

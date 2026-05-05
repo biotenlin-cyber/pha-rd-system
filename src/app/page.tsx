@@ -1,7 +1,7 @@
 import Link from "next/link";
+import { Hero } from "@/components/apple/Hero";
 import { SplitTile } from "@/components/apple/SplitTile";
 import { LinkArrow } from "@/components/apple/LinkArrow";
-import { Reveal } from "@/components/apple/Reveal";
 import { PHAVisual } from "@/components/visuals/PHAVisual";
 import { PlatformVisual } from "@/components/visuals/PlatformVisual";
 import { ProductVisual } from "@/components/visuals/ProductVisual";
@@ -11,94 +11,41 @@ export default function HomePage() {
     <div className="bg-fog">
       <div className="space-y-2">
         {/* Tile 1: 品牌主张 - PHA - 巨型 hero */}
-        <section className="bg-paper text-ink relative overflow-hidden">
-          <div className="mx-auto max-w-apple px-6 sm:px-8 pt-16 sm:pt-24 pb-8 text-center">
-            <div className="text-eyebrow text-ink mb-3 fade-up">都佰城 PHA</div>
-            <Reveal>
-              <h1
-                className="font-semibold tracking-tight leading-[0.96] max-w-5xl mx-auto"
-                style={{ fontSize: "clamp(3rem, 8.5vw, 8rem)", letterSpacing: "-0.04em" }}
-              >
-                重塑塑料的未来。
-              </h1>
-            </Reveal>
-            <Reveal delay={80}>
-              <p
-                className="mt-3 font-semibold tracking-tight text-smoke leading-[0.96]"
-                style={{ fontSize: "clamp(2rem, 5.6vw, 5.25rem)", letterSpacing: "-0.035em" }}
-              >
-                从一颗颗粒开始。
-              </p>
-            </Reveal>
-            <Reveal delay={180}>
-              <p className="mt-7 text-lead text-ash max-w-2xl mx-auto">
-                自主菌种、万吨级量产、全球认证。一种从自然来,也回归自然的高性能材料。
-              </p>
-            </Reveal>
-            <Reveal delay={260}>
-              <div className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-3">
-                <LinkArrow href="/products" size="lg">
-                  了解 PHA 产品
-                </LinkArrow>
-                <LinkArrow href="/contact" size="lg">
-                  申请样品
-                </LinkArrow>
-              </div>
-            </Reveal>
-          </div>
-          <Reveal delay={120}>
-            <div className="mx-auto max-w-5xl px-6 sm:px-8 pb-12 sm:pb-20">
-              <PHAVisual />
-            </div>
-          </Reveal>
-        </section>
+        <Hero
+          eyebrow="都佰城 PHA"
+          size="mega"
+          title={
+            <>
+              重塑塑料的未来。
+              <span className="block text-smoke mt-2">从一颗颗粒开始。</span>
+            </>
+          }
+          subtitle="自主菌种、万吨级量产、全球认证。一种从自然来,也回归自然的高性能材料。"
+          cta={[
+            { label: "了解 PHA 产品", href: "/products" },
+            { label: "申请样品", href: "/contact" },
+          ]}
+          visual={<PHAVisual />}
+        />
 
         {/* Tile 2: 都佰城研发管理平台 - 黑底巨型 */}
-        <section className="bg-obsidian text-paper relative overflow-hidden">
-          <div className="mx-auto max-w-apple px-6 sm:px-8 pt-16 sm:pt-24 pb-8 text-center">
-            <div className="text-eyebrow text-white/80 mb-3 fade-up">
-              都佰城研发管理平台 · PHA-RD
-            </div>
-            <Reveal>
-              <h2
-                className="font-semibold tracking-tight leading-[0.98] max-w-5xl mx-auto"
-                style={{ fontSize: "clamp(2.75rem, 7.6vw, 7.25rem)", letterSpacing: "-0.035em" }}
-              >
-                一个系统,
-                <br />
-                <span className="text-white/55">掌管整个研发链。</span>
-              </h2>
-            </Reveal>
-            <Reveal delay={120}>
-              <p className="mt-7 text-lead text-white/75 max-w-2xl mx-auto">
-                材料研发、产品开发、知识产权,装进同一个工作流。让 12 万次实验,变成可检索的资产。
-              </p>
-            </Reveal>
-            <Reveal delay={200}>
-              <div className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-3">
-                <LinkArrow
-                  href="/platform"
-                  size="lg"
-                  className="text-white hover:text-white/85"
-                >
-                  走进平台
-                </LinkArrow>
-                <LinkArrow
-                  href="/contact"
-                  size="lg"
-                  className="text-white hover:text-white/85"
-                >
-                  预约演示
-                </LinkArrow>
-              </div>
-            </Reveal>
-          </div>
-          <Reveal delay={120}>
-            <div className="mx-auto max-w-5xl px-6 sm:px-8 pb-12 sm:pb-20">
-              <PlatformVisual />
-            </div>
-          </Reveal>
-        </section>
+        <Hero
+          eyebrow="都佰城研发管理平台 · PHA-RD"
+          size="mega"
+          tone="dark"
+          title={
+            <>
+              一个系统,
+              <span className="block text-white/70">掌管整个研发链。</span>
+            </>
+          }
+          subtitle="材料研发、产品开发、知识产权,装进同一个工作流。让 12 万次实验,变成可检索的资产。"
+          cta={[
+            { label: "走进平台", href: "/platform" },
+            { label: "预约演示", href: "/contact" },
+          ]}
+          visual={<PlatformVisual />}
+        />
 
         {/* Tile 3: 双产品 - 薄膜/注塑 */}
         <SplitTile

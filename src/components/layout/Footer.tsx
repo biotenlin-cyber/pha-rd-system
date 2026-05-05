@@ -1,6 +1,38 @@
 import Link from "next/link";
 import { footerNav, siteConfig } from "@/data/site";
 
+/**
+ * 把 `#` 死链渲染为不可点击的占位,保留视觉但不污染 SEO/a11y。
+ * 真实路径走 next/link。
+ */
+function FooterLink({
+  href,
+  children,
+}: {
+  href: string;
+  children: React.ReactNode;
+}) {
+  if (href === "#") {
+    return (
+      <span
+        aria-disabled="true"
+        className="text-silver cursor-not-allowed select-none"
+        title="即将上线"
+      >
+        {children}
+      </span>
+    );
+  }
+  return (
+    <Link
+      href={href}
+      className="text-ash hover:text-ink hover:underline underline-offset-2 transition"
+    >
+      {children}
+    </Link>
+  );
+}
+
 export function Footer() {
   return (
     <footer className="bg-fog text-ash">
@@ -30,12 +62,7 @@ export function Footer() {
               <ul className="space-y-[6px]">
                 {col.items.map((it) => (
                   <li key={it.href + it.label}>
-                    <Link
-                      href={it.href}
-                      className="text-ash hover:text-ink hover:underline underline-offset-2 transition"
-                    >
-                      {it.label}
-                    </Link>
+                    <FooterLink href={it.href}>{it.label}</FooterLink>
                   </li>
                 ))}
               </ul>
@@ -56,11 +83,15 @@ export function Footer() {
             </Link>
           </p>
           <p className="mt-2 text-ash">
-            想加入我们?访问{" "}
-            <Link href="#" className="text-link hover:text-linkHover">
+            想加入我们?
+            <span
+              aria-disabled="true"
+              className="text-silver cursor-not-allowed select-none ml-1"
+              title="即将上线"
+            >
               招贤纳士
-            </Link>
-            {" "}页面查看最新岗位。
+            </span>
+            {" "}页面即将上线。
           </p>
         </div>
 
@@ -69,22 +100,12 @@ export function Footer() {
           <p className="text-ash">
             Copyright © {new Date().getFullYear()} {siteConfig.fullName}. 保留所有权利。
           </p>
-          <ul className="flex flex-wrap gap-x-5 gap-y-2 text-ash">
-            <li>
-              <Link href="#" className="hover:text-ink">隐私政策</Link>
-            </li>
-            <li>
-              <Link href="#" className="hover:text-ink">使用条款</Link>
-            </li>
-            <li>
-              <Link href="#" className="hover:text-ink">法律声明</Link>
-            </li>
-            <li>
-              <Link href="#" className="hover:text-ink">网站地图</Link>
-            </li>
-            <li>
-              <span className="text-ash">沪 ICP 备 XXXXXXXX 号</span>
-            </li>
+          <ul className="flex flex-wrap gap-x-5 gap-y-2 text-silver">
+            <li><span aria-disabled="true" className="cursor-not-allowed">隐私政策</span></li>
+            <li><span aria-disabled="true" className="cursor-not-allowed">使用条款</span></li>
+            <li><span aria-disabled="true" className="cursor-not-allowed">法律声明</span></li>
+            <li><span aria-disabled="true" className="cursor-not-allowed">网站地图</span></li>
+            <li><span>沪 ICP 备 XXXXXXXX 号</span></li>
           </ul>
         </div>
 

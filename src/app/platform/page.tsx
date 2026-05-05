@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Hero } from "@/components/apple/Hero";
 import { LinkArrow } from "@/components/apple/LinkArrow";
 import { Reveal } from "@/components/apple/Reveal";
 import { PlatformVisual } from "@/components/visuals/PlatformVisual";
@@ -19,42 +20,18 @@ export default function PlatformPage() {
   return (
     <div className="bg-fog">
       <div className="space-y-2">
-        {/* Hero - 巨型 */}
-        <section className="bg-paper text-ink">
-          <div className="mx-auto max-w-apple px-6 sm:px-8 pt-16 sm:pt-24 pb-12 text-center">
-            <div className="text-eyebrow text-ink mb-3 fade-up">
-              {platformOverview.eyebrow}
-            </div>
-            <Reveal>
-              <h1
-                className="font-semibold tracking-tight leading-[0.96] max-w-5xl mx-auto"
-                style={{ fontSize: "clamp(2.75rem, 7.6vw, 7.25rem)", letterSpacing: "-0.035em" }}
-              >
-                {platformOverview.title}
-              </h1>
-            </Reveal>
-            <Reveal delay={120}>
-              <p className="mt-7 text-lead text-ash max-w-2xl mx-auto">
-                {platformOverview.subtitle}
-              </p>
-            </Reveal>
-            <Reveal delay={200}>
-              <div className="mt-7 flex flex-wrap justify-center gap-x-6 gap-y-3">
-                <LinkArrow href="#modules" size="lg">
-                  查看模块
-                </LinkArrow>
-                <LinkArrow href="/contact" size="lg">
-                  预约演示
-                </LinkArrow>
-              </div>
-            </Reveal>
-          </div>
-          <Reveal delay={120}>
-            <div className="mx-auto max-w-apple px-6 sm:px-8 pb-12">
-              <PlatformVisual />
-            </div>
-          </Reveal>
-        </section>
+        {/* Hero */}
+        <Hero
+          eyebrow={platformOverview.eyebrow}
+          size="mega"
+          title={platformOverview.title}
+          subtitle={platformOverview.subtitle}
+          cta={[
+            { label: "查看模块", href: "#modules" },
+            { label: "预约演示", href: "/contact" },
+          ]}
+          visual={<PlatformVisual />}
+        />
 
         {/* Stats strip */}
         <section className="bg-paper">

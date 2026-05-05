@@ -7,7 +7,9 @@ import { Reveal } from "@/components/apple/Reveal";
 import { ProductSubNav } from "@/components/apple/ProductSubNav";
 import { SpecTable } from "@/components/apple/SpecTable";
 import { CloserLook } from "@/components/apple/CloserLook";
+import { DataPillars } from "@/components/apple/DataPillars";
 import { ProductVisual } from "@/components/visuals/ProductVisual";
+import { JsonLd, productLd, breadcrumbLd } from "@/components/seo/JsonLd";
 
 export function generateStaticParams() {
   return products.map((p) => ({ id: p.id }));
@@ -45,6 +47,14 @@ export default async function ProductDetailPage({
 
   return (
     <div className="bg-paper">
+      <JsonLd data={productLd(p)} />
+      <JsonLd
+        data={breadcrumbLd([
+          { name: "首页", url: "/" },
+          { name: "PHA 产品", url: "/products" },
+          { name: `${p.name} ${p.model}`, url: `/products/${p.id}` },
+        ])}
+      />
       <ProductSubNav productName={p.name} productModel={p.model} ctaLabel="申请样品" />
 
       {/* HERO */}
@@ -55,8 +65,7 @@ export default async function ProductDetailPage({
             {p.category} · {p.model}
           </div>
           <Reveal>
-            <h1 className="font-semibold tracking-tight leading-[1.0]"
-                style={{ fontSize: "clamp(3rem, 8vw, 7rem)", letterSpacing: "-0.035em" }}>
+            <h1 className="text-hero font-semibold tracking-tight max-w-3xl mx-auto">
               {p.tagline}
             </h1>
           </Reveal>
@@ -81,7 +90,7 @@ export default async function ProductDetailPage({
         </div>
 
         {/* 主视觉 */}
-        <div className="mx-auto max-w-4xl px-6 sm:px-8 pb-20 sm:pb-28">
+        <div className="mx-auto max-w-apple px-6 sm:px-8 pb-20 sm:pb-28">
           <Reveal>
             <div className="aspect-[16/10] flex items-center justify-center">
               <ProductVisual tone={p.tone} shape={p.shape} className="max-w-2xl" />
@@ -91,42 +100,19 @@ export default async function ProductDetailPage({
       </section>
 
       {/* HIGHLIGHTS - 4 个数据柱 */}
-      <section id="highlights" className="bg-fog">
-        <div className="mx-auto max-w-apple px-6 sm:px-8 py-20 sm:py-28">
-          <Reveal>
-            <div className="text-center max-w-3xl mx-auto mb-14">
-              <div className="text-eyebrow text-ink mb-3">PRODUCT HIGHLIGHTS</div>
-              <h2 className="text-display font-semibold tracking-tight">
-                关键性能,一眼读懂。
-              </h2>
-            </div>
-          </Reveal>
-          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-4">
-            {p.pillars.map((pillar, i) => (
-              <Reveal key={pillar.label} delay={i * 80}>
-                <div className="rounded-tile bg-paper p-8 h-full text-center flex flex-col items-center justify-center min-h-[180px]">
-                  <div
-                    className="font-semibold tracking-tight text-ink"
-                    style={{ fontSize: "clamp(2rem, 3.6vw, 3.25rem)", letterSpacing: "-0.02em" }}
-                  >
-                    {pillar.value}
-                  </div>
-                  <div className="mt-2 text-sm text-smoke">{pillar.label}</div>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-        </div>
+      <section id="highlights">
+        <DataPillars
+          eyebrow="PRODUCT HIGHLIGHTS"
+          title="关键性能,一眼读懂。"
+          pillars={p.pillars}
+        />
       </section>
 
       {/* HERO MOMENT - 黑底大字 */}
       <section className="bg-obsidian text-paper">
-        <div className="mx-auto max-w-5xl px-6 sm:px-8 py-32 sm:py-40 text-center">
+        <div className="mx-auto max-w-apple px-6 sm:px-8 py-32 sm:py-40 text-center">
           <Reveal>
-            <h2
-              className="font-semibold tracking-tight leading-[1.05]"
-              style={{ fontSize: "clamp(2.5rem, 6.5vw, 5.75rem)", letterSpacing: "-0.03em" }}
-            >
+            <h2 className="text-hero font-semibold tracking-tight max-w-3xl mx-auto">
               一颗颗粒,
               <br />
               可以走多远?
@@ -185,7 +171,7 @@ export default async function ProductDetailPage({
 
       {/* FEATURES checklist */}
       <section className="bg-paper">
-        <div className="mx-auto max-w-4xl px-6 sm:px-8 py-24">
+        <div className="mx-auto max-w-apple px-6 sm:px-8 py-24">
           <Reveal>
             <div className="text-center max-w-3xl mx-auto mb-12">
               <div className="text-eyebrow text-ink mb-3">FEATURES</div>
@@ -261,7 +247,7 @@ export default async function ProductDetailPage({
 
       {/* CTA */}
       <section className="bg-paper">
-        <div className="mx-auto max-w-4xl px-6 sm:px-8 py-24 text-center border-t border-hairline">
+        <div className="mx-auto max-w-apple px-6 sm:px-8 py-24 text-center border-t border-hairline">
           <Reveal>
             <h2 className="text-display font-semibold tracking-tight">
               想把 {p.model} 用在您的产品上?
